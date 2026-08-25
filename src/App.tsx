@@ -6,6 +6,7 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
+import { ExpertBannerSection } from './components/ExpertBannerSection';
 import { UnderstandingSection } from './components/UnderstandingSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
 import { CareerStages } from './components/CareerStages';
@@ -48,6 +49,9 @@ export default function App() {
       <main className="flex-grow">
         {/* 2. Hero Section with Booking Form & Metrics */}
         <HeroSection onFormSubmit={handleHeroFormSubmit} />
+
+        {/* 2.5. Expert Astrologer Highlights & Credentials Banner */}
+        <ExpertBannerSection onOpenBooking={handleOpenBooking} />
 
         {/* 3. Understanding Career Astrology by Date of Birth */}
         <UnderstandingSection onOpenBooking={handleOpenBooking} />

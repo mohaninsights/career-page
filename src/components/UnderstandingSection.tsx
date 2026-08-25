@@ -120,10 +120,12 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
               <div className="flex flex-col items-center text-center">
                 {/* Astrologer Image with Golden Frame */}
                 <div className="relative mb-4">
-                  <div className="w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden border-4 border-[#D49B35] shadow-lg bg-[#5C1E0A]">
+                  <div className="w-48 h-48 sm:w-56 sm:h-56 rounded-full overflow-hidden border-4 border-[#D49B35] shadow-xl bg-[#5C1E0A]">
                     <img 
-                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=600&q=80" 
+                      src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=750&h=750&q=90" 
                       alt="Acharya Hanish Bagga - Vedic Astrologer"
+                      width={750}
+                      height={750}
                       className="w-full h-full object-cover object-top filter brightness-95"
                       referrerPolicy="no-referrer"
                     />

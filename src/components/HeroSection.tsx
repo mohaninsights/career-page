@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Shield, Star, Sparkles, Clock, Calendar, MessageCircle, ArrowRight, User, Phone, Mail, MapPin } from 'lucide-react';
-import { HERO_METRICS } from '../data/careerAstrologyData';
+import { CheckCircle2, MessageCircle, ArrowRight, Plus, Minus } from 'lucide-react';
 import { ConsultationFormState } from '../types';
 
 interface HeroSectionProps {
@@ -16,16 +15,17 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
     timeOfBirth: '',
     placeOfBirth: '',
     gender: 'male',
-    careerConcern: 'Job Switch & Auspicious Timing',
+    careerConcern: 'Career Path & Suitable Field Analysis',
     preferredMode: 'video'
   });
 
-  const [submitted, setSubmitted] = useState(false);
+  const [showBirthDetails, setShowBirthDetails] = useState<boolean>(false);
+  const [submitted, setSubmitted] = useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!formData.fullName || !formData.phoneNumber || !formData.dateOfBirth) {
-      alert('Please fill in your Name, Phone Number, and Date of Birth to proceed.');
+    if (!formData.fullName || !formData.phoneNumber) {
+      alert('Please fill in your Full Name and Phone / WhatsApp number.');
       return;
     }
     setSubmitted(true);
@@ -33,304 +33,293 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
   };
 
   return (
-    <section id="hero" className="relative w-full bg-gradient-to-b from-[#6A240A] via-[#7E2F10] to-[#541B07] text-[#FAF4EB] pt-8 pb-14 px-4 sm:px-6 lg:px-8 overflow-hidden bg-hero-texture border-b-4 border-[#D49B35]">
-      {/* Decorative celestial background elements */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#E5A93C]/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20"></div>
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#B24E24]/15 rounded-full blur-3xl pointer-events-none -ml-20 -mb-20"></div>
+    <section 
+      id="hero" 
+      className="relative w-full bg-[#703013] text-[#FAF4EB] py-10 sm:py-14 px-4 sm:px-6 lg:px-10 overflow-hidden"
+    >
+      {/* Background Sacred Geometric Kundli Diagram Lines (matching screenshot) */}
+      <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
+        {/* Left North Indian diamond subtle background pattern */}
+        <svg className="absolute -left-20 -top-20 w-[600px] h-[600px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="1" fill="none">
+          <rect x="50" y="50" width="300" height="300" stroke="#FDE08B" strokeWidth="1.2" />
+          <line x1="50" y1="50" x2="350" y2="350" stroke="#FDE08B" strokeWidth="1" />
+          <line x1="350" y1="50" x2="50" y2="350" stroke="#FDE08B" strokeWidth="1" />
+          <polygon points="200,50 350,200 200,350 50,200" stroke="#FDE08B" strokeWidth="1" />
+        </svg>
 
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Right subtle zodiac wheel arc */}
+        <svg className="absolute -right-24 -bottom-24 w-[650px] h-[650px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="1" fill="none">
+          <circle cx="350" cy="350" r="300" stroke="#FDE08B" strokeWidth="1" strokeDasharray="6 4" />
+          <circle cx="350" cy="350" r="240" stroke="#FDE08B" strokeWidth="0.8" />
+          <circle cx="350" cy="350" r="180" stroke="#FDE08B" strokeWidth="0.8" />
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Left Column: Heading, Value Proposition & Metrics */}
+          {/* Left Column: Pill badges, Title, Detailed Description, Planet Pills & Value Grid */}
           <div className="lg:col-span-7 space-y-6">
             
-            {/* Top Pill */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#3D1405]/70 border border-[#E5A93C]/40 text-[#FDE68A] text-xs font-semibold tracking-wide">
-              <Sparkles className="w-3.5 h-3.5 text-[#E5A93C]" />
-              <span>Ancient Vedic Jyotish for Career Clarity & High Growth</span>
+            {/* Top Pill Badges matching screenshot */}
+            <div className="flex flex-wrap items-center gap-2.5">
+              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#52210B]/80 border border-[#8C3E14] text-[#F3DFBD] text-xs font-semibold">
+                <span className="w-2 h-2 rounded-full bg-[#E5A93C]"></span>
+                <span>Astrology for Career Growth & Job Uncertainty</span>
+              </div>
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#52210B]/80 border border-[#8C3E14] text-[#F3DFBD] text-xs font-semibold">
+                <span>🧭</span>
+                <span className="uppercase text-[11px] tracking-wider">10th House Karma Bhava</span>
+              </div>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-vedic font-bold text-white leading-tight tracking-tight">
-              Understand Your Career Path with <span className="text-[#FDE08B] underline decoration-[#D49B35]/50 underline-offset-8">Vedic Astrology</span>
-            </h1>
+            <div className="space-y-2">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-vedic font-bold text-white leading-tight tracking-tight">
+                Get Clear Career Direction & Overcome Job Uncertainty
+              </h1>
+              <p className="text-sm sm:text-base font-serif-vedic text-[#FDEBD0] italic font-medium">
+                Sick of your current position? Choosing between promotion, a job change, government work or business?
+              </p>
+            </div>
 
-            {/* Subtitle */}
-            <p className="text-[#F2DDD0] text-base sm:text-lg leading-relaxed max-w-2xl font-light">
-              Decode your horoscope to unlock auspicious career timing, job promotions, business decisions, foreign settlement, and overcome professional setbacks with ancient Vedic wisdom.
+            {/* Requested Detailed Copy */}
+            <p className="text-[#F1DDD0] text-xs sm:text-sm leading-relaxed font-light text-justify sm:text-left">
+              Career astrology is the interpretation of your natal chart to know your strengths in your career, tough times, appropriate career paths and the best timing in your career life. A customized career forecast may offer another viewpoint into your current stage and future opportunities rather than an important decision just being made due to stress or uncertainty.
             </p>
 
-            {/* Value checklist matching PDF */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm text-[#FBEEDC]">
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span>Accurate Career Predictions by Date of Birth & Time</span>
+            {/* Planet Role Badges (Sun, Jupiter, Saturn, Mercury, Rahu) matching screenshot */}
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
+              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
+                <div className="text-xs font-bold text-[#FDE08B]">Sun ☉</div>
+                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Authority & Govt.</div>
               </div>
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span>Dashamsha (D10) Analysis for Career Status & High Growth</span>
+
+              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
+                <div className="text-xs font-bold text-[#FDE08B]">Jupiter ♃</div>
+                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Growth & Wisdom</div>
               </div>
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span>10th House (Karma Bhava) & Career Roadmaps</span>
+
+              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
+                <div className="text-xs font-bold text-[#FDE08B]">Saturn ♄</div>
+                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Karma & Tenure</div>
               </div>
-              <div className="flex items-start gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span>Remedies, Gemstones & Auspicious Muhurat for Success</span>
+
+              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
+                <div className="text-xs font-bold text-[#FDE08B]">Mercury ☿</div>
+                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Business & Tech</div>
               </div>
-              <div className="flex items-start gap-2.5 sm:col-span-2">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-[#2D0D03]/80 border border-[#D49B35]/40 text-[#FDEBD0] text-xs font-semibold">
-                  <Shield className="w-3.5 h-3.5 text-[#25D366]" />
-                  <span>100% Private & Confidential 1-on-1 Consultation with Acharya Hanish Bagga</span>
-                </div>
+
+              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs col-span-2 sm:col-span-1">
+                <div className="text-xs font-bold text-[#FDE08B]">Rahu ☊</div>
+                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Foreign Careers</div>
               </div>
             </div>
 
-            {/* Metrics Bar */}
-            <div className="pt-6 border-t border-[#9E431E]/60 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
-              {HERO_METRICS.map((metric, idx) => (
-                <div key={idx} className="bg-[#461807]/60 border border-[#8C3814] rounded-lg p-3 backdrop-blur-xs">
-                  <div className="text-2xl sm:text-3xl font-serif-vedic font-bold text-[#FDE08B] tracking-tight">
-                    {metric.value}
-                  </div>
-                  <div className="text-[11px] text-[#E8D0BE] mt-1 leading-snug font-medium">
-                    {metric.label}
-                  </div>
-                </div>
-              ))}
+            {/* 4 Value proposition boxes matching screenshot */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs text-[#FAF0DE]">
+              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span className="leading-snug">Identify suitable career fields matching your planetary strengths</span>
+              </div>
+
+              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span className="leading-snug">Understand auspicious timing for job change, promotion & growth</span>
+              </div>
+
+              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span className="leading-snug">Resolve business vs job dilemmas through Dashamsha (D10) chart</span>
+              </div>
+
+              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
+                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
+                <span className="leading-snug">Practical, time-tested Vedic remedies to overcome roadblocks</span>
+              </div>
             </div>
 
           </div>
 
-          {/* Right Column: Consultation Form Card */}
+          {/* Right Column: Clean & Minimized Contact Form Card matching screenshot */}
           <div className="lg:col-span-5">
             <div className="bg-[#FFFDF9] rounded-2xl p-6 sm:p-7 text-[#2C1810] shadow-2xl border-2 border-[#D49B35]/70 relative">
               
-              {/* Gold decorative header badge */}
-              <div className="text-center pb-4 border-b border-[#EEDCC4]">
-                <span className="text-[11px] font-bold uppercase tracking-widest text-[#9E431E] bg-[#FAF0DE] px-3 py-1 rounded-full border border-[#E5CAA0]">
-                  ✦ 1-on-1 Vedic Jyotish ✦
-                </span>
-                <h2 className="text-2xl font-serif-vedic font-bold text-[#3B190C] mt-2">
+              {/* Header Badge & Title matching screenshot */}
+              <div className="text-center pb-3">
+                <div className="inline-block bg-[#5C230B] text-[#FAF4EB] text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 rounded-full mb-2">
+                  1-ON-1 CONSULTATION
+                </div>
+                <h2 className="text-2xl font-serif-vedic font-bold text-[#2E1206]">
                   Book Career Consultation
                 </h2>
-                <p className="text-xs text-[#704E38] mt-1">
-                  Direct private guidance with Acharya Hanish Bagga
+                <p className="text-xs text-[#704E38] mt-0.5">
+                  Get personalized Vedic roadmap from Acharya Ganesh
                 </p>
               </div>
 
               {submitted ? (
-                <div className="py-8 text-center space-y-4">
-                  <div className="w-14 h-14 bg-[#25D366]/15 rounded-full flex items-center justify-center mx-auto text-[#1EBE5D]">
-                    <CheckCircle2 className="w-8 h-8" />
+                <div className="py-6 text-center space-y-3">
+                  <div className="w-12 h-12 bg-[#25D366]/15 rounded-full flex items-center justify-center mx-auto text-[#1EBE5D]">
+                    <CheckCircle2 className="w-7 h-7" />
                   </div>
-                  <h3 className="text-xl font-bold text-[#3B190C]">Consultation Request Received!</h3>
+                  <h3 className="text-lg font-bold text-[#3B190C]">Consultation Slot Reserved!</h3>
                   <p className="text-xs text-[#664632]">
-                    Thank you <strong className="text-[#9E431E]">{formData.fullName}</strong>. Our appointment team will contact you within 15 minutes to confirm your preferred slot.
+                    Thank you <strong className="text-[#8C3411]">{formData.fullName}</strong>. Our team will contact you shortly on WhatsApp to confirm your appointment.
                   </p>
                   <a
-                    href={`https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20have%20submitted%20my%20career%20consultation%20request%20for%20${encodeURIComponent(formData.fullName)}%20regarding%20${encodeURIComponent(formData.careerConcern)}.`}
+                    href={`https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20have%20submitted%20my%20career%20consultation%20request%20for%20${encodeURIComponent(formData.fullName)}%20(${encodeURIComponent(formData.careerConcern)}).`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-3 rounded-lg font-bold text-sm transition shadow-md"
+                    className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-2.5 rounded-lg font-bold text-xs transition shadow-sm"
                   >
-                    <MessageCircle className="w-5 h-5 fill-current" />
-                    <span>Instant WhatsApp Confirmation</span>
+                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <span>Instant WhatsApp Booking (+91 73000-04325)</span>
                   </a>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="mt-4 space-y-3.5">
+                <form onSubmit={handleSubmit} className="mt-3 space-y-3.5">
+                  
                   {/* Full Name */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#482819] mb-1">
-                      Full Name *
+                    <label className="block text-xs font-bold text-[#3B1E10] mb-1">
+                      Full Name <span className="text-[#C0392B]">*</span>
                     </label>
-                    <div className="relative">
-                      <User className="w-4 h-4 text-[#A88C74] absolute left-3 top-2.5" />
-                      <input
-                        type="text"
-                        required
-                        placeholder="e.g. Rahul Sharma"
-                        value={formData.fullName}
-                        onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
-                        className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg pl-9 pr-3 py-2 text-sm text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none placeholder:text-[#A89482]"
-                      />
-                    </div>
+                    <input
+                      type="text"
+                      required
+                      placeholder="e.g. Rahul Sharma"
+                      value={formData.fullName}
+                      onChange={(e) => setFormData({ ...formData, fullName: e.target.value })}
+                      className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-xl px-3.5 py-2.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#8C3411] focus:outline-none placeholder:text-[#A89482]"
+                    />
                   </div>
 
-                  {/* Phone & Email 2-col */}
+                  {/* Phone / WhatsApp & Email Address (2-Column) */}
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     <div>
-                      <label className="block text-xs font-semibold text-[#482819] mb-1">
-                        Phone Number *
+                      <label className="block text-xs font-bold text-[#3B1E10] mb-1">
+                        Phone / WhatsApp <span className="text-[#C0392B]">*</span>
                       </label>
-                      <div className="relative">
-                        <Phone className="w-3.5 h-3.5 text-[#A88C74] absolute left-3 top-2.5" />
-                        <input
-                          type="tel"
-                          required
-                          placeholder="+91 98765-43210"
-                          value={formData.phoneNumber}
-                          onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
-                          className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg pl-8 pr-2 py-2 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none placeholder:text-[#A89482]"
-                        />
-                      </div>
+                      <input
+                        type="tel"
+                        required
+                        placeholder="+91 98765 43210"
+                        value={formData.phoneNumber}
+                        onChange={(e) => setFormData({ ...formData, phoneNumber: e.target.value })}
+                        className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-xl px-3 py-2.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#8C3411] focus:outline-none placeholder:text-[#A89482]"
+                      />
                     </div>
+
                     <div>
-                      <label className="block text-xs font-semibold text-[#482819] mb-1">
+                      <label className="block text-xs font-bold text-[#3B1E10] mb-1">
                         Email Address
                       </label>
-                      <div className="relative">
-                        <Mail className="w-3.5 h-3.5 text-[#A88C74] absolute left-3 top-2.5" />
-                        <input
-                          type="email"
-                          placeholder="rahul@example.com"
-                          value={formData.email}
-                          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                          className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg pl-8 pr-2 py-2 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none placeholder:text-[#A89482]"
-                        />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Date of Birth & Time of Birth */}
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <div>
-                      <label className="block text-xs font-semibold text-[#482819] mb-1">
-                        Date of Birth *
-                      </label>
                       <input
-                        type="date"
-                        required
-                        value={formData.dateOfBirth}
-                        onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
-                        className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg px-2.5 py-1.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none"
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-xs font-semibold text-[#482819] mb-1">
-                        Time of Birth (Exact/Approx)
-                      </label>
-                      <input
-                        type="time"
-                        value={formData.timeOfBirth}
-                        onChange={(e) => setFormData({ ...formData, timeOfBirth: e.target.value })}
-                        className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg px-2.5 py-1.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none"
+                        type="email"
+                        placeholder="yourname@gmail.com"
+                        value={formData.email}
+                        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                        className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-xl px-3 py-2.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#8C3411] focus:outline-none placeholder:text-[#A89482]"
                       />
                     </div>
                   </div>
 
-                  {/* Place of Birth */}
+                  {/* Primary Career Focus */}
                   <div>
-                    <label className="block text-xs font-semibold text-[#482819] mb-1">
-                      Place of Birth (City, State, Country)
-                    </label>
-                    <div className="relative">
-                      <MapPin className="w-3.5 h-3.5 text-[#A88C74] absolute left-3 top-2.5" />
-                      <input
-                        type="text"
-                        placeholder="e.g. New Delhi, India"
-                        value={formData.placeOfBirth}
-                        onChange={(e) => setFormData({ ...formData, placeOfBirth: e.target.value })}
-                        className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg pl-8 pr-2 py-2 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none placeholder:text-[#A89482]"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Primary Career Concern */}
-                  <div>
-                    <label className="block text-xs font-semibold text-[#482819] mb-1">
-                      Primary Career Focus Area
+                    <label className="block text-xs font-bold text-[#3B1E10] mb-1">
+                      Primary Career Focus <span className="text-[#C0392B]">*</span>
                     </label>
                     <select
                       value={formData.careerConcern}
                       onChange={(e) => setFormData({ ...formData, careerConcern: e.target.value })}
-                      className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-lg px-2.5 py-2 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#9E431E] focus:outline-none font-medium"
+                      className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-xl px-3 py-2.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#8C3411] focus:outline-none font-medium cursor-pointer"
                     >
-                      <option value="Job Switch & Auspicious Timing">Job Switch & Auspicious Timing</option>
-                      <option value="Promotion, Appraisal & Salary Increment">Promotion, Appraisal & Salary Increment</option>
-                      <option value="Government Job (UPSC/PCS/PSU) vs Corporate">Government Job (UPSC/PCS/PSU) vs Corporate</option>
-                      <option value="Business vs Salaried Job Decision">Business vs Salaried Job Decision</option>
-                      <option value="Foreign Settlement & Overseas Work Visa">Foreign Settlement & Overseas Work Visa</option>
-                      <option value="Workplace Politics, Boss Friction & Stability">Workplace Politics, Boss Friction & Stability</option>
-                      <option value="Gemstones, Yantra & Vedic Remedies Guidance">Gemstones, Yantra & Vedic Remedies Guidance</option>
-                      <option value="Comprehensive 360° Career Kundli Reading">Comprehensive 360° Career Kundli Reading</option>
+                      <option value="Career Path & Suitable Field Analysis">Career Path & Suitable Field Analysis</option>
+                      <option value="Job Change & Auspicious Timing">Job Change & Auspicious Timing</option>
+                      <option value="Promotion & Appraisal Timing">Promotion & Appraisal Timing</option>
+                      <option value="Government vs Private Job Dilemma">Government vs Private Job Dilemma</option>
+                      <option value="Job vs Business Decision">Job vs Business Decision</option>
+                      <option value="Foreign Work & Relocation Astrology">Foreign Work & Relocation Astrology</option>
+                      <option value="Workplace Politics & Office Stress">Workplace Politics & Office Stress</option>
                     </select>
                   </div>
 
-                  {/* Preferred Mode */}
-                  <div>
-                    <label className="block text-xs font-semibold text-[#482819] mb-1">
-                      Consultation Format
-                    </label>
-                    <div className="grid grid-cols-3 gap-2 text-center text-xs">
-                      <label className={`cursor-pointer border rounded-lg py-1.5 px-2 transition flex flex-col items-center justify-center gap-0.5 ${formData.preferredMode === 'video' ? 'bg-[#9E431E] text-white border-[#9E431E] font-bold shadow-xs' : 'bg-[#FAF6EE] border-[#D9C4A6] text-[#482819]'}`}>
-                        <input
-                          type="radio"
-                          name="mode"
-                          className="sr-only"
-                          checked={formData.preferredMode === 'video'}
-                          onChange={() => setFormData({ ...formData, preferredMode: 'video' })}
-                        />
-                        <span>📹 Video Call</span>
-                        <span className="text-[9px] opacity-80">(Zoom / Meet)</span>
-                      </label>
+                  {/* Collapsible / Optional Birth Details for clean minimalist card */}
+                  <div className="pt-1">
+                    <button
+                      type="button"
+                      onClick={() => setShowBirthDetails(!showBirthDetails)}
+                      className="text-[11px] text-[#7A3614] hover:text-[#52210B] font-semibold flex items-center gap-1.5 transition cursor-pointer"
+                    >
+                      {showBirthDetails ? (
+                        <Minus className="w-3.5 h-3.5 text-[#8C3411]" />
+                      ) : (
+                        <Plus className="w-3.5 h-3.5 text-[#8C3411]" />
+                      )}
+                      <span>Add Birth Details Now (Optional for Faster Reading)</span>
+                    </button>
 
-                      <label className={`cursor-pointer border rounded-lg py-1.5 px-2 transition flex flex-col items-center justify-center gap-0.5 ${formData.preferredMode === 'audio' ? 'bg-[#9E431E] text-white border-[#9E431E] font-bold shadow-xs' : 'bg-[#FAF6EE] border-[#D9C4A6] text-[#482819]'}`}>
-                        <input
-                          type="radio"
-                          name="mode"
-                          className="sr-only"
-                          checked={formData.preferredMode === 'audio'}
-                          onChange={() => setFormData({ ...formData, preferredMode: 'audio' })}
-                        />
-                        <span>📞 Phone Call</span>
-                        <span className="text-[9px] opacity-80">(Direct Line)</span>
-                      </label>
-
-                      <label className={`cursor-pointer border rounded-lg py-1.5 px-2 transition flex flex-col items-center justify-center gap-0.5 ${formData.preferredMode === 'written_report' ? 'bg-[#9E431E] text-white border-[#9E431E] font-bold shadow-xs' : 'bg-[#FAF6EE] border-[#D9C4A6] text-[#482819]'}`}>
-                        <input
-                          type="radio"
-                          name="mode"
-                          className="sr-only"
-                          checked={formData.preferredMode === 'written_report'}
-                          onChange={() => setFormData({ ...formData, preferredMode: 'written_report' })}
-                        />
-                        <span>📄 PDF Report</span>
-                        <span className="text-[9px] opacity-80">(Written Kundli)</span>
-                      </label>
-                    </div>
+                    {showBirthDetails && (
+                      <div className="mt-2.5 p-3 rounded-xl bg-[#FAF6EE] border border-[#E8DCC2] space-y-2.5 animate-fadeIn">
+                        <div className="grid grid-cols-2 gap-2">
+                          <div>
+                            <label className="block text-[10px] font-bold text-[#4E2B1A] mb-0.5">Date of Birth</label>
+                            <input
+                              type="date"
+                              value={formData.dateOfBirth}
+                              onChange={(e) => setFormData({ ...formData, dateOfBirth: e.target.value })}
+                              className="w-full bg-white border border-[#D9C4A6] rounded-lg px-2 py-1.5 text-xs text-[#2C1810]"
+                            />
+                          </div>
+                          <div>
+                            <label className="block text-[10px] font-bold text-[#4E2B1A] mb-0.5">Time of Birth</label>
+                            <input
+                              type="time"
+                              value={formData.timeOfBirth}
+                              onChange={(e) => setFormData({ ...formData, timeOfBirth: e.target.value })}
+                              className="w-full bg-white border border-[#D9C4A6] rounded-lg px-2 py-1.5 text-xs text-[#2C1810]"
+                            />
+                          </div>
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-bold text-[#4E2B1A] mb-0.5">Place of Birth (City/Country)</label>
+                          <input
+                            type="text"
+                            placeholder="e.g. New Delhi, India"
+                            value={formData.placeOfBirth}
+                            onChange={(e) => setFormData({ ...formData, placeOfBirth: e.target.value })}
+                            className="w-full bg-white border border-[#D9C4A6] rounded-lg px-2.5 py-1.5 text-xs text-[#2C1810]"
+                          />
+                        </div>
+                      </div>
+                    )}
                   </div>
 
-                  {/* Submit Button */}
+                  {/* Brown Confirm Consultation Slot CTA matching screenshot */}
                   <button
                     type="submit"
-                    className="w-full mt-2 bg-gradient-to-r from-[#9E431E] to-[#7B2E0F] hover:from-[#B44E24] hover:to-[#923813] text-white py-3 rounded-lg font-bold text-sm uppercase tracking-wider transition shadow-md flex items-center justify-center gap-2 group cursor-pointer"
+                    className="w-full bg-[#753413] hover:bg-[#5C260B] text-white py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition shadow-md flex items-center justify-center gap-2 cursor-pointer group mt-1"
                   >
-                    <span>Schedule Consultation Now</span>
+                    <span>Confirm Consultation Slot</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  {/* Quick WhatsApp Action */}
-                  <a
-                    href="https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20want%20to%20inquire%20about%20Career%20Astrology%20Consultation."
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-2 rounded-lg font-bold text-xs transition shadow-xs flex items-center justify-center gap-2"
-                  >
-                    <MessageCircle className="w-4 h-4 fill-current" />
-                    <span>Quick WhatsApp Consultation (+91 73000-04325)</span>
-                  </a>
+                  {/* Subtext divider & Instant WhatsApp Booking button matching screenshot */}
+                  <div className="space-y-2 pt-1 text-center">
+                    <p className="text-[11px] text-[#7A5B48]">
+                      or need instant assistance?
+                    </p>
 
-                  {/* Trust Footer */}
-                  <div className="text-center pt-1 text-[11px] text-[#7A5842] flex items-center justify-center gap-3">
-                    <span className="flex items-center gap-1">
-                      <Shield className="w-3 h-3 text-[#25D366]" /> 100% Confidential
-                    </span>
-                    <span>•</span>
-                    <span className="flex items-center gap-1">
-                      <Star className="w-3 h-3 text-[#D49B35] fill-current" /> 4.9/5 Client Rating
-                    </span>
+                    <a
+                      href="https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20want%20to%20book%20a%20Career%20Astrology%20Consultation."
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-sm flex items-center justify-center gap-2"
+                    >
+                      <MessageCircle className="w-4 h-4 fill-current" />
+                      <span>Instant WhatsApp Booking (+91 73000-04325)</span>
+                    </a>
                   </div>
 
                 </form>
