@@ -113,7 +113,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
                   <span>ACHARYA GANESH</span>
                 </div>
                 <p className="text-[10px] font-medium text-[#7C5338] tracking-wider uppercase">
-                  Vedic Career Astrology & Guidance
+                  By Hanish Bagga • Vedic Astrology & Guidance
                 </p>
               </div>
             </div>

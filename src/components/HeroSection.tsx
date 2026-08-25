@@ -154,7 +154,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                   Book Career Consultation
                 </h2>
                 <p className="text-xs text-[#704E38] mt-0.5">
-                  Get personalized Vedic roadmap from Acharya Ganesh
+                  Get personalized Vedic roadmap from Hanish Bagga (Acharya Ganesh)
                 </p>
               </div>
 

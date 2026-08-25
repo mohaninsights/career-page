@@ -1,5 +1,6 @@
 import React from 'react';
 import { Tv, Users, Award, ShieldCheck, Star, Sparkles, CheckCircle2 } from 'lucide-react';
+import astrologerImage from '../assets/images/regenerated_image_1787658507486.webp';
 
 interface ExpertBannerSectionProps {
   onOpenBooking?: () => void;
@@ -22,26 +23,15 @@ export const ExpertBannerSection: React.FC<ExpertBannerSectionProps> = ({ onOpen
             {/* Left Column: Portrait & Astrologer Details (5 cols on lg) */}
             <div className="lg:col-span-5 flex flex-col sm:flex-row items-center sm:items-start gap-5 text-center sm:text-left">
               
-              {/* Circular Gold Halo Astrologer Photo with Verified Shield */}
+              {/* Circular Astrologer Photo with Verified Shield */}
               <div className="relative shrink-0">
-                {/* Outer glowing gold ring */}
-                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full p-1.5 bg-gradient-to-br from-[#FDE08B] via-[#D49B35] to-[#8C3E14] shadow-[0_0_30px_rgba(212,155,53,0.45)] relative">
-                  
-                  {/* Zodiac Mandala Ring SVG backdrop behind portrait */}
-                  <div className="absolute inset-0 rounded-full overflow-hidden flex items-center justify-center pointer-events-none opacity-40">
-                    <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow">
-                      <circle cx="50" cy="50" r="48" fill="none" stroke="#FDE08B" strokeWidth="1" strokeDasharray="3 3" />
-                      <circle cx="50" cy="50" r="38" fill="none" stroke="#FDE08B" strokeWidth="0.75" />
-                    </svg>
-                  </div>
-
+                <div className="w-36 h-36 sm:w-44 sm:h-44 rounded-full overflow-hidden relative shadow-[0_0_30px_rgba(212,155,53,0.3)]">
                   <img
-                    src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=750&h=750&q=90"
+                    src={astrologerImage}
                     alt="Acharya Ganesh (Hanish Bagga)"
                     width={750}
                     height={750}
-                    className="w-full h-full object-cover object-top rounded-full border-2 border-[#1E1138]"
-                    referrerPolicy="no-referrer"
+                    className="w-full h-full object-cover object-top rounded-full"
                   />
                 </div>
 
@@ -57,9 +47,14 @@ export const ExpertBannerSection: React.FC<ExpertBannerSectionProps> = ({ onOpen
                   <span>EXPERT</span>
                 </div>
 
-                <h3 className="text-xl sm:text-2xl font-serif-vedic font-bold text-white tracking-tight leading-tight">
-                  Acharya Ganesh
-                </h3>
+                <div className="space-y-0.5">
+                  <h3 className="text-xl sm:text-2xl font-serif-vedic font-bold text-white tracking-tight leading-tight">
+                    Hanish Bagga
+                  </h3>
+                  <div className="text-xs text-[#FDE08B] font-serif-vedic font-bold">
+                    ( Acharya Ganesh )
+                  </div>
+                </div>
 
                 <p className="text-xs text-[#D1BEDE] font-medium leading-tight">
                   Celebrity Vedic Astrologer &<br />Vastu Shastra Mentor
