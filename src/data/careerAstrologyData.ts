@@ -263,6 +263,30 @@ export const SESSION_DELIVERABLES: DeliverableItem[] = [
       'Rudraksha & Daan recommendations'
     ],
     iconName: 'ShieldAlert'
+  },
+  {
+    id: 'del-7',
+    title: 'Foreign Settlement & Global Mobility',
+    tagline: '9th & 12th House Rahu/Jupiter Activation',
+    description: 'Examine foreign career deputations, international relocation, work visa approvals (H1B / PR / Tier 2), and overseas trade success probabilities.',
+    points: [
+      'Auspicious foreign travel & visa timing',
+      'Overseas earnings & green card prospects',
+      'Cross-border MNC deputation analysis'
+    ],
+    iconName: 'Globe'
+  },
+  {
+    id: 'del-8',
+    title: 'Business vs Job Feasibility',
+    tagline: '7th, 3rd & 10th House Entrepreneurship Potential',
+    description: 'Determine whether you are cosmically built for a salaried executive track, high-growth startup venture, or family business expansion with risk timing.',
+    points: [
+      'Sole proprietorship vs partnership compatibility',
+      'Capital investment & funding readiness',
+      'Best astrological period for startup launch'
+    ],
+    iconName: 'Briefcase'
   }
 ];
 

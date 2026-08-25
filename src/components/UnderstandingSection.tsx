@@ -1,12 +1,35 @@
-import React from 'react';
-import { Compass, Layers, Clock, ShieldCheck, Calendar, ArrowRight, MessageCircle, Sparkles } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Compass, Layers, Clock, ShieldCheck, Calendar, ArrowRight, MessageCircle, Sparkles, Image as ImageIcon } from 'lucide-react';
 import careerPosterImage from '../assets/images/career_astrology_poster_1787659215152.jpg';
+import { ImageUploadModal } from './ImageUploadModal';
 
 interface UnderstandingSectionProps {
   onOpenBooking: () => void;
 }
 
 export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOpenBooking }) => {
+  const [currentPoster, setCurrentPoster] = useState<string>(careerPosterImage);
+  const [isImageModalOpen, setIsImageModalOpen] = useState<boolean>(false);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('custom_career_poster_image');
+    if (saved && saved.trim() !== '') {
+      setCurrentPoster(saved);
+    }
+  }, []);
+
+  const handleSaveImage = (newUrl: string) => {
+    if (newUrl && newUrl.trim() !== '') {
+      setCurrentPoster(newUrl);
+      localStorage.setItem('custom_career_poster_image', newUrl);
+    }
+  };
+
+  const handleResetDefault = () => {
+    setCurrentPoster(careerPosterImage);
+    localStorage.removeItem('custom_career_poster_image');
+  };
+
   return (
     <section id="understanding" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-white border-b border-[#EADFC7]">
       <div className="max-w-7xl mx-auto">
@@ -28,10 +51,10 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
           
           {/* Left Column: Descriptive text, 2x2 Feature Boxes, and Action Buttons (7 cols on lg) */}
-          <div className="lg:col-span-7 space-y-6">
+          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
             
             {/* Introductory Paragraphs */}
             <div className="space-y-3 text-sm text-[#4A3225] leading-relaxed">
@@ -111,7 +134,7 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-3 flex flex-wrap items-center gap-3.5">
+            <div className="pt-2 flex flex-wrap items-center gap-3.5">
               <button
                 onClick={onOpenBooking}
                 className="bg-[#8C3E14] hover:bg-[#73310E] text-white px-5 py-3 rounded-lg font-bold text-xs sm:text-sm tracking-wide transition shadow-sm flex items-center gap-2"
@@ -134,36 +157,56 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
 
           </div>
 
-          {/* Right Column: Vedic Astrology Poster Card (5 cols on lg) */}
-          <div className="lg:col-span-5">
-            <div className="bg-[#FAF5EC] p-2.5 sm:p-3 rounded-2xl border border-[#E3D3BA] shadow-lg">
-              <div 
+          {/* Right Column: Vedic Astrology Poster Image (5 cols on lg) */}
+          <div className="lg:col-span-5 flex justify-center items-start">
+            <div className="relative w-full max-w-md rounded-2xl overflow-hidden shadow-xl border-2 border-[#E3D3BA] bg-[#FAF5EC] group">
+              
+              {/* Full Image */}
+              <img
+                src={currentPoster}
+                alt="Career Astrology - Discover the Right Path, Timing & Growth with Acharya Hanish Bagga"
+                className="w-full h-auto object-cover rounded-2xl cursor-pointer block transition-transform duration-300 group-hover:scale-[1.01]"
                 onClick={onOpenBooking}
-                className="group relative rounded-xl overflow-hidden shadow-md cursor-pointer transition transform hover:scale-[1.01]"
-              >
-                <img
-                  src={careerPosterImage}
-                  alt="Career Astrology - Discover the Right Path, Timing & Growth with Acharya Hanish Bagga"
-                  className="w-full h-auto object-cover rounded-xl"
-                  width={750}
-                  height={1125}
-                />
-                
-                {/* Subtle hover overlay prompt */}
-                <div className="absolute inset-0 bg-[#3B190C]/0 group-hover:bg-[#3B190C]/10 transition pointer-events-none rounded-xl"></div>
+                width={750}
+                height={1125}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = careerPosterImage;
+                }}
+              />
+
+              {/* Top-Right "Change Image" Floating Button */}
+              <div className="absolute top-3.5 right-3.5 z-20">
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setIsImageModalOpen(true);
+                  }}
+                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#241710]/85 hover:bg-[#8C3E14] text-white text-xs font-semibold border border-white/20 shadow-md backdrop-blur-xs transition cursor-pointer hover:scale-105"
+                  title="Change or upload custom image"
+                >
+                  <ImageIcon className="w-3.5 h-3.5 text-[#FDE08B]" />
+                  <span>Change Image</span>
+                </button>
               </div>
 
-              {/* Bottom Caption */}
-              <div className="text-left text-[11px] text-[#7A6354] pt-2 px-1 font-medium flex items-center justify-between">
-                <span>10th House Karma Bhava Analysis</span>
-                <span className="text-[#8C3E14] font-semibold text-[10px]">Tap to Book Consultation</span>
-              </div>
             </div>
           </div>
 
         </div>
 
       </div>
+
+      {/* Image Upload / Change Modal */}
+      <ImageUploadModal
+        isOpen={isImageModalOpen}
+        onClose={() => setIsImageModalOpen(false)}
+        title="Change Career Astrology Poster"
+        currentImage={currentPoster}
+        defaultImage={careerPosterImage}
+        onSaveImage={handleSaveImage}
+        onResetDefault={handleResetDefault}
+      />
     </section>
   );
 };
