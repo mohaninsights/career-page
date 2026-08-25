@@ -17,16 +17,33 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
   const [currentMeetingImg, setCurrentMeetingImg] = useState<string>(consultationMeetingImg);
   const [isImageModalOpen, setIsImageModalOpen] = useState<boolean>(false);
   
+  // Responsive detection
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 640);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
   // Slider states
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
+  const [currentMobileIndex, setCurrentMobileIndex] = useState<number>(0);
+  const [currentDesktopSlide, setCurrentDesktopSlide] = useState<number>(0);
+
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [isDragging, setIsDragging] = useState<boolean>(false);
   const [dragStartX, setDragStartX] = useState<number>(0);
+  const [isUserInteracting, setIsUserInteracting] = useState<boolean>(false);
+  const userInteractionTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
-  // We show 4 cards per page on desktop, total 8 cards = 2 slides
-  const itemsPerPage = 4;
-  const totalSlides = Math.ceil(SESSION_DELIVERABLES.length / itemsPerPage);
+  // Desktop configuration: 4 cards per page, total 8 cards = 2 slides
+  const desktopItemsPerPage = 4;
+  const totalDesktopSlides = Math.ceil(SESSION_DELIVERABLES.length / desktopItemsPerPage);
+  const totalMobileCards = SESSION_DELIVERABLES.length;
 
   useEffect(() => {
     const saved = localStorage.getItem('custom_meeting_image');
@@ -35,18 +52,52 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
     }
   }, []);
 
-  const handleNextSlide = () => {
-    setCurrentSlide((prev) => (prev + 1) % totalSlides);
+  // Mobile 2-second auto-scroll
+  useEffect(() => {
+    if (!isMobile) return;
+    if (isUserInteracting) return;
+
+    const interval = setInterval(() => {
+      setCurrentMobileIndex((prev) => (prev + 1) % totalMobileCards);
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [isMobile, isUserInteracting, totalMobileCards]);
+
+  const triggerUserInteractionPause = () => {
+    setIsUserInteracting(true);
+    if (userInteractionTimeoutRef.current) {
+      clearTimeout(userInteractionTimeoutRef.current);
+    }
+    // Resume auto-scroll 3 seconds after touch/interaction ends
+    userInteractionTimeoutRef.current = setTimeout(() => {
+      setIsUserInteracting(false);
+    }, 3000);
   };
 
-  const handlePrevSlide = () => {
-    setCurrentSlide((prev) => (prev - 1 + totalSlides) % totalSlides);
+  const handleNext = () => {
+    triggerUserInteractionPause();
+    if (isMobile) {
+      setCurrentMobileIndex((prev) => (prev + 1) % totalMobileCards);
+    } else {
+      setCurrentDesktopSlide((prev) => (prev + 1) % totalDesktopSlides);
+    }
+  };
+
+  const handlePrev = () => {
+    triggerUserInteractionPause();
+    if (isMobile) {
+      setCurrentMobileIndex((prev) => (prev - 1 + totalMobileCards) % totalMobileCards);
+    } else {
+      setCurrentDesktopSlide((prev) => (prev - 1 + totalDesktopSlides) % totalDesktopSlides);
+    }
   };
 
   // Touch and Drag swipe handling
-  const minSwipeDistance = 50;
+  const minSwipeDistance = 40;
 
   const onTouchStart = (e: React.TouchEvent) => {
+    triggerUserInteractionPause();
     setTouchEnd(null);
     setTouchStart(e.targetTouches[0].clientX);
   };
@@ -61,13 +112,14 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
     if (isLeftSwipe) {
-      handleNextSlide();
+      handleNext();
     } else if (isRightSwipe) {
-      handlePrevSlide();
+      handlePrev();
     }
   };
 
   const handleMouseDown = (e: React.MouseEvent) => {
+    triggerUserInteractionPause();
     setIsDragging(true);
     setDragStartX(e.clientX);
   };
@@ -77,9 +129,9 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
     setIsDragging(false);
     const distance = dragStartX - e.clientX;
     if (distance > minSwipeDistance) {
-      handleNextSlide();
+      handleNext();
     } else if (distance < -minSwipeDistance) {
-      handlePrevSlide();
+      handlePrev();
     }
   };
 
@@ -138,14 +190,17 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
         <div className="mt-4 flex items-center justify-between gap-3 px-1">
           <div className="flex items-center gap-2">
             <span className="text-xs font-semibold text-[#8C3E14] bg-[#FAF0DE] border border-[#E3C9A0] px-3 py-1 rounded-full shadow-2xs">
-              Slide {currentSlide + 1} of {totalSlides} • {currentSlide === 0 ? "Core Astrology Analysis" : "Strategic Career Guidance"}
+              {isMobile 
+                ? `Deliverable ${currentMobileIndex + 1} of ${totalMobileCards} • 2s Auto-slide`
+                : `Slide ${currentDesktopSlide + 1} of ${totalDesktopSlides} • ${currentDesktopSlide === 0 ? "Core Astrology Analysis" : "Strategic Career Guidance"}`
+              }
             </span>
           </div>
 
           {/* Round Circular Slide Navigation Buttons */}
           <div className="flex items-center gap-2">
             <button
-              onClick={handlePrevSlide}
+              onClick={handlePrev}
               className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-[#D9C4A6] text-[#3B190C] hover:bg-[#8C3E14] hover:text-white hover:border-[#8C3E14] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-95"
               aria-label="Previous Slide"
               title="Slide Left"
@@ -154,7 +209,7 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
             </button>
 
             <button
-              onClick={handleNextSlide}
+              onClick={handleNext}
               className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-[#D9C4A6] text-[#3B190C] hover:bg-[#8C3E14] hover:text-white hover:border-[#8C3E14] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-95"
               aria-label="Next Slide"
               title="Slide Right"
@@ -174,75 +229,138 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
           onMouseUp={handleMouseUp}
           onMouseLeave={() => isDragging && setIsDragging(false)}
         >
-          <div 
-            className="flex transition-transform duration-500 ease-out"
-            style={{ transform: `translateX(-${currentSlide * 100}%)` }}
-          >
-            {Array.from({ length: totalSlides }).map((_, slideIdx) => {
-              const slideDeliverables = SESSION_DELIVERABLES.slice(
-                slideIdx * itemsPerPage,
-                (slideIdx + 1) * itemsPerPage
-              );
+          {/* MOBILE VIEW (Single card with 2-second auto-scroll and touch swipe) */}
+          <div className="block sm:hidden">
+            <div 
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentMobileIndex * 100}%)` }}
+            >
+              {SESSION_DELIVERABLES.map((del) => (
+                <div key={del.id} className="w-full shrink-0 p-1">
+                  <div className="bg-white rounded-2xl p-5 border-2 border-[#E8DCC4] shadow-sm hover:border-[#D49B35] transition-all duration-300 flex flex-col justify-between min-h-[260px]">
+                    <div>
+                      {/* Round Icon & Pill Tag */}
+                      <div className="flex items-center justify-between mb-3">
+                        <div className="w-11 h-11 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center shadow-2xs">
+                          {getDeliverableIcon(del.iconName)}
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-3 py-1 rounded-full border border-[#E3C69A] shadow-2xs">
+                          {del.tagline}
+                        </span>
+                      </div>
 
-              return (
-                <div 
-                  key={slideIdx} 
-                  className="w-full shrink-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5 p-1"
-                >
-                  {slideDeliverables.map((del) => (
-                    <div 
-                      key={del.id}
-                      className="bg-white rounded-2xl p-4 sm:p-5 border-2 border-[#E8DCC4] shadow-xs hover:border-[#D49B35] hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group"
-                    >
-                      <div>
-                        {/* Round Icon & Pill Tag */}
-                        <div className="flex items-center justify-between mb-2.5">
-                          <div className="w-10 h-10 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#F6E6CE] transition-all shadow-2xs">
-                            {getDeliverableIcon(del.iconName)}
+                      <h3 className="font-serif-vedic text-base font-bold text-[#3B190C] leading-snug">
+                        {del.title}
+                      </h3>
+                      <p className="text-xs text-[#6B4B36] mt-2 leading-relaxed">
+                        {del.description}
+                      </p>
+
+                      <div className="mt-3.5 pt-3 border-t border-[#F0E4D0] space-y-2">
+                        {del.points.map((pt, idx) => (
+                          <div key={idx} className="flex items-start gap-2 text-xs text-[#442718]">
+                            <CheckCircle2 className="w-4 h-4 text-[#D49B35] shrink-0 mt-0.5" />
+                            <span className="leading-tight text-xs font-medium">{pt}</span>
                           </div>
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-2.5 py-0.5 rounded-full border border-[#E3C69A] truncate max-w-[130px] shadow-2xs">
-                            {del.tagline}
-                          </span>
-                        </div>
-
-                        <h3 className="font-serif-vedic text-sm sm:text-base font-bold text-[#3B190C] leading-snug">
-                          {del.title}
-                        </h3>
-                        <p className="text-xs text-[#6B4B36] mt-1.5 leading-relaxed line-clamp-3">
-                          {del.description}
-                        </p>
-
-                        <div className="mt-3 pt-2.5 border-t border-[#F0E4D0] space-y-1.5">
-                          {del.points.map((pt, idx) => (
-                            <div key={idx} className="flex items-start gap-1.5 text-xs text-[#442718]">
-                              <CheckCircle2 className="w-3.5 h-3.5 text-[#D49B35] shrink-0 mt-0.5" />
-                              <span className="leading-tight text-[11.5px]">{pt}</span>
-                            </div>
-                          ))}
-                        </div>
+                        ))}
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+          </div>
+
+          {/* DESKTOP & TABLET VIEW (4 cards per slide) */}
+          <div className="hidden sm:block">
+            <div 
+              className="flex transition-transform duration-500 ease-out"
+              style={{ transform: `translateX(-${currentDesktopSlide * 100}%)` }}
+            >
+              {Array.from({ length: totalDesktopSlides }).map((_, slideIdx) => {
+                const slideDeliverables = SESSION_DELIVERABLES.slice(
+                  slideIdx * desktopItemsPerPage,
+                  (slideIdx + 1) * desktopItemsPerPage
+                );
+
+                return (
+                  <div 
+                    key={slideIdx} 
+                    className="w-full shrink-0 grid grid-cols-2 lg:grid-cols-4 gap-3.5 p-1"
+                  >
+                    {slideDeliverables.map((del) => (
+                      <div 
+                        key={del.id}
+                        className="bg-white rounded-2xl p-4 sm:p-5 border-2 border-[#E8DCC4] shadow-xs hover:border-[#D49B35] hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group"
+                      >
+                        <div>
+                          {/* Round Icon & Pill Tag */}
+                          <div className="flex items-center justify-between mb-2.5">
+                            <div className="w-10 h-10 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#F6E6CE] transition-all shadow-2xs">
+                              {getDeliverableIcon(del.iconName)}
+                            </div>
+                            <span className="text-[9px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-2.5 py-0.5 rounded-full border border-[#E3C69A] truncate max-w-[130px] shadow-2xs">
+                              {del.tagline}
+                            </span>
+                          </div>
+
+                          <h3 className="font-serif-vedic text-sm sm:text-base font-bold text-[#3B190C] leading-snug">
+                            {del.title}
+                          </h3>
+                          <p className="text-xs text-[#6B4B36] mt-1.5 leading-relaxed line-clamp-3">
+                            {del.description}
+                          </p>
+
+                          <div className="mt-3 pt-2.5 border-t border-[#F0E4D0] space-y-1.5">
+                            {del.points.map((pt, idx) => (
+                              <div key={idx} className="flex items-start gap-1.5 text-xs text-[#442718]">
+                                <CheckCircle2 className="w-3.5 h-3.5 text-[#D49B35] shrink-0 mt-0.5" />
+                                <span className="leading-tight text-[11.5px]">{pt}</span>
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </div>
 
         {/* Round Slide Indicator Dots */}
         <div className="mt-3 flex items-center justify-center gap-1.5">
-          {Array.from({ length: totalSlides }).map((_, slideIdx) => (
-            <button
-              key={slideIdx}
-              onClick={() => setCurrentSlide(slideIdx)}
-              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                currentSlide === slideIdx
-                  ? 'w-7 bg-[#8C3E14] shadow-xs'
-                  : 'w-2 bg-[#D9C4A6] hover:bg-[#B39375]'
-              }`}
-              aria-label={`Slide to page ${slideIdx + 1}`}
-            />
-          ))}
+          {isMobile ? (
+            Array.from({ length: totalMobileCards }).map((_, cardIdx) => (
+              <button
+                key={cardIdx}
+                onClick={() => {
+                  triggerUserInteractionPause();
+                  setCurrentMobileIndex(cardIdx);
+                }}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentMobileIndex === cardIdx
+                    ? 'w-6 bg-[#8C3E14] shadow-xs'
+                    : 'w-2 bg-[#D9C4A6] hover:bg-[#B39375]'
+                }`}
+                aria-label={`Slide to card ${cardIdx + 1}`}
+              />
+            ))
+          ) : (
+            Array.from({ length: totalDesktopSlides }).map((_, slideIdx) => (
+              <button
+                key={slideIdx}
+                onClick={() => setCurrentDesktopSlide(slideIdx)}
+                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                  currentDesktopSlide === slideIdx
+                    ? 'w-7 bg-[#8C3E14] shadow-xs'
+                    : 'w-2 bg-[#D9C4A6] hover:bg-[#B39375]'
+                }`}
+                aria-label={`Slide to page ${slideIdx + 1}`}
+              />
+            ))
+          )}
         </div>
 
         {/* Detailed Career Report Preview Box with Compact Decreased Image Size */}
