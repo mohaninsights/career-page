@@ -1,0 +1,6 @@
+{
+  "name": "Acharya Ganesh - Vedic Career Astrology",
+  "description": "Vedic Career Astrology consultation page by Acharya Hanish Bagga with birth chart analysis, career timing predictions, Kundli reading, and consultation booking.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
