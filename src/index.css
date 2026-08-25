@@ -20,6 +20,26 @@
   background-size: 24px 24px;
 }
 
+/* Continuous rolling ticker animation */
+@keyframes continuousRoll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-continuous-roll {
+  display: flex;
+  width: max-content;
+  animation: continuousRoll 26s linear infinite;
+}
+
+.animate-continuous-roll:hover {
+  animation-play-state: paused;
+}
+
 .bg-hero-texture {
   background-image: 
     radial-gradient(circle at 80% 20%, rgba(212, 155, 53, 0.15) 0%, transparent 40%),

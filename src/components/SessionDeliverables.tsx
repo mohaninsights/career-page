@@ -192,16 +192,16 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
             <span className="text-xs font-semibold text-[#8C3E14] bg-[#FAF0DE] border border-[#E3C9A0] px-3 py-1 rounded-full shadow-2xs">
               {isMobile 
                 ? `Deliverable ${currentMobileIndex + 1} of ${totalMobileCards} • 2s Auto-slide`
-                : `Slide ${currentDesktopSlide + 1} of ${totalDesktopSlides} • ${currentDesktopSlide === 0 ? "Core Astrology Analysis" : "Strategic Career Guidance"}`
+                : `8 Comprehensive Session Deliverables • Continuous Rolling Motion (Hover to Pause)`
               }
             </span>
           </div>
 
-          {/* Round Circular Slide Navigation Buttons */}
-          <div className="flex items-center gap-2">
+          {/* Round Circular Slide Navigation Buttons (Mobile View) */}
+          <div className="flex sm:hidden items-center gap-2">
             <button
               onClick={handlePrev}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-[#D9C4A6] text-[#3B190C] hover:bg-[#8C3E14] hover:text-white hover:border-[#8C3E14] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-95"
+              className="w-8 h-8 rounded-full bg-white border border-[#D9C4A6] text-[#3B190C] hover:bg-[#8C3E14] hover:text-white hover:border-[#8C3E14] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-95"
               aria-label="Previous Slide"
               title="Slide Left"
             >
@@ -210,7 +210,7 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
 
             <button
               onClick={handleNext}
-              className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-white border border-[#D9C4A6] text-[#3B190C] hover:bg-[#8C3E14] hover:text-white hover:border-[#8C3E14] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-95"
+              className="w-8 h-8 rounded-full bg-white border border-[#D9C4A6] text-[#3B190C] hover:bg-[#8C3E14] hover:text-white hover:border-[#8C3E14] shadow-xs hover:shadow-sm transition-all duration-200 flex items-center justify-center cursor-pointer active:scale-95"
               aria-label="Next Slide"
               title="Slide Right"
             >
@@ -219,148 +219,86 @@ export const SessionDeliverables: React.FC<SessionDeliverablesProps> = ({ onOpen
           </div>
         </div>
 
-        {/* Sliding Cards Carousel Container with Round Feel and Swipe/Drag Support */}
-        <div 
-          className="mt-2.5 overflow-hidden relative rounded-2xl cursor-grab active:cursor-grabbing select-none"
-          onTouchStart={onTouchStart}
-          onTouchMove={onTouchMove}
-          onTouchEnd={onTouchEnd}
-          onMouseDown={handleMouseDown}
-          onMouseUp={handleMouseUp}
-          onMouseLeave={() => isDragging && setIsDragging(false)}
-        >
+        {/* Sliding & Rolling Cards Container */}
+        <div className="mt-2.5 overflow-hidden relative rounded-2xl">
           {/* MOBILE VIEW (Single card with 2-second auto-scroll and touch swipe) */}
-          <div className="block sm:hidden">
+          <div 
+            className="block sm:hidden cursor-grab active:cursor-grabbing select-none"
+            onTouchStart={onTouchStart}
+            onTouchMove={onTouchMove}
+            onTouchEnd={onTouchEnd}
+            onMouseDown={handleMouseDown}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={() => isDragging && setIsDragging(false)}
+          >
             <div 
               className="flex transition-transform duration-500 ease-out"
               style={{ transform: `translateX(-${currentMobileIndex * 100}%)` }}
             >
               {SESSION_DELIVERABLES.map((del) => (
                 <div key={del.id} className="w-full shrink-0 p-1">
-                  <div className="bg-white rounded-2xl p-5 border-2 border-[#E8DCC4] shadow-sm hover:border-[#D49B35] transition-all duration-300 flex flex-col justify-between min-h-[260px]">
-                    <div>
-                      {/* Round Icon & Pill Tag */}
-                      <div className="flex items-center justify-between mb-3">
-                        <div className="w-11 h-11 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center shadow-2xs">
-                          {getDeliverableIcon(del.iconName)}
-                        </div>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-3 py-1 rounded-full border border-[#E3C69A] shadow-2xs">
-                          {del.tagline}
-                        </span>
+                  <div className="bg-white rounded-2xl p-5 border-2 border-[#E8DCC4] shadow-sm hover:border-[#D49B35] transition-all duration-300 flex flex-col justify-center min-h-[140px]">
+                    <div className="flex items-center justify-between mb-3">
+                      <div className="w-11 h-11 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center shadow-2xs">
+                        {getDeliverableIcon(del.iconName)}
                       </div>
-
-                      <h3 className="font-serif-vedic text-base font-bold text-[#3B190C] leading-snug">
-                        {del.title}
-                      </h3>
-                      <p className="text-xs text-[#6B4B36] mt-2 leading-relaxed">
-                        {del.description}
-                      </p>
-
-                      <div className="mt-3.5 pt-3 border-t border-[#F0E4D0] space-y-2">
-                        {del.points.map((pt, idx) => (
-                          <div key={idx} className="flex items-start gap-2 text-xs text-[#442718]">
-                            <CheckCircle2 className="w-4 h-4 text-[#D49B35] shrink-0 mt-0.5" />
-                            <span className="leading-tight text-xs font-medium">{pt}</span>
-                          </div>
-                        ))}
-                      </div>
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-3 py-1 rounded-full border border-[#E3C69A] shadow-2xs">
+                        {del.tagline}
+                      </span>
                     </div>
+
+                    <h3 className="font-serif-vedic text-base font-bold text-[#3B190C] leading-snug">
+                      {del.title}
+                    </h3>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* DESKTOP & TABLET VIEW (4 cards per slide) */}
-          <div className="hidden sm:block">
-            <div 
-              className="flex transition-transform duration-500 ease-out"
-              style={{ transform: `translateX(-${currentDesktopSlide * 100}%)` }}
-            >
-              {Array.from({ length: totalDesktopSlides }).map((_, slideIdx) => {
-                const slideDeliverables = SESSION_DELIVERABLES.slice(
-                  slideIdx * desktopItemsPerPage,
-                  (slideIdx + 1) * desktopItemsPerPage
-                );
-
-                return (
-                  <div 
-                    key={slideIdx} 
-                    className="w-full shrink-0 grid grid-cols-2 lg:grid-cols-4 gap-3.5 p-1"
-                  >
-                    {slideDeliverables.map((del) => (
-                      <div 
-                        key={del.id}
-                        className="bg-white rounded-2xl p-4 sm:p-5 border-2 border-[#E8DCC4] shadow-xs hover:border-[#D49B35] hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full group"
-                      >
-                        <div>
-                          {/* Round Icon & Pill Tag */}
-                          <div className="flex items-center justify-between mb-2.5">
-                            <div className="w-10 h-10 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#F6E6CE] transition-all shadow-2xs">
-                              {getDeliverableIcon(del.iconName)}
-                            </div>
-                            <span className="text-[9px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-2.5 py-0.5 rounded-full border border-[#E3C69A] truncate max-w-[130px] shadow-2xs">
-                              {del.tagline}
-                            </span>
-                          </div>
-
-                          <h3 className="font-serif-vedic text-sm sm:text-base font-bold text-[#3B190C] leading-snug">
-                            {del.title}
-                          </h3>
-                          <p className="text-xs text-[#6B4B36] mt-1.5 leading-relaxed line-clamp-3">
-                            {del.description}
-                          </p>
-
-                          <div className="mt-3 pt-2.5 border-t border-[#F0E4D0] space-y-1.5">
-                            {del.points.map((pt, idx) => (
-                              <div key={idx} className="flex items-start gap-1.5 text-xs text-[#442718]">
-                                <CheckCircle2 className="w-3.5 h-3.5 text-[#D49B35] shrink-0 mt-0.5" />
-                                <span className="leading-tight text-[11.5px]">{pt}</span>
-                              </div>
-                            ))}
-                          </div>
-                        </div>
-                      </div>
-                    ))}
+          {/* DESKTOP & TABLET VIEW: Always in continuous rolling motion */}
+          <div className="hidden sm:block overflow-hidden py-1">
+            <div className="animate-continuous-roll flex items-center">
+              {[...SESSION_DELIVERABLES, ...SESSION_DELIVERABLES].map((del, idx) => (
+                <div 
+                  key={`${del.id}-${idx}`}
+                  className="w-[270px] lg:w-[290px] shrink-0 bg-white rounded-2xl p-4 sm:p-5 border-2 border-[#E8DCC4] shadow-xs hover:border-[#D49B35] hover:shadow-md transition-all duration-300 flex flex-col justify-center min-h-[130px] group mx-2.5"
+                >
+                  <div className="flex items-center justify-between mb-2.5">
+                    <div className="w-10 h-10 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] flex items-center justify-center group-hover:scale-105 group-hover:bg-[#F6E6CE] transition-all shadow-2xs">
+                      {getDeliverableIcon(del.iconName)}
+                    </div>
+                    <span className="text-[9px] font-bold uppercase tracking-wider text-[#9E431E] bg-[#FAF1DF] px-2.5 py-0.5 rounded-full border border-[#E3C69A] truncate max-w-[130px] shadow-2xs">
+                      {del.tagline}
+                    </span>
                   </div>
-                );
-              })}
+
+                  <h3 className="font-serif-vedic text-sm sm:text-base font-bold text-[#3B190C] leading-snug">
+                    {del.title}
+                  </h3>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Round Slide Indicator Dots */}
-        <div className="mt-3 flex items-center justify-center gap-1.5">
-          {isMobile ? (
-            Array.from({ length: totalMobileCards }).map((_, cardIdx) => (
-              <button
-                key={cardIdx}
-                onClick={() => {
-                  triggerUserInteractionPause();
-                  setCurrentMobileIndex(cardIdx);
-                }}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  currentMobileIndex === cardIdx
-                    ? 'w-6 bg-[#8C3E14] shadow-xs'
-                    : 'w-2 bg-[#D9C4A6] hover:bg-[#B39375]'
-                }`}
-                aria-label={`Slide to card ${cardIdx + 1}`}
-              />
-            ))
-          ) : (
-            Array.from({ length: totalDesktopSlides }).map((_, slideIdx) => (
-              <button
-                key={slideIdx}
-                onClick={() => setCurrentDesktopSlide(slideIdx)}
-                className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
-                  currentDesktopSlide === slideIdx
-                    ? 'w-7 bg-[#8C3E14] shadow-xs'
-                    : 'w-2 bg-[#D9C4A6] hover:bg-[#B39375]'
-                }`}
-                aria-label={`Slide to page ${slideIdx + 1}`}
-              />
-            ))
-          )}
+        {/* Round Slide Indicator Dots for Mobile View */}
+        <div className="mt-3 flex sm:hidden items-center justify-center gap-1.5">
+          {Array.from({ length: totalMobileCards }).map((_, cardIdx) => (
+            <button
+              key={cardIdx}
+              onClick={() => {
+                triggerUserInteractionPause();
+                setCurrentMobileIndex(cardIdx);
+              }}
+              className={`h-2 rounded-full transition-all duration-300 cursor-pointer ${
+                currentMobileIndex === cardIdx
+                  ? 'w-6 bg-[#8C3E14] shadow-xs'
+                  : 'w-2 bg-[#D9C4A6] hover:bg-[#B39375]'
+              }`}
+              aria-label={`Slide to card ${cardIdx + 1}`}
+            />
+          ))}
         </div>
 
         {/* Detailed Career Report Preview Box with Compact Decreased Image Size */}
