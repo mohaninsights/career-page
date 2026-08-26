@@ -9,6 +9,7 @@ import { HeroSection } from './components/HeroSection';
 import { ExpertBannerSection } from './components/ExpertBannerSection';
 import { UnderstandingSection } from './components/UnderstandingSection';
 import { WhyChooseUs } from './components/WhyChooseUs';
+import { YouTubeVideoSection } from './components/YouTubeVideoSection';
 import { CareerStages } from './components/CareerStages';
 import { HowItWorks } from './components/HowItWorks';
 import { SessionDeliverables } from './components/SessionDeliverables';
@@ -58,6 +59,9 @@ export default function App() {
 
         {/* 4. Why Choose Our Career Astrology Services */}
         <WhyChooseUs />
+
+        {/* 4.5. Featured YouTube Video Masterclasses (Left-to-Right Showcase) */}
+        <YouTubeVideoSection onOpenBooking={handleOpenBooking} />
 
         {/* 5. Career Stages Guidance (Early, Mid, Senior) */}
         <CareerStages onOpenBooking={handleOpenBooking} />

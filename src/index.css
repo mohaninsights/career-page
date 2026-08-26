@@ -20,6 +20,14 @@
   background-size: 24px 24px;
 }
 
+.bg-dot-grid-dark {
+  background-color: #241108;
+  background-image: 
+    radial-gradient(circle at 50% 30%, rgba(212, 155, 53, 0.12) 0%, transparent 60%),
+    radial-gradient(rgba(255, 235, 205, 0.12) 1.2px, transparent 1.2px);
+  background-size: auto, 24px 24px;
+}
+
 /* Continuous rolling ticker animation */
 @keyframes continuousRoll {
   0% {
@@ -38,6 +46,24 @@
 
 .animate-continuous-roll:hover {
   animation-play-state: paused;
+}
+
+/* Slow Zodiac Spin Animation */
+@keyframes spinZodiac {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-zodiac {
+  animation: spinZodiac 75s linear infinite;
+}
+
+.animation-paused {
+  animation-play-state: paused !important;
 }
 
 .bg-hero-texture {

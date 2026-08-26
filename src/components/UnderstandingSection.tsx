@@ -51,10 +51,10 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
         </div>
 
         {/* Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-stretch">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
           {/* Left Column: Descriptive text, 2x2 Feature Boxes, and Action Buttons (7 cols on lg) */}
-          <div className="lg:col-span-7 flex flex-col justify-between space-y-6">
+          <div className="lg:col-span-7 space-y-6">
             
             {/* Introductory Paragraphs */}
             <div className="space-y-3 text-sm text-[#4A3225] leading-relaxed">
