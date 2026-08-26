@@ -37,22 +37,22 @@ export const KundliChartSection: React.FC<KundliChartSectionProps> = ({ onOpenBo
   ];
 
   return (
-    <section id="kundli-wheel" className="py-16 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#3B1508] via-[#4D1C0B] to-[#2B0E05] text-[#FAF4EB] border-b-4 border-[#D49B35] relative overflow-hidden bg-dark-texture">
+    <section id="kundli-wheel" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-dot-grid-dark text-[#FAF4EB] border-t-2 border-b-4 border-[#D49B35] relative overflow-hidden">
       {/* Golden glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D49B35]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#D49B35]/15 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-7xl mx-auto relative z-10">
+      <div className="max-w-7xl mx-auto relative z-10 space-y-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#5E220D] border border-[#D49B35]/50 text-[#FDE08B] text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#E5A93C]" />
+        <div className="text-center max-w-3xl mx-auto space-y-3.5">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3D1D0E] border border-[#A65526] text-[#FDE08B] text-xs font-bold tracking-wide shadow-md">
+            <Sparkles className="w-3.5 h-3.5 text-[#E5A93C] animate-pulse" />
             <span>Deep Vedic Career Diagnostics & Kundli Reading</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif-vedic font-bold text-white tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-vedic font-extrabold text-[#FFF5EA] tracking-tight leading-[1.2] drop-shadow-md">
             Decode Your True Calling Through the Sacred Kundli Wheel
           </h2>
-          <p className="text-base text-[#E5CEBA] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#FCECDA] leading-relaxed max-w-2xl mx-auto font-medium">
             Your birth chart is an astronomical compass. Click different houses below to reveal how your planetary positions influence promotions, career switches, and authority.
           </p>
         </div>

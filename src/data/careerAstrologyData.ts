@@ -429,57 +429,63 @@ export const TESTIMONIALS: Testimonial[] = [
 export const FAQS: FaqItem[] = [
   {
     id: 'faq-1',
-    question: 'Which House is for Career in Astrology?',
-    category: 'Houses',
-    answer: 'In Vedic Astrology, the primary house for career and professional destiny is the 10th House (Karma Bhava). It signifies your public status, authority, executive leadership, reputation, and life’s main vocation. Additionally, the 6th House governs daily service and competitive employment, the 2nd House governs wealth earned through work, the 7th House represents business partnerships, and the 11th House denotes financial gains and professional network rewards.'
+    question: 'Which Chart is Used for Career Prediction?',
+    category: 'Divisional Charts',
+    answer: 'In Vedic astrology, the Birth Chart with Dashamsha Chart (D10) are generally used for career prediction. These charts help to understand about the professional strengths, growth opportunities and future career. A detailed Career astrology analysis examines the planet positioning, houses and dashas to provide guidance with accuracy. Many choose career astrology by date of birth because it offers personalized insights and support for better planning through trusted astrology career prediction methods. Career astrology also things like your strengths, skills and timing of success. Book a consultation to know more about what kind of career is best for you.'
   },
   {
     id: 'faq-2',
-    question: 'Can Career Astrology predict the exact time when I will get a job?',
-    category: 'Timing',
-    answer: 'Yes. Vedic Astrology uses the time-tested Vimshottari Dasha system (Mahadasha, Antardasha, and Pratyantardasha) combined with major planetary transits (Gochara of Jupiter, Saturn, and Rahu) to pinpoint favorable job-seeking windows with remarkable precision. When planetary periods activate the 6th, 10th, or 11th houses, interview calls and job offers materialize swiftly.'
+    question: 'Which House is for Career in Astrology?',
+    category: 'Houses',
+    answer: 'In career astrology, the 10th house is considered the main house in which we can check about profession and achievements. In career prediction astrology, an expert astrologer carefully analyzes the 10th house with this house ruling planet and supporting houses like 2, 6 and 11 respectively. A strong 10th house indicates better career growth and recognition. Career Astrology also studies planetary influences to understand work preferences and future opportunities. Through Career astrology by date of birth, it becomes easier to identify strengths, challenges and suitable career options.'
   },
   {
     id: 'faq-3',
-    question: 'When will I get a Job Promotion or Appraisal?',
-    category: 'Timing',
-    answer: 'Promotions and appraisals typically occur during the sub-periods of the 10th lord, 11th lord (house of gains), or 1st lord (enhancement of status). Transits of Jupiter aspecting your 10th house or natal Sun also bring leadership elevation, official recognition, and salary increments. During your consultation, Acharya Hanish Bagga calculates your exact timeline for promotion eligibility.'
+    question: 'Can Career Astrology Prediction Predicts when will I get a Job?',
+    category: 'Job Timing',
+    answer: 'Astrology can provide timing indications by studying planetary periods, transits and house activations. A detailed astrology career prediction can able to highlight favourable periods and employment opportunities. An expert combines job astrology with dasha analysis to tell when will professional growth may occur. While astrology cannot guarantee exact outcomes, it can tell the periods of growth and opportunities. A proper Career astrology consultation is able to understand career timing, improve preparation and helps to make better decision during professional life.'
   },
   {
     id: 'faq-4',
-    question: 'When will I get Job Stability / Increment?',
-    category: 'Stability',
-    answer: 'Job stability is achieved when strong functional benefics (such as Jupiter, benefic Mercury, or a well-placed Saturn) influence the 6th and 10th houses. If you are experiencing frequent job changes or unstable contracts, it is often due to Sade Sati, Kantaka Shani, or Rahu transit through the 10th house. Simple remedial measures help ground and stabilize your current role.'
+    question: 'When will I get a Job Prediction?',
+    category: 'Job Timing',
+    answer: 'The timing of employment is generally analyzed by planetary dashas, transits and last the strength of career house. A personalized job prediction studies the 6th, 10th, and 11th houses to identify the most favourable periods for getting employment. Many people seek job prediction by date of birth to understand what opportunities and challenges may come in the future. Through career prediction astrology, an astrologer can provide phases for job opportunities and growth so that they can plan their efforts more effectively.'
   },
   {
     id: 'faq-5',
-    question: 'Which House in Horoscope Affects Career Negatively?',
-    category: 'Challenges',
-    answer: 'Afflictions to the 10th house or its lord by malefic planets, or active Dashas of the 8th house (sudden transformations/obstacles) or 12th house (losses, relocations, exit from current role) can create temporary career hurdles. However, Vedic Astrology views these periods as evolutionary cycles where targeted remedial actions (mantras, charity, gemstone activation) neutralize negative friction.'
+    question: 'When will I get Job Astrology Calculator?',
+    category: 'Calculators & Precision',
+    answer: 'An astrology calculator can only able to provide very basic insights but if someone wants accurate result a detailed chart analysis may be required. Professional job astrology considers planetary placements, dashas and transits that calculator cannot provide. For reliable job prediction by date of birth, a complete horoscope assessment is usually recommended. Many choose career astrology by date of birth because it offers personalized guidance instead of generic results. A detailed analysis can reveal better timing for employment, promotion or any career-related decisions.'
   },
   {
     id: 'faq-6',
-    question: 'Why is Career Promotion Delay Trending Today?',
-    category: 'Modern Workplace',
-    answer: 'In today’s volatile economy, frequent restructuring, automation, and corporate reorganizations coincide with major slow-moving planetary transits like Saturn (Shani) and Rahu. Many professionals face career stagnation when their natal charts undergo Sade Sati or 8th house Dasha. An astrological consultation helps you diagnose whether the delay is macro-economic or individual karma, allowing you to prepare proactively.'
+    question: 'Which House in Horoscope if for Career?',
+    category: 'Houses',
+    answer: 'The 10th house is the most important indicator for profession and achievements. A detailed career horoscope focuses on this house along with the 2nd, 6th and 11th houses to evaluate income, service and gains. In career astrology, the condition of the 10th house lord plays the major role as it determines the professional success. Through career prediction, astrologers study these types of combinations to provide insights on career potential, growth and suitable professional path for an individual.'
   },
   {
     id: 'faq-7',
-    question: 'Which Career is Best for Me According to Career Astrology?',
-    category: 'Career Selection',
-    answer: 'Your ideal career is determined by analyzing the sign on your 10th house, the planet occupying the 10th house, your Amatyakaraka (planet with the second highest degree), and your Dashamsha (D10) chart. For instance, strong Mars/Mercury combinations excel in Software Engineering and FinTech, Sun/Jupiter combinations dominate Government Administration & Law, while Venus/Mercury favors Media, Design, and Commerce.'
+    question: 'Why is Career Horoscope Today Trending Today?',
+    category: 'Horoscopes & Trends',
+    answer: 'People seek guidance about their jobs, promotions, business growth and changing career opportunities. As a result, daily career horoscope updates have become very popular among professional as well as students. A well-prepared career prediction can provide motivation and help individuals to stay focused on their upcoming opportunities. Interest in astrology career prediction has also become very popular among people who wants better clarity about their future. Daily insights often help to plan for any important professional decisions with better awareness.'
   },
   {
     id: 'faq-8',
-    question: 'How to Find Career in Astrology Chart?',
-    category: 'Methodology',
-    answer: 'To find your career path, an astrologer analyzes four key components: (1) The 10th house of the Rashi (D1) chart, (2) The Dashamsha (D10) divisional chart which is dedicated exclusively to profession, (3) The Amatyakaraka in Jaimini astrology, and (4) The Moon chart (Chandra Kundli) to understand mental aptitude and professional satisfaction.'
+    question: 'Which Career is best for me According to Career Astrology?',
+    category: 'Career Selection',
+    answer: 'The most suitable profession depends on placement of planets, their strengths and natural talents shown in the birth chart. Career astrology analyses these factors to identify career that align with a person\'s potential. Career astrology consultation can give insights about in what field you will perform better like in business or in a job. With the help of career astrology by date of birth, an astrologer provides personalized recommendations that support long-term professional growth and satisfaction.'
   },
   {
     id: 'faq-9',
-    question: 'How do I book an Astrology consultation?',
-    category: 'Booking',
-    answer: 'Booking is quick and seamless. Simply fill out the consultation form on this page with your birth details (Date, Time, Place of Birth), select your preferred consultation format (Video Call on Zoom/Google Meet or Audio Call), and choose your convenient time slot. You can also connect directly via WhatsApp at +91 73000-04325 for instant slot confirmation.'
+    question: 'How to Find Career in Astrology Chart?',
+    category: 'Methodology',
+    answer: 'Finding the right profession involves studying the 10th house, its lord, planetary strengths, dashas and supporting houses. A detailed career prediction astrology analysis also examines the Moon, Sun and important yogas that influence professional success. Many people use Career astrology career to know what are their strengths and ideal working environment in which they can excel. Through astrology career prediction, identifying your career paths, growth opportunities and potential challenges becomes easy. A complete chart reading provides deeper insights than general horoscope reading.'
+  },
+  {
+    id: 'faq-10',
+    question: 'How to Find Career in Astrology Chart? (D10 & Comprehensive Consultation)',
+    category: 'Consultation & D10',
+    answer: 'A professional assessment starts by analyzing the 10th house in your birth chart. Career prediction technique also includes the Dashamsha Chart for detailed analysis. Many astrologers combines these to understand skills, ambitions and growth potential. By evaluating planetary strengths and timing factors, career astrology can help to identify suitable professions. A professional career astrology consultation can help to gain all the insights that a person needs to make proper decision for their career. Contact us to get the right guidance with the help of astrology.'
   }
 ];
 
