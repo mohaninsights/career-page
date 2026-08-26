@@ -66,26 +66,26 @@ export default function App() {
         {/* 5. Career Stages Guidance (Early, Mid, Senior) */}
         <CareerStages onOpenBooking={handleOpenBooking} />
 
-        {/* 6. How Your Consultation Works (3 Steps) */}
+        {/* 6. Verified Client Testimonials */}
+        <TestimonialsSection onOpenBooking={handleOpenBooking} />
+
+        {/* 7. How Your Consultation Works (3 Steps) */}
         <HowItWorks onOpenBooking={handleOpenBooking} />
 
-        {/* 7. Session Deliverables & Written Kundli Dossier */}
+        {/* 8. Session Deliverables & Written Kundli Dossier */}
         <SessionDeliverables 
           onOpenBooking={handleOpenBooking}
           onOpenSampleReport={() => setIsSampleReportOpen(true)}
         />
 
-        {/* 8. Sacred Kundli Wheel & 12 House Explorer (Dark Theme) */}
+        {/* 9. Sacred Kundli Wheel & 12 House Explorer (Dark Theme) */}
         <KundliChartSection onOpenBooking={handleOpenBooking} />
 
-        {/* 9. Video Masterclasses & YouTube Insights */}
+        {/* 10. Video Masterclasses & YouTube Insights */}
         <VideoMasterclasses />
 
-        {/* 10. Vedic Knowledge Guide (Houses Table & Planets) */}
+        {/* 11. Vedic Knowledge Guide (Houses Table & Planets) */}
         <VedicKnowledgeGuide onOpenBooking={handleOpenBooking} />
-
-        {/* 11. Verified Client Testimonials */}
-        <TestimonialsSection />
 
         {/* 12. Frequently Asked Questions */}
         <FaqSection />

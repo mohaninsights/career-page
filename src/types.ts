@@ -34,10 +34,11 @@ export interface PlanetSignificance {
 export interface Testimonial {
   id: string;
   author: string;
+  initials?: string;
   designation: string;
   location: string;
   rating: number;
-  category: 'switch' | 'govt_corp' | 'executive' | 'all';
+  category: string;
   quote: string;
   detailedOutcome: string;
   date: string;
