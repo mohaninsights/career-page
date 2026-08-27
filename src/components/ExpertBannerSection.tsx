@@ -57,32 +57,8 @@ export const ExpertBannerSection: React.FC<ExpertBannerSectionProps> = ({ onOpen
                 </div>
 
                 <p className="text-xs text-[#D1BEDE] font-medium leading-tight">
-                  Vedic Astrologer &<br className="hidden sm:inline" /> Vastu Shastra Mentor
+                  Astro Vastu Expert
                 </p>
-
-                {/* Bullets */}
-                <div className="space-y-1 pt-1.5 text-xs text-[#F2E8FA]">
-                  <div className="flex items-center justify-center sm:justify-start gap-1.5 text-[#FDEBD0]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C] shrink-0" />
-                    <span><strong className="text-white">17+</strong> Years of Experience</span>
-                  </div>
-                  <div className="flex items-center justify-center sm:justify-start gap-1.5 text-[#FDEBD0]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C] shrink-0" />
-                    <span><strong className="text-[#FDE08B]">Zee News</strong> & India TV Panellist</span>
-                  </div>
-                  <div className="flex items-center justify-center sm:justify-start gap-1.5 text-[#FDEBD0]">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#E5A93C] shrink-0" />
-                    <span><strong className="text-white">5.0</strong> Google Rating</span>
-                  </div>
-                </div>
-
-                {/* Available Today Pill */}
-                <div className="pt-1 flex justify-center sm:justify-start">
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#13381B]/90 border border-[#25D366]/40 text-[#4ADE80] text-[10px] font-bold tracking-wide">
-                    <span className="w-2 h-2 rounded-full bg-[#22C55E] animate-pulse"></span>
-                    <span>Available Today</span>
-                  </div>
-                </div>
 
               </div>
 

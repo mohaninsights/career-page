@@ -8,9 +8,11 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { ExpertBannerSection } from './components/ExpertBannerSection';
 import { UnderstandingSection } from './components/UnderstandingSection';
+import { WhyChooseUs } from './components/WhyChooseUs';
 import { YouTubeVideoSection } from './components/YouTubeVideoSection';
 import { CareerStages } from './components/CareerStages';
 import { TestimonialsSection } from './components/TestimonialsSection';
+import { HowItWorks } from './components/HowItWorks';
 import { SessionDeliverables } from './components/SessionDeliverables';
 import { VedicKnowledgeGuide } from './components/VedicKnowledgeGuide';
 import { FaqSection } from './components/FaqSection';
@@ -53,28 +55,34 @@ export default function App() {
         {/* Section 3: Understanding Career Astrology by Date of Birth */}
         <UnderstandingSection onOpenBooking={handleOpenBooking} />
 
-        {/* Section 4: Watch: 10th House & Career Astrology Masterclass */}
+        {/* Section 4: Why Choose Our Career Astrology Services? */}
+        <WhyChooseUs />
+
+        {/* Section 5: Watch: 10th House & Career Astrology Masterclass */}
         <YouTubeVideoSection onOpenBooking={handleOpenBooking} />
 
-        {/* Section 5: Stages of Career Guidance (Early, Mid, Executive + Stats Bar) */}
+        {/* Section 6: Stages of Career Guidance (Early, Mid, Executive + Stats Bar) */}
         <CareerStages onOpenBooking={handleOpenBooking} />
 
-        {/* Section 6: Verified Client Success Stories */}
+        {/* Section 7: Verified Client Success Stories */}
         <TestimonialsSection onOpenBooking={handleOpenBooking} />
 
-        {/* Section 7: Session Deliverables & In-Depth Insights (8 Deliverables + Kundli Wheel & Dossier) */}
+        {/* Section 8: How Your Career Astrology Consultation Works (3 Steps Timeline) */}
+        <HowItWorks onOpenBooking={handleOpenBooking} />
+
+        {/* Section 9: Session Deliverables & In-Depth Insights (8 Deliverables + Kundli Wheel & Dossier) */}
         <SessionDeliverables 
           onOpenBooking={handleOpenBooking}
           onOpenSampleReport={() => setIsSampleReportOpen(true)}
         />
 
-        {/* Section 8: Vedic Career Astrology Guide & Knowledge Hub */}
+        {/* Section 9: Vedic Career Astrology Guide & Knowledge Hub */}
         <VedicKnowledgeGuide onOpenBooking={handleOpenBooking} />
 
-        {/* Section 9: Got Questions? (Frequently Asked Questions) */}
+        {/* Section 10: Got Questions? (Frequently Asked Questions) */}
         <FaqSection />
 
-        {/* Section 10: Get Personalized Career Guidance (Final CTA) */}
+        {/* Section 11: Get Personalized Career Guidance (Final CTA) */}
         <FinalCtaSection onOpenBooking={handleOpenBooking} />
       </main>
 

@@ -1,332 +1,326 @@
-import React, { useState, useEffect } from 'react';
-import { Sparkles, Compass, Eye, ArrowRight, Pause, Play, Image as ImageIcon } from 'lucide-react';
-import defaultKundliImage from '../assets/images/regenerated_image_1787718781539.webp';
-import { ImageUploadModal } from './ImageUploadModal';
+import React, { useState } from 'react';
+import { Sparkles, Pause, Play, ArrowRight } from 'lucide-react';
+import consultationMeetingImg from '../assets/images/career_consultation_meeting_1787659727560.jpg';
+import acharyaGaneshEmblemImg from '../assets/images/acharya_ganesh_emblem_1787811434091.jpg';
 
 interface DecodeKundliWheelSectionProps {
   onOpenBooking: () => void;
-  onOpenSampleReport: () => void;
+  onOpenSampleReport?: () => void;
 }
 
-interface DimensionItem {
+interface AspectNode {
   id: string;
-  category: string;
-  shortLabel: string;
-  pillTag: string;
   title: string;
-  description: string;
-  metric: string;
-  metricLabel: string;
+  subtitle: string;
+  isPrimary?: boolean;
+  angle: number; // in degrees: 0 is right, 90 is bottom, -90 is top, 180 is left
+  tag: string;
 }
 
-const KUNDLI_DIMENSIONS: DimensionItem[] = [
+const ASPECT_NODES: AspectNode[] = [
   {
-    id: 'vocation-power',
-    category: 'VOCATION & POWER',
-    shortLabel: '10th House Karma Matrix',
-    pillTag: 'Vocation & Power',
-    title: '10th House Karma Matrix',
-    description: 'Reveals your leadership ceiling, high-growth sectors (Tech, Govt, Corporate), and recognition cycles.',
-    metric: '98.4%',
-    metricLabel: 'CAREER PATH ACCURACY'
+    id: '10th-house',
+    title: '10th House',
+    subtitle: 'Career & Reputation',
+    isPrimary: true,
+    angle: -90, // Top
+    tag: 'Karma Bhava',
   },
   {
-    id: 'divisional-strength',
-    category: 'DIVISIONAL STRENGTH',
-    shortLabel: 'D10 Dashamsha Blueprint',
-    pillTag: 'Divisional Strength',
-    title: 'D10 Dashamsha Career Blueprint',
-    description: 'Calculates exact promotional periods, executive authority surges, and stability vs entrepreneurship balance.',
-    metric: '16x',
-    metricLabel: 'PRECISION RESOLUTION'
+    id: 'promotion',
+    title: 'Promotion',
+    subtitle: '& Growth',
+    angle: -38, // Top-Right
+    tag: 'Elevation',
   },
   {
-    id: 'planetary-transits',
-    category: 'PLANETARY TRANSITS',
-    shortLabel: 'Vimshottari Dasha Matrix',
-    pillTag: 'Planetary Transits',
-    title: 'Vimshottari Dasha & Gochar Matrix',
-    description: 'Pinpoints high-yield timing windows for job changes, salary appraisals, foreign relocations, and career pivots.',
-    metric: '360°',
-    metricLabel: 'TIMING FORECAST'
+    id: 'jupiter',
+    title: 'Jupiter',
+    subtitle: 'Wisdom & Success',
+    angle: 0, // Right
+    tag: 'Guru Drishti',
   },
   {
-    id: 'energization-upaya',
-    category: 'ENERGIZATION & UPAYA',
-    shortLabel: 'Vedic Remedies & Yantras',
-    pillTag: 'Energization & Upaya',
-    title: 'Actionable Vedic Remedies & Yantras',
-    description: 'Prescribes certified Jyotish gemstones, energizing Beej mantras, and workstation Vastu alignments.',
-    metric: '100%',
-    metricLabel: 'SATTVIK PROTOCOLS'
-  }
+    id: 'business',
+    title: 'Business',
+    subtitle: 'Potential',
+    angle: 42, // Bottom-Right
+    tag: '7th / 11th House',
+  },
+  {
+    id: 'salary',
+    title: 'Salary',
+    subtitle: '& Prosperity',
+    angle: 90, // Bottom
+    tag: 'Dhana Bhava',
+  },
+  {
+    id: 'government',
+    title: 'Government',
+    subtitle: 'Job',
+    angle: 138, // Bottom-Left
+    tag: 'Surya / Mars',
+  },
+  {
+    id: 'saturn',
+    title: 'Saturn',
+    subtitle: 'Discipline & Hard Work',
+    angle: 180, // Left
+    tag: 'Shani Dev',
+  },
+  {
+    id: 'd10-chart',
+    title: 'D10 Chart',
+    subtitle: 'Career Strength',
+    angle: -142, // Top-Left
+    tag: 'Dashamsha',
+  },
 ];
 
-const ZODIAC_SIGNS = [
-  { name: 'ARIES', angle: 0 },
-  { name: 'TAURUS', angle: 30 },
-  { name: 'GEMINI', angle: 60 },
-  { name: 'CANCER', angle: 90 },
-  { name: 'LEO', angle: 120 },
-  { name: 'VIRGO', angle: 150 },
-  { name: 'LIBRA', angle: 180 },
-  { name: 'SCORPIO', angle: 210 },
-  { name: 'SAGITTARIUS', angle: 240 },
-  { name: 'CAPRICORN', angle: 270 },
-  { name: 'AQUARIUS', angle: 300 },
-  { name: 'PISCES', angle: 330 },
+const ZODIAC_SYMBOLS = [
+  { symbol: '♈', name: 'Aries', angle: 0 },
+  { symbol: '♉', name: 'Taurus', angle: 30 },
+  { symbol: '♊', name: 'Gemini', angle: 60 },
+  { symbol: '♋', name: 'Cancer', angle: 90 },
+  { symbol: '♌', name: 'Leo', angle: 120 },
+  { symbol: '♍', name: 'Virgo', angle: 150 },
+  { symbol: '♎', name: 'Libra', angle: 180 },
+  { symbol: '♏', name: 'Scorpio', angle: 210 },
+  { symbol: '♐', name: 'Sagittarius', angle: 240 },
+  { symbol: '♑', name: 'Capricorn', angle: 270 },
+  { symbol: '♒', name: 'Aquarius', angle: 300 },
+  { symbol: '♓', name: 'Pisces', angle: 330 },
 ];
 
 export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> = ({
   onOpenBooking,
-  onOpenSampleReport,
 }) => {
-  const [activeTab, setActiveTab] = useState<number>(0);
-  const [isWheelPaused, setIsWheelPaused] = useState<boolean>(false);
-  const [currentKundliImg, setCurrentKundliImg] = useState<string>(defaultKundliImage);
-  const [isImageModalOpen, setIsImageModalOpen] = useState<boolean>(false);
-
-  useEffect(() => {
-    const saved = localStorage.getItem('custom_kundli_dossier_image');
-    if (saved) {
-      setCurrentKundliImg(saved);
-    }
-  }, []);
-
-  const handleSaveImage = (newUrl: string) => {
-    setCurrentKundliImg(newUrl);
-    localStorage.setItem('custom_kundli_dossier_image', newUrl);
-  };
-
-  const handleResetDefault = () => {
-    setCurrentKundliImg(defaultKundliImage);
-    localStorage.removeItem('custom_kundli_dossier_image');
-  };
-
-  const selectedDimension = KUNDLI_DIMENSIONS[activeTab];
+  const [isRotating, setIsRotating] = useState<boolean>(true);
+  const [activeNode, setActiveNode] = useState<string>('10th-house');
 
   return (
-    <div className="relative mt-8 rounded-3xl overflow-hidden bg-dot-grid-dark border-2 border-[#572B15] shadow-2xl text-white">
+    <div className="relative mt-8 rounded-3xl overflow-hidden bg-[#050814] border border-[#1E293B] shadow-2xl p-4 sm:p-6 lg:p-10 text-white">
       
-      {/* Ambient background glow layers */}
-      <div className="absolute top-0 right-0 w-96 h-96 bg-[#D49B35]/15 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-80 h-80 bg-[#8C3E14]/25 rounded-full blur-3xl pointer-events-none" />
+      {/* Background Subtle Star/Dot Grid Matrix */}
+      <div 
+        className="absolute inset-0 pointer-events-none opacity-25"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)',
+          backgroundSize: '24px 24px'
+        }}
+      />
 
-      <div className="relative z-10 px-5 py-8 sm:px-8 sm:py-12 lg:px-12 lg:py-14">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
-          
-          {/* LEFT COLUMN: Texts, Dimensions & CTAs (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            
-            {/* Top Pill Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3D1D0E] border border-[#A65526] text-[#FDE08B] text-xs font-bold tracking-wide shadow-md">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#E5A93C] animate-pulse" />
-              <span>Deep Vedic Career Diagnostics & Kundli Reading</span>
+      {/* Ambient background glow accents */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[350px] h-[350px] bg-[#3B82F6]/10 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#F59E0B]/12 rounded-full blur-3xl pointer-events-none" />
+
+      {/* Main Grid: Left Consultation Card + Right Interactive Cosmic Kundli Wheel */}
+      <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+        
+        {/* ======================================================== */}
+        {/* LEFT COLUMN: Career Consultation Photo Card with Badge   */}
+        {/* ======================================================== */}
+        <div className="lg:col-span-5 flex justify-center">
+          <div 
+            onClick={onOpenBooking}
+            className="w-full max-w-[480px] rounded-3xl overflow-hidden border border-[#D49B35]/40 bg-[#0B1120] shadow-[0_10px_35px_rgba(0,0,0,0.6)] group cursor-pointer transition-all duration-300 hover:border-[#F59E0B] hover:shadow-[0_15px_45px_rgba(245,158,11,0.2)] relative"
+          >
+            {/* Consultation Meeting Image */}
+            <div className="relative aspect-[4/3] w-full overflow-hidden">
+              <img 
+                src={consultationMeetingImg} 
+                alt="Acharya Ganesh Career Astrology Consultation" 
+                className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060A17] via-transparent to-transparent opacity-80" />
             </div>
 
-            {/* Main Headline - Crystal Clear White Contrast */}
-            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-vedic font-extrabold text-white leading-[1.2] tracking-tight drop-shadow-sm">
-              Decode Your True Calling Through the Sacred Kundli Wheel
-            </h2>
-
-            {/* Sub-paragraph - Bright & High Contrast */}
-            <p className="text-sm sm:text-base text-[#FCECDA] leading-relaxed max-w-2xl font-medium">
-              Your birth chart is an astronomical compass. Gain definitive answers on career growth, promotion timelines, job transitions, and authentic Vedic remedies.
-            </p>
-
-            {/* Dimensions Explorer Heading */}
-            <div className="pt-2">
-              <div className="flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-[#FDE08B]">
-                <Compass className="w-4 h-4 text-[#FDE08B]" />
-                <span>EXPLORE CORE DIMENSIONS ANALYZED IN YOUR CHART:</span>
+            {/* Bottom Floating Bar */}
+            <div className="absolute bottom-3 left-3 right-3 sm:bottom-4 sm:left-4 sm:right-4 bg-[#090E1E]/90 backdrop-blur-md border border-[#334155] rounded-xl px-3.5 py-2.5 sm:px-4 sm:py-3 flex items-center justify-between gap-2 shadow-lg group-hover:border-[#F59E0B]/60 transition-colors">
+              <div className="flex items-center gap-2 text-xs sm:text-sm font-semibold text-[#F1F5F9]">
+                <Sparkles className="w-3.5 h-3.5 text-[#F59E0B] shrink-0" />
+                <span className="truncate">Personalized Vedic Career Blueprint</span>
               </div>
-
-              {/* 4 Interactive Dimension Selectors Grid */}
-              <div className="mt-3 grid grid-cols-2 sm:grid-cols-4 gap-2.5">
-                {KUNDLI_DIMENSIONS.map((dim, idx) => {
-                  const isActive = activeTab === idx;
-                  return (
-                    <button
-                      key={dim.id}
-                      type="button"
-                      onClick={() => setActiveTab(idx)}
-                      className={`text-left p-3 rounded-2xl border-2 transition-all duration-200 cursor-pointer ${
-                        isActive
-                          ? 'bg-[#52210D] border-[#FDE08B] shadow-lg ring-2 ring-[#E5A93C]/50 text-white scale-[1.02]'
-                          : 'bg-[#2A1207] hover:bg-[#3D1A0B] border-[#5E2B16] text-[#FCECDA] hover:text-white hover:border-[#8C3E14]'
-                      }`}
-                    >
-                      <div className={`text-[10px] font-extrabold tracking-wider uppercase truncate ${isActive ? 'text-[#FDE08B]' : 'text-[#E5A93C]'}`}>
-                        {dim.category}
-                      </div>
-                      <div className="text-xs font-bold text-white truncate mt-1">
-                        {dim.shortLabel}
-                      </div>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            {/* Active Dimension Details Box */}
-            <div className="bg-[#180702] rounded-2xl p-5 sm:p-6 border-2 border-[#6E3516] shadow-xl flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div className="space-y-2 flex-1">
-                <div className="flex items-center gap-2.5">
-                  <span className="px-2.5 py-1 rounded-md bg-[#3D1D0E] border border-[#8C3E14] text-[#FDE08B] text-xs font-bold tracking-wide">
-                    {selectedDimension.pillTag}
-                  </span>
-                  <h4 className="text-base sm:text-lg font-bold text-white">
-                    {selectedDimension.title}
-                  </h4>
-                </div>
-                <p className="text-xs sm:text-sm text-[#FCECDA] leading-relaxed font-normal">
-                  {selectedDimension.description}
-                </p>
-              </div>
-
-              {/* Stat Metric */}
-              <div className="shrink-0 sm:text-right border-t sm:border-t-0 sm:border-l border-[#572B15] pt-3 sm:pt-0 sm:pl-6">
-                <div className="text-2xl sm:text-3xl font-serif-vedic font-black text-[#FDE08B] tracking-tight">
-                  {selectedDimension.metric}
-                </div>
-                <div className="text-[10px] font-extrabold tracking-widest text-[#E8D4C4] uppercase">
-                  {selectedDimension.metricLabel}
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom Action CTA Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-3.5">
-              <button
+              
+              <button 
                 type="button"
-                onClick={onOpenBooking}
-                className="bg-white hover:bg-[#FAF0DE] text-[#241108] px-6 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition shadow-lg flex items-center gap-2 cursor-pointer hover:scale-102 active:scale-98"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onOpenBooking();
+                }}
+                className="inline-flex items-center gap-1 text-[11px] sm:text-xs font-black uppercase tracking-wider text-[#FACC15] hover:text-[#FDE047] shrink-0 group-hover:translate-x-0.5 transition-transform"
               >
-                <Sparkles className="w-4 h-4 text-[#C97F18]" />
-                <span>Get My Career Reading</span>
-                <ArrowRight className="w-3.5 h-3.5 text-[#241108]" />
-              </button>
-
-              <button
-                type="button"
-                onClick={onOpenSampleReport}
-                className="bg-[#241108]/90 hover:bg-[#3D1D0E] border-2 border-[#8C3E14] text-[#FFF5EA] hover:text-white px-5 py-3.5 rounded-full font-bold text-xs uppercase tracking-wider transition flex items-center gap-2 cursor-pointer hover:scale-102 active:scale-98"
-              >
-                <Eye className="w-4 h-4 text-[#FDE08B]" />
-                <span>Preview Report Chapters</span>
+                <span>CONSULT NOW</span>
+                <ArrowRight className="w-3.5 h-3.5 text-[#FACC15]" />
               </button>
             </div>
 
           </div>
+        </div>
 
-          {/* RIGHT COLUMN: Rotating Sacred Zodiac Wheel + Clean Enlarged Kundli Dossier Card (5 Cols) */}
-          <div className="lg:col-span-5 relative flex flex-col items-center justify-center min-h-[420px] sm:min-h-[480px]">
+        {/* ======================================================== */}
+        {/* RIGHT COLUMN: Celestial Kundli Wheel System with 8 Nodes */}
+        {/* ======================================================== */}
+        <div className="lg:col-span-7 flex flex-col items-center justify-center relative min-h-[480px] sm:min-h-[560px] py-4">
+          
+          <div className="relative w-full max-w-[540px] aspect-square flex items-center justify-center">
             
-            {/* Pause / Play Wheel Button at Top Right */}
-            <button
-              type="button"
-              onClick={() => setIsWheelPaused(!isWheelPaused)}
-              className="absolute top-0 right-0 z-20 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#1C0B04]/90 border border-[#6E3516] text-[#FDE08B] hover:text-white text-xs font-semibold transition cursor-pointer backdrop-blur-xs hover:border-[#E5A93C]"
+            {/* Concentric Golden Orbit Rings */}
+            <div className="absolute w-[82%] h-[82%] rounded-full border border-[#D49B35]/25 pointer-events-none" />
+            <div className="absolute w-[68%] h-[68%] rounded-full border border-[#D49B35]/20 pointer-events-none" />
+            <div className="absolute w-[52%] h-[52%] rounded-full border border-dashed border-[#D49B35]/30 pointer-events-none" />
+
+            {/* Rotating Zodiac Ring with 12 Zodiac Badges */}
+            <div 
+              className={`absolute w-[74%] h-[74%] rounded-full flex items-center justify-center pointer-events-none transition-transform ${
+                isRotating ? 'animate-spin-zodiac' : ''
+              }`}
+              style={{ animationDuration: '60s' }}
             >
-              {isWheelPaused ? (
-                <>
-                  <Play className="w-3.5 h-3.5 text-[#FDE08B] fill-current" />
-                  <span>Resume Wheel</span>
-                </>
-              ) : (
-                <>
-                  <Pause className="w-3.5 h-3.5 text-[#FDE08B]" />
-                  <span>Pause Wheel</span>
-                </>
-              )}
-            </button>
-
-            {/* Rotating Celestial Zodiac Kundli Wheel Background */}
-            <div className="absolute inset-0 flex items-center justify-center pointer-events-none overflow-hidden">
-              <div 
-                className={`w-[380px] h-[380px] sm:w-[460px] sm:h-[460px] rounded-full border-2 border-[#D49B35]/30 flex items-center justify-center animate-spin-zodiac ${
-                  isWheelPaused ? 'animation-paused' : ''
-                }`}
-              >
-                {/* Outer Ring & Markers */}
-                <div className="absolute inset-0 rounded-full border-2 border-dashed border-[#D49B35]/25" />
-                <div className="absolute inset-8 rounded-full border border-[#D49B35]/35" />
-                <div className="absolute inset-16 rounded-full border border-[#D49B35]/20" />
-
-                {/* 12 Zodiac Text Markings around Circle */}
-                {ZODIAC_SIGNS.map((sign, idx) => {
-                  const r = 185; 
-                  return (
-                    <div
-                      key={idx}
-                      className="absolute text-[9px] sm:text-[10px] font-mono tracking-widest text-[#FDE08B] font-extrabold uppercase select-none opacity-80"
-                      style={{
-                        transform: `rotate(${sign.angle}deg) translate(${r}px) rotate(90deg)`,
-                        transformOrigin: '0 0'
-                      }}
-                    >
-                      {sign.name}
-                    </div>
-                  );
-                })}
-
-                {/* Radial dividing spokes */}
-                {[0, 30, 60, 90, 120, 150].map((deg) => (
+              {ZODIAC_SYMBOLS.map((z, idx) => {
+                const radius = 145; // Approximate px in container
+                return (
                   <div
-                    key={deg}
-                    className="absolute w-full h-[1px] bg-gradient-to-r from-transparent via-[#D49B35]/25 to-transparent"
-                    style={{ transform: `rotate(${deg}deg)` }}
+                    key={idx}
+                    className="absolute w-5 h-5 rounded-md bg-[#24133A]/80 border border-[#7C3AED]/40 flex items-center justify-center text-[10px] text-[#D8B4FE] shadow-sm select-none"
+                    style={{
+                      transform: `rotate(${z.angle}deg) translate(${radius}px) rotate(-${z.angle}deg)`
+                    }}
+                  >
+                    {z.symbol}
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Radial Spoke Connecting Rays from Center to Nodes */}
+            <svg className="absolute inset-0 w-full h-full pointer-events-none" viewBox="0 0 540 540">
+              {ASPECT_NODES.map((node) => {
+                const rad = (node.angle * Math.PI) / 180;
+                const cx = 270;
+                const cy = 270;
+                const r = 210;
+                const x2 = cx + r * Math.cos(rad);
+                const y2 = cy + r * Math.sin(rad);
+                const isSelected = activeNode === node.id;
+                return (
+                  <line
+                    key={node.id}
+                    x1={cx}
+                    y1={cy}
+                    x2={x2}
+                    y2={y2}
+                    stroke={isSelected ? '#F59E0B' : '#78350F'}
+                    strokeWidth={isSelected ? '1.5' : '0.8'}
+                    strokeDasharray={isSelected ? 'none' : '3,3'}
+                    opacity={isSelected ? '0.8' : '0.35'}
                   />
-                ))}
+                );
+              })}
+            </svg>
+
+            {/* =================================================== */}
+            {/* CENTER HUB: Radiant Golden Box with Guru Logo & CTA */}
+            {/* =================================================== */}
+            <div 
+              onClick={onOpenBooking}
+              className="relative z-20 w-44 sm:w-48 aspect-square rounded-3xl bg-gradient-to-b from-[#1E1107] to-[#0D0703] border-2 border-[#FACC15] shadow-[0_0_45px_rgba(234,179,8,0.45)] flex flex-col items-center justify-between p-3.5 sm:p-4 group cursor-pointer hover:scale-105 transition-all duration-300 ring-4 ring-[#EAB308]/20"
+            >
+              {/* Sparkle Badge at Top Right */}
+              <div className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-gradient-to-tr from-[#EA580C] to-[#F59E0B] border border-[#FEF08A] flex items-center justify-center shadow-md">
+                <Sparkles className="w-3.5 h-3.5 text-white" />
+              </div>
+
+              {/* Acharya Ganesh Circular Emblem Graphic */}
+              <div className="w-full flex-1 flex flex-col items-center justify-center">
+                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-[#EAB308]/90 bg-[#1A0B02] shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                  <img 
+                    src={acharyaGaneshEmblemImg} 
+                    alt="Acharya Ganesh Vedic Astrology Emblem" 
+                    className="w-full h-full object-cover"
+                    referrerPolicy="no-referrer"
+                  />
+                </div>
+              </div>
+
+              {/* Bottom Orange Button inside Box */}
+              <div className="w-full mt-2">
+                <div className="w-full bg-gradient-to-r from-[#D97706] to-[#EA580C] group-hover:from-[#EA580C] group-hover:to-[#D97706] text-white py-1.5 px-2 rounded-lg font-black text-[9px] sm:text-[10px] uppercase tracking-wider text-center flex items-center justify-center gap-1 shadow-sm transition-all">
+                  <span className="text-xs font-black leading-none">+</span>
+                  <span>1-ON-1 CONSULTATION</span>
+                </div>
               </div>
             </div>
 
-            {/* Clean, Enlarged Kundli Dossier Book Card with NO text overlay on the image */}
-            <div className="relative z-10 w-full max-w-[340px] sm:max-w-[400px] lg:max-w-[440px]">
+            {/* =================================================== */}
+            {/* 8 SURROUNDING ASPECT NODES (Positioned radially)    */}
+            {/* =================================================== */}
+            {ASPECT_NODES.map((node) => {
+              const rad = (node.angle * Math.PI) / 180;
+              const radius = 205; // radius distance from center (fits 540x540)
+              const isSelected = activeNode === node.id;
               
-              <figure 
-                onClick={onOpenSampleReport}
-                className="relative rounded-2xl overflow-hidden border-2 sm:border-3 border-[#E5A93C] shadow-[0_20px_50px_rgba(0,0,0,0.85)] bg-[#FAF3E6] group cursor-pointer transition-all duration-300 hover:scale-102 hover:shadow-[0_25px_60px_rgba(229,169,60,0.25)]"
-              >
-                {/* Clean Kundli Dossier Image - Completely Free of Any Superimposed Text / Badges */}
-                <img
-                  id="kundli-dossier-report-image"
-                  src={currentKundliImg}
-                  alt="Personalized Vedic Horoscope & Kundli Career Report Dossier"
-                  className="w-full h-auto object-cover block group-hover:scale-103 transition-transform duration-500"
-                  referrerPolicy="no-referrer"
-                />
-              </figure>
+              // Offsets based on angle for nice positioning
+              const leftPercent = 50 + (radius * Math.cos(rad) / 270) * 44;
+              const topPercent = 50 + (radius * Math.sin(rad) / 270) * 44;
 
-              {/* Clean Sub-Caption Pill below the Image */}
-              <div className="mt-3 text-center">
-                <button
-                  type="button"
-                  onClick={onOpenSampleReport}
-                  className="inline-flex items-center justify-center gap-1.5 px-4 py-1.5 rounded-full bg-[#1C0B04]/90 border border-[#8C3E14] text-[#FDE08B] hover:text-white hover:bg-[#8C3E14] text-xs font-bold transition shadow-sm cursor-pointer"
+              return (
+                <div
+                  key={node.id}
+                  onClick={() => {
+                    setActiveNode(node.id);
+                    onOpenBooking();
+                  }}
+                  style={{
+                    left: `${leftPercent}%`,
+                    top: `${topPercent}%`,
+                    transform: 'translate(-50%, -50%)',
+                  }}
+                  className={`absolute z-30 px-3.5 py-2 sm:px-4 sm:py-2 rounded-2xl cursor-pointer transition-all duration-300 text-center select-none shadow-md ${
+                    node.isPrimary || isSelected
+                      ? 'bg-[#0B152B] border-2 border-[#FACC15] shadow-[0_0_20px_rgba(250,204,21,0.35)] scale-105'
+                      : 'bg-[#091124]/90 hover:bg-[#0E1A38] border border-[#1E3A8A]/50 hover:border-[#3B82F6]'
+                  }`}
                 >
-                  <Eye className="w-3.5 h-3.5 text-[#FDE08B]" />
-                  <span>Click image to preview 4 chapters report</span>
-                </button>
-              </div>
+                  <div className={`text-xs sm:text-xs font-bold leading-tight ${
+                    node.isPrimary || isSelected ? 'text-[#FACC15]' : 'text-[#F8FAFC]'
+                  }`}>
+                    {node.title}
+                  </div>
+                  <div className="text-[10px] text-[#94A3B8] font-medium leading-tight whitespace-nowrap mt-0.5">
+                    {node.subtitle}
+                  </div>
+                </div>
+              );
+            })}
 
+            {/* Pause / Resume Rotation Control (Located bottom-right below Business node) */}
+            <div className="absolute -bottom-2 sm:bottom-1 right-2 sm:right-6 z-30">
+              <button
+                type="button"
+                onClick={() => setIsRotating(!isRotating)}
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#0B132B]/85 border border-[#334155] hover:border-[#FACC15] text-[#CBD5E1] hover:text-[#FACC15] text-[10px] font-semibold transition-all cursor-pointer shadow-xs"
+              >
+                {isRotating ? (
+                  <>
+                    <Pause className="w-3 h-3 text-[#FACC15]" />
+                    <span>Pause Rotation</span>
+                  </>
+                ) : (
+                  <>
+                    <Play className="w-3 h-3 text-[#FACC15] fill-current" />
+                    <span>Resume Rotation</span>
+                  </>
+                )}
+              </button>
             </div>
 
           </div>
 
         </div>
-      </div>
 
-      {/* Image Upload / Change Modal */}
-      <ImageUploadModal
-        isOpen={isImageModalOpen}
-        onClose={() => setIsImageModalOpen(false)}
-        title="Change Kundli Dossier Report Image"
-        currentImage={currentKundliImg}
-        defaultImage={defaultKundliImage}
-        onSaveImage={handleSaveImage}
-        onResetDefault={handleResetDefault}
-      />
+      </div>
 
     </div>
   );
