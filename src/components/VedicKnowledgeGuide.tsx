@@ -2,7 +2,7 @@ import React from 'react';
 import { 
   BookOpen, Sparkles, Compass, Clock, CheckCircle2, 
   Briefcase, Building2, Landmark, ShieldCheck, Gem, 
-  Flame, UserCheck, LayoutGrid, ArrowRight, HelpCircle 
+  Flame, UserCheck, LayoutGrid, ArrowRight 
 } from 'lucide-react';
 
 interface VedicKnowledgeGuideProps {
@@ -14,64 +14,49 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
     {
       house: '10th House',
       vedicName: 'Karma Bhava',
-      significance: 'Profession, responsibilities, authority, reputation and public role',
-      tag: 'Primary Career Anchor'
+      significance: 'Profession, responsibilities, authority, reputation and public role'
     },
     {
       house: '6th House',
       vedicName: 'Seva Bhava',
-      significance: 'Employment, competition, service, workplace challenges and routine work',
-      tag: 'Job & Daily Service'
+      significance: 'Employment, competition, service, workplace challenges and routine work'
     },
     {
       house: '2nd House',
       vedicName: 'Dhana Bhava',
-      significance: 'Earned income, accumulated resources, speech and financial stability',
-      tag: 'Wealth & Assets'
+      significance: 'Earned income, accumulated resources, speech and financial stability'
     },
     {
       house: '11th House',
       vedicName: 'Labha Bhava',
-      significance: 'Gains, salary growth, professional networks and fulfillment of ambitions',
-      tag: 'Salary & Promotions'
+      significance: 'Gains, salary growth, professional networks and fulfillment of ambitions'
     },
     {
       house: '7th House',
       vedicName: 'Yuvati Bhava',
-      significance: 'Business, partnerships, trade and dealings with the public',
-      tag: 'Trade & Alliances'
+      significance: 'Business, partnerships, trade and dealings with the public'
     },
     {
       house: '3rd House',
       vedicName: 'Sahaja Bhava',
-      significance: 'Initiative, communication, skills, courage and independent effort',
-      tag: 'Self-Enterprise'
+      significance: 'Initiative, communication, skills, courage and independent effort'
     }
   ];
 
   return (
-    <section id="vedic-guide" className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#FBF7F0] border-b border-[#E3D4B6]">
-      <div className="max-w-7xl mx-auto space-y-8">
+    <section id="vedic-guide" className="py-12 sm:py-16 px-4 sm:px-6 lg:px-8 bg-[#FBF7F0] border-b border-[#E3D4B6]">
+      <div className="max-w-7xl mx-auto space-y-10">
         
         {/* SECTION SUPER-HEADER */}
-        <div className="text-center max-w-3xl mx-auto space-y-2">
+        <div className="text-center max-w-3xl mx-auto space-y-2.5">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#FAF0DE] border border-[#E8D6B8] text-[#8C3E14] text-xs font-bold uppercase tracking-wider shadow-2xs">
             <BookOpen className="w-3.5 h-3.5 text-[#9E431E]" />
-            <span>Vedic Career Astrology Guide & Knowledge Hub</span>
+            <span>VEDIC CAREER ASTROLOGY GUIDE & KNOWLEDGE HUB</span>
           </div>
           
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-vedic font-bold text-[#3B190C] tracking-tight leading-[1.2]">
             How Vedic Astrology Studies Your Professional Life
           </h2>
-          
-          <div className="space-y-1.5 text-xs sm:text-sm text-[#5C3F2E] max-w-3xl mx-auto leading-relaxed">
-            <p>
-              Your career is influenced by education, skills, experience, choices, economic conditions, opportunities and personal effort. Vedic astrology provides an additional framework for understanding professional tendencies and timing through the birth chart.
-            </p>
-            <p className="font-semibold text-[#8C3E14]">
-              A complete career astrology analysis does not depend on a single planet or house. Multiple factors are studied together before drawing conclusions.
-            </p>
-          </div>
         </div>
 
         {/* 1 & 2: WHAT IS CAREER ASTROLOGY & HOW IT WORKS BY DOB */}
@@ -88,12 +73,12 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
               </h3>
             </div>
             
-            <div className="space-y-2.5 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
+            <div className="space-y-3 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
               <p>
-                In the professional domain, an astrologer looks at the houses related to career, work, income, gains, initiative, business, education and fortune. Personalised career predictions, thus, call for more than merely reading the Sun sign.
+                Professional domain, the astrologer analyses the houses that are related to career, work, income, gains, initiative, business, education and fortune. Personalised career predictions, thus, call for more than merely reading the Sun sign.
               </p>
               <p>
-                The scheduling aspect is also crucial. <strong className="text-[#3B190C] font-semibold">Vimshottari Dasha, Antardasha and the important planetary transits</strong> are studied to determine the time when certain career themes will get more active. This is the difference between career prediction astrology and a daily or monthly horoscope.
+                The scheduling aspect is also crucial. <strong className="text-[#3B190C] font-semibold">Vimshottari Dasha, Antardasha and the important planetary transits</strong> are studied to determine the time when certain career themes will get more active.
               </p>
             </div>
           </div>
@@ -109,15 +94,12 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
               </h3>
             </div>
             
-            <div className="space-y-2.5 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
+            <div className="space-y-3 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
               <p>
-                Your date of birth determines the positions of your planets for the day you were born. But birth time and place are generally also needed for an exact professional analysis.
+                The positions of your planets on the day you were born are based on your date of birth. In general, however, an exact professional analysis requires Birth time/place as well. Career astrology by date of birth involves looking at the position of planets in the horoscope of an individual and not only his zodiac sign.
               </p>
               <p>
-                Career astrology by date of birth involves looking at the position of planets in the horoscope of an individual and not only his zodiac sign. The ascendant changes approximately every two hours; therefore, exact birth time is critical for house calculations.
-              </p>
-              <p className="text-[11px] sm:text-xs text-[#8C3E14] font-semibold bg-[#FAF1DF] p-2 rounded-lg border border-[#E8D6B8]">
-                Therefore, a full career reading by date and time provides significantly more tailored insight than a generic sun sign reading.
+                The Ascendant changes only about 2 hours and thus the time of birth is very important for house calculations. Hence the full career by Time and Date reading will be able to provide more individual information than the Sun Sign reading.
               </p>
             </div>
           </div>
@@ -136,7 +118,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
               Which Houses Are Important for Career Prediction Astrology?
             </h3>
             <p className="text-xs sm:text-sm text-[#6B4B36] mt-1">
-              Several houses become important when studying professional life in a birth chart:
+              Several houses become important when studying professional life.
             </p>
           </div>
 
@@ -145,10 +127,9 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
             <table className="w-full text-left border-collapse text-xs sm:text-sm">
               <thead>
                 <tr className="bg-[#57220C] text-[#FFF5EA]">
-                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112]">House</th>
-                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112]">Vedic Name</th>
-                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112]">Career Significance</th>
-                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112] text-right">Domain</th>
+                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112] w-1/4">House</th>
+                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112] w-1/4">Vedic Name</th>
+                  <th className="p-3.5 sm:p-4 font-bold border-b border-[#733112] w-1/2">Career Significance</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#EAD8BF] text-[#3B190C]">
@@ -157,16 +138,11 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                     <td className="p-3.5 sm:p-4 font-bold text-[#8C3E14] whitespace-nowrap">
                       {item.house}
                     </td>
-                    <td className="p-3.5 sm:p-4 font-serif-vedic font-bold text-[#4A2511]">
+                    <td className="p-3.5 sm:p-4 font-serif-vedic font-bold text-[#4A2511] whitespace-nowrap">
                       {item.vedicName}
                     </td>
                     <td className="p-3.5 sm:p-4 text-[#523321] leading-relaxed">
                       {item.significance}
-                    </td>
-                    <td className="p-3.5 sm:p-4 text-right">
-                      <span className="inline-block text-[10px] font-bold text-[#8C3E14] bg-[#FAF0DE] px-2.5 py-1 rounded-md border border-[#E3C9A0] whitespace-nowrap">
-                        {item.tag}
-                      </span>
                     </td>
                   </tr>
                 ))}
@@ -176,9 +152,8 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
 
           {/* Table Footnote Callout */}
           <div className="p-4 rounded-xl bg-[#FAF3E6] border border-[#E3D4B8] text-xs sm:text-sm text-[#5C3F2E] leading-relaxed space-y-1">
-            <strong className="text-[#3B190C] font-bold block">No house should be interpreted independently.</strong>
             <p>
-              For example, a strong 10th house may show professional ambition, while the 11th house provides additional information about gains from that profession. This combined approach is an essential cornerstone of accurate career astrology.
+              No house should be interpreted independently. For example, a strong 10th house may show professional ambition, while the 11th house provides additional information about gains from that profession. This combined approach is an important part of career astrology.
             </p>
           </div>
 
@@ -194,23 +169,16 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
               <h3 className="text-lg sm:text-xl font-serif-vedic font-bold text-[#3B190C]">
                 Why Is the D10 Dashamsha Important for a Career?
               </h3>
-              <p className="text-xs text-[#8C3E14] font-semibold">
-                Divisional Micro-Analysis of Professional Karma
-              </p>
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
+          <div className="space-y-3 pt-1 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
             <p>
-              One of the most popular divisional charts to study is the Dashamsha chart also known as the D10 chart. The main D1 chart forms the foundation, and the D10 gives a further layer of microscopic detail pertaining to career, responsibilities, authority, reputation and profession.
+              One of the most popular divisional charts to study is the Dashamsha chart also known as D10 chart. The main D1 chart forms the basis and a D10 gives a further layer of detail pertaining to career, responsibilities, authority, reputation and profession. The first step of making predictions for an astrologer's career is to determine whether the career planets are stronger or weaker than the 10th lord in both horoscopes.
             </p>
             <p>
-              One of the steps of astrology career prediction is to see if the 10th lord is stronger or weaker than the career planets in both charts. For instance, if the main horoscope shows a strong Mars and the D10 shows a weaker Mars, it is studied more deeply to forecast long-term sustainability.
+              If the main horoscope has a strong Mars, and the D10 has a weak Mars, it would be investigated more in-depth. So, the D10 can be useful when having to learn more about professional development that is longer term than a single placement.
             </p>
-          </div>
-
-          <div className="p-3 bg-white/80 rounded-xl border border-[#E3D4B8] text-xs text-[#6B4B36] font-medium">
-            Therefore, the D10 chart is uniquely helpful when learning about professional development over a sustained period of time rather than relying on a single planetary placement.
           </div>
         </div>
 
@@ -224,9 +192,13 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
             <h3 className="text-xl sm:text-2xl font-serif-vedic font-bold text-[#3B190C]">
               How Can Astrology Predict Job Change and Promotion Timing?
             </h3>
-            <p className="text-xs sm:text-sm text-[#6B4B36] mt-1">
-              The most common job astrology questions are: <em className="text-[#3B190C] font-serif-vedic font-semibold">“When should I change my job?”</em> or <em className="text-[#3B190C] font-serif-vedic font-semibold">“When can I expect professional growth or promotion?”</em> Timing is primarily studied through Dasha periods and planetary transits.
-            </p>
+            <div className="text-xs sm:text-sm text-[#6B4B36] mt-2 space-y-1">
+              <p>The most common job astrology question is:</p>
+              <p className="font-serif-vedic font-semibold text-[#3B190C] italic">“When should I change my job?”</p>
+              <p>or</p>
+              <p className="font-serif-vedic font-semibold text-[#3B190C] italic">“When can I expect professional growth or promotion?”</p>
+              <p className="pt-1">Timing is primarily studied through Dasha periods and planetary transits.</p>
+            </div>
           </div>
 
           {/* 4 Timing Factors Grid */}
@@ -238,44 +210,47 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 Mahadasha & Antardasha
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                The active planetary period creates the broader operating theme in your life. When planets connected with employment, profession, income, or gains become active, career developments receive greater emphasis.
+                The active planetary period creates the broader theme operating in your life.
+              </p>
+              <p className="text-xs text-[#6B4B36] leading-relaxed">
+                When planets connected with employment, profession, income or gains become active, career-related developments may receive greater emphasis.
               </p>
             </div>
 
             {/* Jupiter Transit */}
             <div className="bg-[#FAF6EE] rounded-2xl p-4.5 border border-[#E8DCC4] space-y-2">
               <h4 className="font-serif-vedic text-sm font-bold text-[#3B190C]">
-                Jupiter Transit (Guru Gochar)
+                Jupiter Transit
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                Jupiter is associated with expansion, learning, guidance, and opportunity. Its transit in relation to important career houses may become relevant during growth-oriented promotion and learning phases.
+                Jupiter is associated with expansion, learning, guidance and opportunity. Its transit in relation to important career houses may become relevant during growth-oriented phases.
               </p>
             </div>
 
             {/* Saturn Transit */}
             <div className="bg-[#FAF6EE] rounded-2xl p-4.5 border border-[#E8DCC4] space-y-2">
               <h4 className="font-serif-vedic text-sm font-bold text-[#3B190C]">
-                Saturn Transit (Shani Gochar)
+                Saturn Transit
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                Saturn represents discipline, structure, responsibility, delay, persistence, and long-term effort. A difficult Saturn period does not mean failure—it indicates restructuring, greater duty, or sustained effort.
+                Saturn is the symbol of discipline, structure, responsibility, delay and effort. The bad Saturn period isn't mean loss. Instead, it could mean more responsibilities, slower progress, restructuring and/or long-term effort.
               </p>
             </div>
 
             {/* Rahu and Ketu */}
             <div className="bg-[#FAF6EE] rounded-2xl p-4.5 border border-[#E8DCC4] space-y-2">
               <h4 className="font-serif-vedic text-sm font-bold text-[#3B190C]">
-                Rahu and Ketu Transits
+                Rahu and Ketu
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                The lunar nodes are traditionally associated with unconventional developments, sudden pivots, foreign connections, high-tech, and unusual professional directions evaluated collectively.
+                The lunar nodes are traditionally associated with unconventional developments, sudden changes, foreign connections, technology, detachment and unusual professional directions.
               </p>
             </div>
 
           </div>
 
-          <p className="text-xs text-[#8C3E14] font-medium text-center bg-[#FAF1DF] p-2.5 rounded-xl border border-[#E3C9A0]">
-            A detailed career astrology consultation evaluates all these planetary influences together rather than declaring a result from one isolated transit alone.
+          <p className="text-xs text-[#8C3E14] font-medium text-center bg-[#FAF1DF] p-3 rounded-xl border border-[#E3C9A0]">
+            A detailed career astrology consultation evaluates these influences together rather than declaring a result from one transit alone.
           </p>
         </div>
 
@@ -299,17 +274,17 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 <span>When Employment May Be More Suitable</span>
               </div>
               <p className="text-xs text-[#6B4B36]">
-                An astrologer evaluates the following structural elements:
+                An astrologer may examine:
               </p>
               <ul className="space-y-1.5 text-xs sm:text-sm text-[#422515]">
                 {[
-                  'Strength of the 6th house (Seva Bhava)',
-                  'Condition of the 10th house (Authority & Job security)',
-                  "Saturn's role (Discipline & steady service)",
-                  "Sun's influence (Governance & managerial hierarchy)",
-                  'D10 stability for long-term corporate tenure',
-                  'Current Dasha periods supporting stable employment',
-                  'Regular income patterns across 2nd & 11th houses'
+                  'Strength of the 6th house',
+                  'Condition of the 10th house',
+                  "Saturn's role",
+                  "Sun's influence",
+                  'D10 stability',
+                  'Current Dasha periods',
+                  'Regular income patterns'
                 ].map((point, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#8C3E14] shrink-0" />
@@ -326,17 +301,17 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 <span>When Business May Be More Suitable</span>
               </div>
               <p className="text-xs text-[#6B4B36]">
-                Business evaluation involves analyzing the following planetary dynamics:
+                Business evaluation may involve:
               </p>
               <ul className="space-y-1.5 text-xs sm:text-sm text-[#422515]">
                 {[
-                  '7th house strength (Trade, clients & contracts)',
-                  '3rd house initiative (Risk appetite & independent drive)',
-                  "Mercury's condition (Commercial intellect & negotiation)",
-                  '2nd and 11th house high-yield wealth connections',
-                  "Rahu's influence (Disruptive innovation & scale)",
-                  'Active Dhana Yogas (Multi-source revenue potential)',
-                  'Partnership combinations and equity alignment'
+                  '7th house strength',
+                  '3rd house initiative',
+                  "Mercury's condition",
+                  '2nd and 11th house connections',
+                  "Rahu's influence",
+                  'Dhana Yogas',
+                  'Partnership combinations'
                 ].map((point, idx) => (
                   <li key={idx} className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#8C3E14] shrink-0" />
@@ -348,9 +323,9 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
 
           </div>
 
-          <div className="p-3.5 rounded-xl bg-[#FAF0DE] border border-[#E3C9A0] text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
+          <div className="p-4 rounded-xl bg-[#FAF0DE] border border-[#E3C9A0] text-xs sm:text-sm text-[#5C3F2E] leading-relaxed space-y-1">
             <p>
-              An individual career horoscope by date of birth helps compare these factors against your actual professional circumstances. <strong>The purpose of career astrology is not to force you into business or employment, but to provide greater clarity before an important decision.</strong>
+              An individual career horoscope by date of birth helps compare these factors against your actual professional circumstances. The purpose of career astrology is not to force you into business or employment but to provide greater clarity before an important decision.
             </p>
           </div>
         </div>
@@ -365,21 +340,15 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
               <h3 className="text-lg sm:text-xl font-serif-vedic font-bold text-[#3B190C]">
                 Can Job Astrology Help With Government Job Questions?
               </h3>
-              <p className="text-xs text-[#8C3E14] font-semibold">
-                Competitive Examinations, Public Administration & PSU Roles
-              </p>
             </div>
           </div>
 
           <div className="space-y-3 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
             <p>
-              Government employment is a highly competitive career choice and no horoscope can replace preparation, eligibility, examination performance or recruitment procedures.
+              Government job is a competitive job and no horoscope can substitute in the preparation, eligibility, examination performance or recruitment procedures. But job astrology can be used for the study of the planetary combinations traditionally considered as connected with government positions, authority, administration, competition and public service.
             </p>
             <p>
-              However, job astrology can be used to study planetary combinations traditionally associated with government roles, authority, administration, competition and public service. The <strong className="text-[#3B190C]">Sun, Saturn, Mars, Jupiter, 6th house, 10th house and relevant Dasha periods</strong> receive particular attention depending on the horoscope.
-            </p>
-            <p className="bg-[#FAF6EE] p-3 rounded-xl border border-[#E8DCC4] text-xs text-[#4A2511]">
-              A detailed astrology career prediction can also help an aspirant understand whether continuing preparation, changing strategy or keeping parallel private-sector options deserves consideration.
+              Sun, Saturn, Mars, Jupiter, 6th house, 10th house and the relevant Dasha periods can be looked into in detail depending upon the horoscope. A detailed astrology career prediction can also help an aspirant to know whether more preparations, changing strategy or having parallel career options (two jobs/employments) is worth considering.
             </p>
           </div>
         </div>
@@ -389,7 +358,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
           <div>
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF0DE] border border-[#E3C9A0] text-[#8C3E14] text-[11px] font-bold uppercase tracking-wider mb-2">
               <ShieldCheck className="w-3.5 h-3.5 text-[#9E431E]" />
-              <span>Sattvik Upaya Protocols</span>
+              <span>Remedial Framework</span>
             </div>
             <h3 className="text-xl sm:text-2xl font-serif-vedic font-bold text-[#3B190C]">
               What Remedies Are Used for Career Growth?
@@ -411,7 +380,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 1. Gemstone Guidance
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                A gemstone may be considered when strengthening a particular functional benefic planet is appropriate according to the chart. Gemstones should not be selected merely from a zodiac sign or online recommendation.
+                A gemstone may be considered when strengthening a particular functional benefic planet is appropriate according to the horoscope. Gemstones should not be selected merely because of a zodiac sign or online recommendation.
               </p>
             </div>
 
@@ -424,7 +393,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 2. Mantra & Spiritual Practices
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                Traditional Beej mantra practices and personalized rituals may be suggested according to the planetary factors identified during the 1-on-1 consultation.
+                Traditional mantra practices may be suggested according to the planetary factors identified during the consultation.
               </p>
             </div>
 
@@ -437,7 +406,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 3. Behavioral Remedies
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                Often the most useful recommendation is practical: becoming disciplined, improving communication, avoiding impulsive decisions, and developing new leadership habits.
+                Sometimes the most useful recommendation is practical: becoming more disciplined, improving communication, avoiding impulsive decisions, developing additional skills or changing professional habits.
               </p>
             </div>
 
@@ -450,7 +419,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 4. Workplace Vastu
               </h4>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                Desk orientation, cabin seating arrangement, workspace organization and practical energetic alignments to support mental focus and clarity.
+                Desk orientation, cabin arrangement, workspace organization and other practical Vastu considerations may also be discussed where relevant. The goal is to complement your career astrology reading with practical steps that can be followed consistently.
               </p>
             </div>
 
@@ -491,3 +460,4 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
     </section>
   );
 };
+
