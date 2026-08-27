@@ -22,7 +22,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenBooking 
 
         {/* Big Title */}
         <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-vedic font-bold text-[#FFFDF9] tracking-tight leading-tight drop-shadow-md">
-          Ready to examine your career situation in greater depth?
+          Ready To Examine Your Career Situation In Greater Depth?
         </h2>
 
         {/* Subtitle / Description */}

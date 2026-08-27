@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Compass, Layers, Clock, ShieldCheck, Calendar, ArrowRight, MessageCircle, Sparkles, Image as ImageIcon } from 'lucide-react';
-import careerPosterImage from '../assets/images/career_astrology_poster_1787659215152.jpg';
+import careerPosterImage from '../assets/images/regenerated_image_1787812993706.webp';
 import { ImageUploadModal } from './ImageUploadModal';
 
 interface UnderstandingSectionProps {

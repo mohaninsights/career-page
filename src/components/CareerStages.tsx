@@ -1,4 +1,6 @@
 import React from 'react';
+import stage1EarlyCareerImg from '../assets/images/regenerated_image_1787812841577.webp';
+import stage2MidLevelImg from '../assets/images/regenerated_image_1787812840659.webp';
 import { 
   CheckCircle2, 
   ArrowRight, 
@@ -74,7 +76,7 @@ export const CareerStages: React.FC<CareerStagesProps> = ({ onOpenBooking }) => 
                 {/* Right Image Thumbnail */}
                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-[#0284C7]/50 shrink-0 bg-[#0A162D] relative shadow-md">
                   <img 
-                    src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=400&q=80" 
+                    src={stage1EarlyCareerImg} 
                     alt="Early Career & College"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-90"
                     referrerPolicy="no-referrer"
@@ -204,7 +206,7 @@ export const CareerStages: React.FC<CareerStagesProps> = ({ onOpenBooking }) => 
                 {/* Right Image Thumbnail */}
                 <div className="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border border-[#C026D3]/50 shrink-0 bg-[#240C3B] relative shadow-md">
                   <img 
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" 
+                    src={stage2MidLevelImg} 
                     alt="Mid-Level & Acceleration"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500 brightness-90"
                     referrerPolicy="no-referrer"

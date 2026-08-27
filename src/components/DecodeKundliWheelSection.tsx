@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Pause, Play, ArrowRight } from 'lucide-react';
-import consultationMeetingImg from '../assets/images/career_consultation_meeting_1787659727560.jpg';
-import acharyaGaneshEmblemImg from '../assets/images/acharya_ganesh_emblem_1787811434091.jpg';
+import kundliReportImg from '../assets/images/regenerated_image_1787812672428.webp';
+import acharyaGaneshEmblemImg from '../assets/images/regenerated_image_1787812285047.jpg';
 
 interface DecodeKundliWheelSectionProps {
   onOpenBooking: () => void;
@@ -99,20 +99,21 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
   const [activeNode, setActiveNode] = useState<string>('10th-house');
 
   return (
-    <div className="relative mt-8 rounded-3xl overflow-hidden bg-[#050814] border border-[#1E293B] shadow-2xl p-4 sm:p-6 lg:p-10 text-white">
+    <div className="relative mt-8 rounded-3xl overflow-hidden bg-[#060A1D] border border-[#1E293B] shadow-2xl p-4 sm:p-6 lg:p-10 text-white">
       
-      {/* Background Subtle Star/Dot Grid Matrix */}
+      {/* High-Clarity Cosmic Star Dot Grid Matrix */}
       <div 
-        className="absolute inset-0 pointer-events-none opacity-25"
+        className="absolute inset-0 pointer-events-none opacity-40"
         style={{
-          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.4) 1px, transparent 1px)',
-          backgroundSize: '24px 24px'
+          backgroundImage: 'radial-gradient(rgba(255, 255, 255, 0.6) 1.2px, transparent 1.2px)',
+          backgroundSize: '28px 28px'
         }}
       />
 
-      {/* Ambient background glow accents */}
-      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[350px] h-[350px] bg-[#3B82F6]/10 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[450px] h-[450px] bg-[#F59E0B]/12 rounded-full blur-3xl pointer-events-none" />
+      {/* Ambient Celestial Light Halos & Nebula Glows */}
+      <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[400px] h-[400px] bg-[#3B82F6]/15 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute top-1/2 right-1/4 -translate-y-1/2 w-[480px] h-[480px] bg-[#F59E0B]/20 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute top-1/3 right-1/3 w-[250px] h-[250px] bg-[#8B5CF6]/15 rounded-full blur-[80px] pointer-events-none" />
 
       {/* Main Grid: Left Consultation Card + Right Interactive Cosmic Kundli Wheel */}
       <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
@@ -125,11 +126,11 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             onClick={onOpenBooking}
             className="w-full max-w-[480px] rounded-3xl overflow-hidden border border-[#D49B35]/40 bg-[#0B1120] shadow-[0_10px_35px_rgba(0,0,0,0.6)] group cursor-pointer transition-all duration-300 hover:border-[#F59E0B] hover:shadow-[0_15px_45px_rgba(245,158,11,0.2)] relative"
           >
-            {/* Consultation Meeting Image */}
+            {/* Consultation Meeting / Kundli Report Image */}
             <div className="relative aspect-[4/3] w-full overflow-hidden">
               <img 
-                src={consultationMeetingImg} 
-                alt="Acharya Ganesh Career Astrology Consultation" 
+                src={kundliReportImg} 
+                alt="Acharya Ganesh Vedic Kundli Career Report Blueprint" 
                 className="w-full h-full object-cover group-hover:scale-103 transition-transform duration-700"
                 referrerPolicy="no-referrer"
               />
@@ -223,32 +224,37 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             {/* =================================================== */}
             {/* CENTER HUB: Radiant Golden Box with Guru Logo & CTA */}
             {/* =================================================== */}
-            <div 
-              onClick={onOpenBooking}
-              className="relative z-20 w-44 sm:w-48 aspect-square rounded-3xl bg-gradient-to-b from-[#1E1107] to-[#0D0703] border-2 border-[#FACC15] shadow-[0_0_45px_rgba(234,179,8,0.45)] flex flex-col items-center justify-between p-3.5 sm:p-4 group cursor-pointer hover:scale-105 transition-all duration-300 ring-4 ring-[#EAB308]/20"
-            >
-              {/* Sparkle Badge at Top Right */}
-              <div className="absolute -top-1.5 -right-1.5 w-6 h-6 rounded-full bg-gradient-to-tr from-[#EA580C] to-[#F59E0B] border border-[#FEF08A] flex items-center justify-center shadow-md">
-                <Sparkles className="w-3.5 h-3.5 text-white" />
-              </div>
+            <div className="relative z-20 flex items-center justify-center">
+              {/* Diffuse warm amber backlight halo */}
+              <div className="absolute -inset-4 bg-gradient-to-tr from-[#EA580C] via-[#F59E0B] to-[#FACC15] rounded-3xl blur-2xl opacity-40 group-hover:opacity-65 transition-opacity" />
 
-              {/* Acharya Ganesh Circular Emblem Graphic */}
-              <div className="w-full flex-1 flex flex-col items-center justify-center">
-                <div className="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full overflow-hidden border-2 border-[#EAB308]/90 bg-[#1A0B02] shadow-[0_0_20px_rgba(234,179,8,0.3)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                  <img 
-                    src={acharyaGaneshEmblemImg} 
-                    alt="Acharya Ganesh Vedic Astrology Emblem" 
-                    className="w-full h-full object-cover"
-                    referrerPolicy="no-referrer"
-                  />
+              <div 
+                onClick={onOpenBooking}
+                className="relative w-48 sm:w-52 aspect-square rounded-[28px] bg-gradient-to-b from-[#160B04] via-[#0E0602] to-[#080301] border-2 border-[#FACC15] shadow-[0_0_50px_rgba(234,179,8,0.55)] flex flex-col items-center justify-between p-3.5 sm:p-4 group cursor-pointer hover:scale-105 transition-all duration-300 ring-2 ring-[#EAB308]/40"
+              >
+                {/* Sparkle Badge at Top Right */}
+                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-gradient-to-tr from-[#EA580C] to-[#F59E0B] border-2 border-[#FEF08A] flex items-center justify-center shadow-lg">
+                  <Sparkles className="w-4 h-4 text-white" />
                 </div>
-              </div>
 
-              {/* Bottom Orange Button inside Box */}
-              <div className="w-full mt-2">
-                <div className="w-full bg-gradient-to-r from-[#D97706] to-[#EA580C] group-hover:from-[#EA580C] group-hover:to-[#D97706] text-white py-1.5 px-2 rounded-lg font-black text-[9px] sm:text-[10px] uppercase tracking-wider text-center flex items-center justify-center gap-1 shadow-sm transition-all">
-                  <span className="text-xs font-black leading-none">+</span>
-                  <span>1-ON-1 CONSULTATION</span>
+                {/* Acharya Ganesh Circular Emblem Graphic */}
+                <div className="w-full flex-1 flex flex-col items-center justify-center pt-1">
+                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-[#EAB308]/60 bg-[#160902] shadow-[0_0_25px_rgba(234,179,8,0.35)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
+                    <img 
+                      src={acharyaGaneshEmblemImg} 
+                      alt="Acharya Ganesh Vedic Astrology Emblem" 
+                      className="w-full h-full object-cover"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+
+                {/* Bottom Orange Button inside Box */}
+                <div className="w-full mt-1.5 pb-0.5">
+                  <div className="w-full bg-[#EA580C] hover:bg-[#D946EF] group-hover:bg-[#F97316] text-white py-2 px-3 rounded-xl font-black text-[10px] sm:text-[11px] uppercase tracking-wider text-center flex items-center justify-center gap-1.5 shadow-md transition-all">
+                    <span className="text-sm font-black leading-none">+</span>
+                    <span className="font-extrabold tracking-wide">1-ON-1 CONSULTATION</span>
+                  </div>
                 </div>
               </div>
             </div>
