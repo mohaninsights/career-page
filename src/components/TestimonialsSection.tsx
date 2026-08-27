@@ -60,7 +60,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ onOpen
                   <Star key={i} className="w-3.5 h-3.5 fill-current text-[#FDE08B]" />
                 ))}
               </div>
-              <span className="font-bold text-[#FFF5EA]">5.0 / 5 Rating</span>
+              <span className="font-bold text-[#FFF5EA]">5.0/5.0 Rating</span>
               <span className="text-[#8C6B55]">•</span>
               <span className="text-[#E5CCA8] font-medium">5,000+ Verified Google Reviews</span>
             </div>
