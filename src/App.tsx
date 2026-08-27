@@ -17,7 +17,6 @@ import { SessionDeliverables } from './components/SessionDeliverables';
 import { VedicKnowledgeGuide } from './components/VedicKnowledgeGuide';
 import { FaqSection } from './components/FaqSection';
 import { FinalCtaSection } from './components/FinalCtaSection';
-import { Footer } from './components/Footer';
 import { ConsultationModal } from './components/ConsultationModal';
 import { SampleReportModal } from './components/SampleReportModal';
 import { FloatingActionBar } from './components/FloatingActionBar';
@@ -85,9 +84,6 @@ export default function App() {
         {/* Section 11: Get Personalized Career Guidance (Final CTA) */}
         <FinalCtaSection onOpenBooking={handleOpenBooking} />
       </main>
-
-      {/* Footer */}
-      <Footer onOpenBooking={handleOpenBooking} />
 
       {/* Modals & Quick Action Overlays */}
       <ConsultationModal 

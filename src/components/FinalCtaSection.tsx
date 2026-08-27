@@ -45,7 +45,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenBooking 
 
           <div className="flex items-center gap-2 bg-[#341508]/90 border border-[#8C3E14] px-4 py-2 rounded-full shadow-xs">
             <Star className="w-4 h-4 text-[#FDE08B] fill-current" />
-            <span>5.0/5 Rated by 50,000+ Clients</span>
+            <span>5.0/5.0 Rated by 50,000+ Clients</span>
           </div>
         </div>
 

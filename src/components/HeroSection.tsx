@@ -200,7 +200,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
             {/* Bottom Trust & Stats Bar matching screenshot */}
             <div className="pt-3 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-[#7A3614]/60 text-xs text-[#F0D5C3]">
               <div className="flex items-center gap-1.5">
-                <span className="text-[#FDE08B] font-bold">★ 5.0/5</span>
+                <span className="text-[#FDE08B] font-bold">★ 5.0/5.0</span>
                 <span className="text-[#E5CEBA]">Client Rating</span>
               </div>
 

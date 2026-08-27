@@ -99,13 +99,13 @@ export const ExpertBannerSection: React.FC<ExpertBannerSectionProps> = ({ onOpen
                 </div>
               </div>
 
-              {/* Metric 4: 5.0/5 Google Rating */}
+              {/* Metric 4: 5.0/5.0 Google Rating */}
               <div className="bg-[#1C1236]/90 hover:bg-[#251847] transition border border-[#D49B35]/20 rounded-2xl p-3.5 flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-[#2A174F] border border-[#4ADE80]/30 flex items-center justify-center text-[#4ADE80] shrink-0">
                   <Star className="w-5 h-5 fill-current" />
                 </div>
                 <div>
-                  <div className="text-lg font-bold text-white tracking-tight leading-none">5.0/5</div>
+                  <div className="text-lg font-bold text-white tracking-tight leading-none">5.0/5.0</div>
                   <div className="text-[11px] text-[#C4B2D8] mt-1 leading-tight">Google Rating</div>
                 </div>
               </div>
