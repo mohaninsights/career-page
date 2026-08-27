@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Phone, User, BookOpen, Menu, X } from 'lucide-react';
+import acharyaGaneshLogoImg from '../assets/images/acharya_ganesh_emblem_1787811434091.jpg';
 
 interface HeaderProps {
   onOpenBooking: () => void;
@@ -40,79 +41,28 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
           <a 
             href="#hero" 
             onClick={() => setActiveNav('Home')}
-            className="flex items-center gap-3 cursor-pointer group"
+            className="flex items-center gap-3 cursor-pointer group select-none"
           >
-            <div className="flex items-center gap-3">
-              {/* Circular Emblem with Zodiac Wheel & Meditating Rishi */}
-              <div className="relative flex flex-col items-center">
-                <div className="w-14 h-14 sm:w-16 sm:h-16 relative flex items-center justify-center">
-                  <svg viewBox="0 0 100 100" className="w-full h-full drop-shadow-sm">
-                    {/* Outer Zodiac / Ray Ring */}
-                    <circle cx="50" cy="50" r="46" fill="#FDF9F0" stroke="#7A3614" strokeWidth="2.5" strokeDasharray="3 2" />
-                    <circle cx="50" cy="50" r="41" fill="#F8EFE0" stroke="#9E4E24" strokeWidth="1.5" />
-                    
-                    {/* Radial astrological spokes */}
-                    {[...Array(12)].map((_, i) => (
-                      <line
-                        key={i}
-                        x1="50"
-                        y1="50"
-                        x2={50 + 40 * Math.cos((i * 30 * Math.PI) / 180)}
-                        y2={50 + 40 * Math.sin((i * 30 * Math.PI) / 180)}
-                        stroke="#D4A060"
-                        strokeWidth="0.75"
-                        opacity="0.6"
-                      />
-                    ))}
-
-                    {/* Inner Sun / Aura circle */}
-                    <circle cx="50" cy="46" r="28" fill="#F3DFBE" stroke="#C9883E" strokeWidth="1" />
-                    
-                    {/* Meditating Rishi / Acharya Silhouette & Saffron Robe */}
-                    {/* Aura rays */}
-                    <circle cx="50" cy="38" r="14" fill="#FCEACD" />
-                    
-                    {/* Head / Bun */}
-                    <circle cx="50" cy="31" r="3.5" fill="#5A230B" />
-                    {/* Head bun (Topknot) */}
-                    <circle cx="50" cy="26.5" r="2.2" fill="#5A230B" />
-                    {/* Face & Beard */}
-                    <path d="M46 31 Q50 39 54 31 Q52 41 50 43 Q48 41 46 31 Z" fill="#5A230B" />
-                    
-                    {/* Saffron Angavastram / Body In Meditation */}
-                    <path 
-                      d="M42 41 Q50 37 58 41 L62 55 Q50 58 38 55 Z" 
-                      fill="#D96821" 
-                    />
-                    {/* Folded legs (Padmasana) */}
-                    <path 
-                      d="M36 53 Q50 50 64 53 Q66 59 50 59 Q34 59 36 53 Z" 
-                      fill="#8C3E14" 
-                    />
-                    {/* Namaste/Dhyan mudra hands */}
-                    <ellipse cx="50" cy="47" rx="3.5" ry="2" fill="#E8A763" />
-                  </svg>
-
-                  {/* Ribbon Banner at base */}
-                  <div className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-28 text-center pointer-events-none">
-                    <div className="bg-gradient-to-r from-[#EED5A5] via-[#FFF3D6] to-[#EED5A5] border border-[#B37837] rounded-sm py-0.5 px-1.5 shadow-xs">
-                      <span className="font-serif-vedic text-[9px] font-bold text-[#4E1E09] tracking-tight block uppercase leading-none">
-                        Acharya Ganesh
-                      </span>
-                    </div>
-                    <div className="text-[7.5px] font-sans text-[#753818] font-semibold -mt-0.5 tracking-tighter">
-                      ( जो सही राह दिखाए )
-                    </div>
-                  </div>
-                </div>
+            <div className="flex items-center gap-2.5 sm:gap-3">
+              {/* Circular Emblem with Acharya Ganesh Round Logo */}
+              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-xs border border-[#D49B35]/50 group-hover:scale-105 transition-transform flex items-center justify-center bg-[#FAF7F2]">
+                <img 
+                  src={acharyaGaneshLogoImg} 
+                  alt="Acharya Ganesh Logo" 
+                  className="w-full h-full object-cover rounded-full"
+                  referrerPolicy="no-referrer"
+                />
               </div>
 
               {/* Brand Name Text (Visible on md+) */}
-              <div className="hidden sm:block pl-2">
+              <div className="hidden sm:block">
                 <div className="font-serif-vedic text-lg font-bold tracking-wide text-[#381608] leading-tight flex items-center gap-1.5">
                   <span>ACHARYA GANESH</span>
                 </div>
-                <p className="text-[10px] font-medium text-[#7C5338] tracking-wider uppercase">
+                <p className="text-[10.5px] font-semibold text-[#8C3E14] tracking-wide">
+                  ( जो सही राह दिखाए )
+                </p>
+                <p className="text-[9.5px] font-medium text-[#7C5338] tracking-wider uppercase">
                   By Hanish Bagga • Vedic Astrology & Guidance
                 </p>
               </div>

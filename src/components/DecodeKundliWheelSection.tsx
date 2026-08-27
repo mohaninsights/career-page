@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Sparkles, Pause, Play, ArrowRight } from 'lucide-react';
 import kundliReportImg from '../assets/images/regenerated_image_1787812672428.webp';
-import acharyaGaneshEmblemImg from '../assets/images/regenerated_image_1787812285047.jpg';
+import acharyaGaneshLogoImg from '../assets/images/acharya_ganesh_emblem_1787811434091.jpg';
 
 interface DecodeKundliWheelSectionProps {
   onOpenBooking: () => void;
@@ -163,28 +163,28 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
         {/* ======================================================== */}
         {/* RIGHT COLUMN: Celestial Kundli Wheel System with 8 Nodes */}
         {/* ======================================================== */}
-        <div className="lg:col-span-7 flex flex-col items-center justify-center relative min-h-[480px] sm:min-h-[560px] py-4">
+        <div className="lg:col-span-7 flex flex-col items-center justify-center relative min-h-[460px] sm:min-h-[560px] py-2 sm:py-4 w-full">
           
-          <div className="relative w-full max-w-[540px] aspect-square flex items-center justify-center">
+          <div className="relative w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[540px] aspect-square flex items-center justify-center">
             
             {/* Concentric Golden Orbit Rings */}
-            <div className="absolute w-[82%] h-[82%] rounded-full border border-[#D49B35]/25 pointer-events-none" />
-            <div className="absolute w-[68%] h-[68%] rounded-full border border-[#D49B35]/20 pointer-events-none" />
-            <div className="absolute w-[52%] h-[52%] rounded-full border border-dashed border-[#D49B35]/30 pointer-events-none" />
+            <div className="absolute w-[86%] h-[86%] sm:w-[82%] sm:h-[82%] rounded-full border border-[#D49B35]/25 pointer-events-none" />
+            <div className="absolute w-[70%] h-[70%] sm:w-[68%] sm:h-[68%] rounded-full border border-[#D49B35]/20 pointer-events-none" />
+            <div className="absolute w-[54%] h-[54%] sm:w-[52%] sm:h-[52%] rounded-full border border-dashed border-[#D49B35]/30 pointer-events-none" />
 
             {/* Rotating Zodiac Ring with 12 Zodiac Badges */}
             <div 
-              className={`absolute w-[74%] h-[74%] rounded-full flex items-center justify-center pointer-events-none transition-transform ${
+              className={`absolute w-[76%] h-[76%] sm:w-[74%] sm:h-[74%] rounded-full flex items-center justify-center pointer-events-none transition-transform ${
                 isRotating ? 'animate-spin-zodiac' : ''
               }`}
               style={{ animationDuration: '60s' }}
             >
               {ZODIAC_SYMBOLS.map((z, idx) => {
-                const radius = 145; // Approximate px in container
+                const radius = 120; // scaled nicely
                 return (
                   <div
                     key={idx}
-                    className="absolute w-5 h-5 rounded-md bg-[#24133A]/80 border border-[#7C3AED]/40 flex items-center justify-center text-[10px] text-[#D8B4FE] shadow-sm select-none"
+                    className="absolute w-4 h-4 sm:w-5 sm:h-5 rounded-md bg-[#24133A]/85 border border-[#7C3AED]/40 flex items-center justify-center text-[8px] sm:text-[10px] text-[#D8B4FE] shadow-sm select-none"
                     style={{
                       transform: `rotate(${z.angle}deg) translate(${radius}px) rotate(-${z.angle}deg)`
                     }}
@@ -201,7 +201,7 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
                 const rad = (node.angle * Math.PI) / 180;
                 const cx = 270;
                 const cy = 270;
-                const r = 210;
+                const r = 215;
                 const x2 = cx + r * Math.cos(rad);
                 const y2 = cy + r * Math.sin(rad);
                 const isSelected = activeNode === node.id;
@@ -222,40 +222,24 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             </svg>
 
             {/* =================================================== */}
-            {/* CENTER HUB: Radiant Golden Box with Guru Logo & CTA */}
+            {/* CENTER HUB: Clean Round Shape Logo Only             */}
             {/* =================================================== */}
-            <div className="relative z-20 flex items-center justify-center">
-              {/* Diffuse warm amber backlight halo */}
-              <div className="absolute -inset-4 bg-gradient-to-tr from-[#EA580C] via-[#F59E0B] to-[#FACC15] rounded-3xl blur-2xl opacity-40 group-hover:opacity-65 transition-opacity" />
+            <div className="relative z-20 flex items-center justify-center pointer-events-auto">
+              {/* Soft warm amber cosmic glow behind the circular logo */}
+              <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-tr from-[#EA580C] via-[#F59E0B] to-[#FACC15] rounded-full blur-lg sm:blur-xl opacity-40 group-hover:opacity-60 transition-opacity pointer-events-none" />
 
+              {/* Pure Round Logo */}
               <div 
                 onClick={onOpenBooking}
-                className="relative w-48 sm:w-52 aspect-square rounded-[28px] bg-gradient-to-b from-[#160B04] via-[#0E0602] to-[#080301] border-2 border-[#FACC15] shadow-[0_0_50px_rgba(234,179,8,0.55)] flex flex-col items-center justify-between p-3.5 sm:p-4 group cursor-pointer hover:scale-105 transition-all duration-300 ring-2 ring-[#EAB308]/40"
+                title="Acharya Ganesh Vedic Consultation - Click to Book"
+                className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden shadow-[0_0_30px_rgba(234,179,8,0.45)] group cursor-pointer hover:scale-105 transition-transform duration-300 flex items-center justify-center select-none"
               >
-                {/* Sparkle Badge at Top Right */}
-                <div className="absolute -top-2 -right-2 w-7 h-7 rounded-full bg-gradient-to-tr from-[#EA580C] to-[#F59E0B] border-2 border-[#FEF08A] flex items-center justify-center shadow-lg">
-                  <Sparkles className="w-4 h-4 text-white" />
-                </div>
-
-                {/* Acharya Ganesh Circular Emblem Graphic */}
-                <div className="w-full flex-1 flex flex-col items-center justify-center pt-1">
-                  <div className="relative w-28 h-28 sm:w-32 sm:h-32 rounded-full overflow-hidden border border-[#EAB308]/60 bg-[#160902] shadow-[0_0_25px_rgba(234,179,8,0.35)] flex items-center justify-center group-hover:scale-105 transition-transform duration-300">
-                    <img 
-                      src={acharyaGaneshEmblemImg} 
-                      alt="Acharya Ganesh Vedic Astrology Emblem" 
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </div>
-                </div>
-
-                {/* Bottom Orange Button inside Box */}
-                <div className="w-full mt-1.5 pb-0.5">
-                  <div className="w-full bg-[#EA580C] hover:bg-[#D946EF] group-hover:bg-[#F97316] text-white py-2 px-3 rounded-xl font-black text-[10px] sm:text-[11px] uppercase tracking-wider text-center flex items-center justify-center gap-1.5 shadow-md transition-all">
-                    <span className="text-sm font-black leading-none">+</span>
-                    <span className="font-extrabold tracking-wide">1-ON-1 CONSULTATION</span>
-                  </div>
-                </div>
+                <img 
+                  src={acharyaGaneshLogoImg} 
+                  alt="Acharya Ganesh Vedic Astrology Logo" 
+                  className="w-full h-full object-cover rounded-full"
+                  referrerPolicy="no-referrer"
+                />
               </div>
             </div>
 
@@ -264,12 +248,13 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             {/* =================================================== */}
             {ASPECT_NODES.map((node) => {
               const rad = (node.angle * Math.PI) / 180;
-              const radius = 205; // radius distance from center (fits 540x540)
-              const isSelected = activeNode === node.id;
               
-              // Offsets based on angle for nice positioning
-              const leftPercent = 50 + (radius * Math.cos(rad) / 270) * 44;
-              const topPercent = 50 + (radius * Math.sin(rad) / 270) * 44;
+              // Radial distance percentage from center (50%) to guarantee NO overlap on mobile
+              // 42.5% ensures nodes sit safely outside the 16% center hub radius with plenty of breathing room
+              const radiusPercent = 42.5; 
+              const leftPercent = 50 + Math.cos(rad) * radiusPercent;
+              const topPercent = 50 + Math.sin(rad) * radiusPercent;
+              const isSelected = activeNode === node.id;
 
               return (
                 <div
@@ -283,18 +268,18 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
                     top: `${topPercent}%`,
                     transform: 'translate(-50%, -50%)',
                   }}
-                  className={`absolute z-30 px-3.5 py-2 sm:px-4 sm:py-2 rounded-2xl cursor-pointer transition-all duration-300 text-center select-none shadow-md ${
+                  className={`absolute z-30 px-2 py-1 sm:px-3 sm:py-1.5 lg:px-4 lg:py-2 rounded-xl sm:rounded-2xl cursor-pointer transition-all duration-300 text-center select-none shadow-md ${
                     node.isPrimary || isSelected
-                      ? 'bg-[#0B152B] border-2 border-[#FACC15] shadow-[0_0_20px_rgba(250,204,21,0.35)] scale-105'
-                      : 'bg-[#091124]/90 hover:bg-[#0E1A38] border border-[#1E3A8A]/50 hover:border-[#3B82F6]'
+                      ? 'bg-[#0B152B] border sm:border-2 border-[#FACC15] shadow-[0_0_18px_rgba(250,204,21,0.35)] scale-105'
+                      : 'bg-[#091124]/95 hover:bg-[#0E1A38] border border-[#1E3A8A]/60 hover:border-[#3B82F6]'
                   }`}
                 >
-                  <div className={`text-xs sm:text-xs font-bold leading-tight ${
+                  <div className={`text-[10px] sm:text-xs font-bold leading-tight whitespace-nowrap ${
                     node.isPrimary || isSelected ? 'text-[#FACC15]' : 'text-[#F8FAFC]'
                   }`}>
                     {node.title}
                   </div>
-                  <div className="text-[10px] text-[#94A3B8] font-medium leading-tight whitespace-nowrap mt-0.5">
+                  <div className="text-[8px] sm:text-[10px] text-[#94A3B8] font-medium leading-tight whitespace-nowrap mt-0.5">
                     {node.subtitle}
                   </div>
                 </div>
@@ -302,20 +287,20 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             })}
 
             {/* Pause / Resume Rotation Control (Located bottom-right below Business node) */}
-            <div className="absolute -bottom-2 sm:bottom-1 right-2 sm:right-6 z-30">
+            <div className="absolute -bottom-3 sm:bottom-0 right-1 sm:right-4 z-30">
               <button
                 type="button"
                 onClick={() => setIsRotating(!isRotating)}
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-[#0B132B]/85 border border-[#334155] hover:border-[#FACC15] text-[#CBD5E1] hover:text-[#FACC15] text-[10px] font-semibold transition-all cursor-pointer shadow-xs"
+                className="inline-flex items-center gap-1 sm:gap-1.5 px-2 py-0.5 sm:px-3 sm:py-1 rounded-lg bg-[#0B132B]/90 border border-[#334155] hover:border-[#FACC15] text-[#CBD5E1] hover:text-[#FACC15] text-[9px] sm:text-[10px] font-semibold transition-all cursor-pointer shadow-xs"
               >
                 {isRotating ? (
                   <>
-                    <Pause className="w-3 h-3 text-[#FACC15]" />
+                    <Pause className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FACC15]" />
                     <span>Pause Rotation</span>
                   </>
                 ) : (
                   <>
-                    <Play className="w-3 h-3 text-[#FACC15] fill-current" />
+                    <Play className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#FACC15] fill-current" />
                     <span>Resume Rotation</span>
                   </>
                 )}
