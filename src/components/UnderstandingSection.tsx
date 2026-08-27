@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Compass, Layers, Clock, ShieldCheck, Calendar, ArrowRight, MessageCircle, Sparkles, Image as ImageIcon } from 'lucide-react';
+import { Compass, Layers, Clock, ShieldCheck, Calendar, ArrowRight, Sparkles, Image as ImageIcon } from 'lucide-react';
 import careerPosterImage from '../assets/images/regenerated_image_1787812993706.webp';
 import { ImageUploadModal } from './ImageUploadModal';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface UnderstandingSectionProps {
   onOpenBooking: () => void;
@@ -147,7 +148,7 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
                 rel="noopener noreferrer"
                 className="bg-white border border-[#D9CDB8] text-[#332219] hover:bg-[#FAF4EB] px-4 py-2.5 rounded-lg font-semibold text-xs sm:text-sm transition flex items-center gap-2 shadow-2xs cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 text-[#25D366] fill-[#25D366]/20" />
+                <WhatsAppIcon className="w-4 h-4 text-[#25D366]" />
                 <span>Ask via WhatsApp</span>
               </a>
             </div>

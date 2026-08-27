@@ -1,5 +1,6 @@
 import React from 'react';
-import { MessageCircle, Calendar, Phone } from 'lucide-react';
+import { Calendar } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface FloatingActionBarProps {
   onOpenBooking: () => void;
@@ -14,10 +15,10 @@ export const FloatingActionBar: React.FC<FloatingActionBarProps> = ({ onOpenBook
         href="https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20would%20like%20to%20inquire%20about%20Career%20Astrology."
         target="_blank"
         rel="noopener noreferrer"
-        className="bg-[#25D366] hover:bg-[#1EBE5D] text-white p-3.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center gap-2 group border-2 border-white"
+        className="bg-[#25D366] hover:bg-[#1EBE5D] text-white p-3 sm:p-3.5 rounded-full shadow-2xl transition-all duration-300 hover:scale-110 flex items-center gap-2 group border-2 border-white"
         aria-label="Chat on WhatsApp"
       >
-        <MessageCircle className="w-6 h-6 fill-current" />
+        <WhatsAppIcon className="w-6 h-6 text-white" />
         <span className="max-w-0 overflow-hidden whitespace-nowrap group-hover:max-w-xs transition-all duration-300 text-xs font-bold px-0 group-hover:px-1">
           WhatsApp Us
         </span>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, Calendar, Clock, User, Phone, Mail, MapPin, ArrowRight, ShieldCheck, Sparkles, MessageCircle } from 'lucide-react';
+import { X, CheckCircle2, Calendar, Clock, User, Phone, Mail, MapPin, ArrowRight, ShieldCheck, Sparkles } from 'lucide-react';
 import { ConsultationFormState } from '../types';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface ConsultationModalProps {
   isOpen: boolean;
@@ -260,7 +261,7 @@ export const ConsultationModal: React.FC<ConsultationModalProps> = ({ isOpen, on
                   rel="noopener noreferrer"
                   className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-3 rounded-lg font-bold text-xs transition shadow-md flex items-center justify-center gap-2"
                 >
-                  <MessageCircle className="w-4 h-4 fill-current" />
+                  <WhatsAppIcon className="w-4 h-4 text-white" />
                   <span>Instant Confirmation on WhatsApp (+91 73000-04325)</span>
                 </a>
                 <button

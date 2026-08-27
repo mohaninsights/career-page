@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
-import { Sparkles, CheckCircle2, MessageCircle, ArrowRight, Plus, Minus, Lock, Star } from 'lucide-react';
+import { Sparkles, CheckCircle2, ArrowRight, Plus, Minus, Lock, Star } from 'lucide-react';
 import { ConsultationFormState } from '../types';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface HeroSectionProps {
   onFormSubmit: (data: ConsultationFormState) => void;
@@ -38,9 +39,15 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
       className="relative w-full bg-[#52210D] text-[#FAF4EB] py-8 sm:py-12 px-4 sm:px-6 lg:px-10 overflow-hidden border-b-2 border-[#8C3E14]"
     >
       {/* Background Sacred Geometric Kundli Diagram Lines (matching screenshot) */}
-      <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
-        {/* Left Sacred Kundli Geometry Vector */}
-        <svg className="absolute -left-16 -top-16 w-[550px] h-[550px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="0.8" fill="none">
+      <div className="absolute inset-0 pointer-events-none opacity-20 sm:opacity-25 overflow-hidden">
+        {/* Sacred Kundli Geometry Vector - Responsive positioning: centered behind banner heading on mobile, framed to left column on desktop */}
+        <svg 
+          className="absolute -top-6 left-1/2 -translate-x-1/2 sm:translate-x-0 sm:-left-12 sm:-top-10 lg:-left-16 lg:-top-16 w-[340px] h-[340px] sm:w-[480px] sm:h-[480px] lg:w-[580px] lg:h-[580px] max-w-none transition-all" 
+          viewBox="0 0 400 400" 
+          stroke="#FDE08B" 
+          strokeWidth="0.8" 
+          fill="none"
+        >
           <circle cx="200" cy="200" r="190" stroke="#FDE08B" strokeWidth="0.8" strokeDasharray="4 4" />
           <circle cx="200" cy="200" r="140" stroke="#FDE08B" strokeWidth="0.6" />
           <rect x="60" y="60" width="280" height="280" stroke="#FDE08B" strokeWidth="1" />
@@ -49,8 +56,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
           <polygon points="200,60 340,200 200,340 60,200" stroke="#FDE08B" strokeWidth="0.8" />
         </svg>
 
-        {/* Right subtle zodiac wheel arc */}
-        <svg className="absolute -right-20 -bottom-20 w-[600px] h-[600px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="0.7" fill="none">
+        {/* Right subtle zodiac wheel arc (hidden on small mobile to prevent clash with form) */}
+        <svg 
+          className="hidden sm:block absolute -right-20 -bottom-20 w-[450px] lg:w-[600px] h-[450px] lg:h-[600px]" 
+          viewBox="0 0 400 400" 
+          stroke="#FDE08B" 
+          strokeWidth="0.7" 
+          fill="none"
+        >
           <circle cx="350" cy="350" r="300" stroke="#FDE08B" strokeWidth="0.8" strokeDasharray="6 4" />
           <circle cx="350" cy="350" r="220" stroke="#FDE08B" strokeWidth="0.6" />
         </svg>
@@ -236,7 +249,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-3 rounded-xl font-bold text-xs transition shadow-md"
                   >
-                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <WhatsAppIcon className="w-4 h-4 text-white" />
                     <span>Instant WhatsApp Booking (+91 73000-04325)</span>
                   </a>
                 </div>
@@ -374,7 +387,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                     rel="noopener noreferrer"
                     className="w-full bg-[#0FA958] hover:bg-[#0D8F4A] text-white py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center justify-center gap-2"
                   >
-                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <WhatsAppIcon className="w-4 h-4 text-white" />
                     <span>Instant WhatsApp Booking (+91 73000-04325)</span>
                   </a>
 

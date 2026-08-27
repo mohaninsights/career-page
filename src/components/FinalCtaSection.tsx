@@ -1,5 +1,6 @@
 import React from 'react';
-import { Shield, Clock, Star, MessageCircle, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { Shield, Clock, Star, ArrowRight, Sparkles, CheckCircle2 } from 'lucide-react';
+import { WhatsAppIcon } from './WhatsAppIcon';
 
 interface FinalCtaSectionProps {
   onOpenBooking: () => void;
@@ -65,7 +66,7 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenBooking 
             rel="noopener noreferrer"
             className="w-full sm:w-auto bg-[#0FA958] hover:bg-[#0D8F4A] text-white px-8 py-3.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-2xl flex items-center justify-center gap-2 hover:scale-103"
           >
-            <MessageCircle className="w-4 h-4 fill-current" />
+            <WhatsAppIcon className="w-4 h-4 text-white" />
             <span>WhatsApp Consultation Now</span>
           </a>
 
