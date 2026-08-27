@@ -56,6 +56,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking }) => {
               <li><a href="#kundli-wheel" className="hover:text-[#FDE08B] transition">Vedic Career Chart Analysis</a></li>
               <li><a href="#deliverables" className="hover:text-[#FDE08B] transition">Consultation Deliverables</a></li>
               <li><a href="#masterclasses" className="hover:text-[#FDE08B] transition">Astrology Video Masterclasses</a></li>
+              <li><a href="https://acharyaganesh.com/wealth-astrology" target="_blank" rel="noopener noreferrer" className="hover:text-[#FDE08B] transition">Wealth Astrology & Finances</a></li>
+              <li><a href="https://acharyaganesh.com/health-astrology" target="_blank" rel="noopener noreferrer" className="hover:text-[#FDE08B] transition">Health Astrology & Vitality</a></li>
               <li><a href="#vedic-guide" className="hover:text-[#FDE08B] transition">Vedic Remedies & Gemstones</a></li>
             </ul>
           </div>

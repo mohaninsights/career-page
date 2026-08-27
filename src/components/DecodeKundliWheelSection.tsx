@@ -168,19 +168,19 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
           <div className="relative w-full max-w-[360px] sm:max-w-[480px] lg:max-w-[540px] aspect-square flex items-center justify-center">
             
             {/* Concentric Golden Orbit Rings */}
-            <div className="absolute w-[86%] h-[86%] sm:w-[82%] sm:h-[82%] rounded-full border border-[#D49B35]/25 pointer-events-none" />
-            <div className="absolute w-[70%] h-[70%] sm:w-[68%] sm:h-[68%] rounded-full border border-[#D49B35]/20 pointer-events-none" />
-            <div className="absolute w-[54%] h-[54%] sm:w-[52%] sm:h-[52%] rounded-full border border-dashed border-[#D49B35]/30 pointer-events-none" />
+            <div className="absolute w-[90%] h-[90%] sm:w-[86%] sm:h-[86%] rounded-full border border-[#D49B35]/25 pointer-events-none" />
+            <div className="absolute w-[74%] h-[74%] sm:w-[70%] sm:h-[70%] rounded-full border border-[#D49B35]/20 pointer-events-none" />
+            <div className="absolute w-[56%] h-[56%] sm:w-[54%] sm:h-[54%] rounded-full border border-dashed border-[#D49B35]/30 pointer-events-none" />
 
             {/* Rotating Zodiac Ring with 12 Zodiac Badges */}
             <div 
-              className={`absolute w-[76%] h-[76%] sm:w-[74%] sm:h-[74%] rounded-full flex items-center justify-center pointer-events-none transition-transform ${
+              className={`absolute w-[80%] h-[80%] sm:w-[76%] sm:h-[76%] rounded-full flex items-center justify-center pointer-events-none transition-transform ${
                 isRotating ? 'animate-spin-zodiac' : ''
               }`}
               style={{ animationDuration: '60s' }}
             >
               {ZODIAC_SYMBOLS.map((z, idx) => {
-                const radius = 120; // scaled nicely
+                const radius = 135; // scaled nicely for clear visibility
                 return (
                   <div
                     key={idx}
@@ -201,7 +201,7 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
                 const rad = (node.angle * Math.PI) / 180;
                 const cx = 270;
                 const cy = 270;
-                const r = 215;
+                const r = 225;
                 const x2 = cx + r * Math.cos(rad);
                 const y2 = cy + r * Math.sin(rad);
                 const isSelected = activeNode === node.id;
@@ -222,24 +222,42 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             </svg>
 
             {/* =================================================== */}
-            {/* CENTER HUB: Clean Round Shape Logo Only             */}
+            {/* CENTER HUB: Restored Radiant Card with Guru & Button*/}
             {/* =================================================== */}
             <div className="relative z-20 flex items-center justify-center pointer-events-auto">
-              {/* Soft warm amber cosmic glow behind the circular logo */}
-              <div className="absolute -inset-2 sm:-inset-3 bg-gradient-to-tr from-[#EA580C] via-[#F59E0B] to-[#FACC15] rounded-full blur-lg sm:blur-xl opacity-40 group-hover:opacity-60 transition-opacity pointer-events-none" />
+              {/* Soft warm amber glow halo behind card */}
+              <div className="absolute -inset-2 sm:-inset-4 bg-gradient-to-tr from-[#EA580C] via-[#F59E0B] to-[#FACC15] rounded-[26px] sm:rounded-[32px] blur-lg sm:blur-xl opacity-50 group-hover:opacity-75 transition-opacity pointer-events-none" />
 
-              {/* Pure Round Logo */}
+              {/* Exact Card from Screenshot */}
               <div 
                 onClick={onOpenBooking}
-                title="Acharya Ganesh Vedic Consultation - Click to Book"
-                className="relative w-24 h-24 sm:w-32 sm:h-32 lg:w-36 lg:h-36 rounded-full overflow-hidden shadow-[0_0_30px_rgba(234,179,8,0.45)] group cursor-pointer hover:scale-105 transition-transform duration-300 flex items-center justify-center select-none"
+                title="Book 1-on-1 Vedic Career Consultation"
+                className="relative w-32 h-36 sm:w-44 sm:h-48 lg:w-48 lg:h-52 rounded-[20px] sm:rounded-[26px] bg-gradient-to-b from-[#180A04] via-[#100602] to-[#0A0301] border-2 border-[#FACC15] shadow-[0_0_25px_rgba(234,179,8,0.45)] flex flex-col items-center justify-between p-2 sm:p-3 group cursor-pointer hover:scale-105 transition-all duration-300 select-none"
               >
-                <img 
-                  src={acharyaGaneshLogoImg} 
-                  alt="Acharya Ganesh Vedic Astrology Logo" 
-                  className="w-full h-full object-cover rounded-full"
-                  referrerPolicy="no-referrer"
-                />
+                {/* Top-Right Sparkle Badge from Screenshot */}
+                <div className="absolute -top-2 -right-2 sm:-top-2.5 sm:-right-2.5 w-6 h-6 sm:w-7 sm:h-7 rounded-full bg-gradient-to-tr from-[#EA580C] to-[#F59E0B] border-2 border-white flex items-center justify-center shadow-md">
+                  <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-white fill-white" />
+                </div>
+
+                {/* Acharya Ganesh Emblem Center */}
+                <div className="w-full flex-1 flex items-center justify-center pt-0.5 sm:pt-1 px-1 overflow-hidden">
+                  <div className="relative w-full h-full max-w-[130px] max-h-[130px] sm:max-w-[155px] sm:max-h-[155px] flex items-center justify-center">
+                    <img 
+                      src={acharyaGaneshLogoImg} 
+                      alt="Acharya Ganesh Vedic Astrology Emblem" 
+                      className="w-full h-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                      referrerPolicy="no-referrer"
+                    />
+                  </div>
+                </div>
+
+                {/* Bottom 1-on-1 Consultation Button from Screenshot */}
+                <div className="w-full mt-1 sm:mt-1.5">
+                  <div className="w-full bg-gradient-to-r from-[#F59E0B] via-[#FBBF24] to-[#F59E0B] hover:from-[#EA580C] hover:to-[#F59E0B] border border-[#FEF08A] text-[#381608] py-1 sm:py-1.5 px-1 sm:px-2 rounded-lg sm:rounded-xl font-extrabold text-[8px] sm:text-[10px] lg:text-[11px] uppercase tracking-wider text-center flex items-center justify-center gap-1 shadow-md transition-all">
+                    <Sparkles className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#381608] fill-[#381608]" />
+                    <span className="truncate">1-ON-1 CONSULTATION</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -249,9 +267,8 @@ export const DecodeKundliWheelSection: React.FC<DecodeKundliWheelSectionProps> =
             {ASPECT_NODES.map((node) => {
               const rad = (node.angle * Math.PI) / 180;
               
-              // Radial distance percentage from center (50%) to guarantee NO overlap on mobile
-              // 42.5% ensures nodes sit safely outside the 16% center hub radius with plenty of breathing room
-              const radiusPercent = 42.5; 
+              // Radial distance percentage from center (50%) to guarantee NO overlap with enlarged logo
+              const radiusPercent = 43.5; 
               const leftPercent = 50 + Math.cos(rad) * radiusPercent;
               const topPercent = 50 + Math.sin(rad) * radiusPercent;
               const isSelected = activeNode === node.id;

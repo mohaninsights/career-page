@@ -42,24 +42,23 @@ export const ExpertBannerSection: React.FC<ExpertBannerSectionProps> = ({ onOpen
               </div>
 
               {/* Astrologer Bio & Checklist */}
-              <div className="space-y-2">
-                <div className="text-[10px] font-bold text-[#E5A93C] uppercase tracking-widest flex items-center justify-center sm:justify-start gap-1">
+              <div className="flex flex-col justify-center text-center sm:text-left">
+                <div className="text-xs sm:text-sm font-extrabold text-[#E5A93C] uppercase tracking-widest flex items-center justify-center sm:justify-start gap-1">
                   <span>EXPERT</span>
                 </div>
 
-                <div className="space-y-0.5">
-                  <h3 className="text-xl sm:text-2xl font-serif-vedic font-bold text-white tracking-tight leading-tight">
+                <div className="mt-1">
+                  <h3 className="text-2xl sm:text-3xl lg:text-[32px] font-serif-vedic font-bold text-white tracking-tight leading-none">
                     Hanish Bagga
                   </h3>
-                  <div className="text-xs text-[#FDE08B] font-serif-vedic font-bold">
+                  <div className="text-sm sm:text-base text-[#FDE08B] font-serif-vedic font-bold mt-1">
                     ( Acharya Ganesh )
                   </div>
                 </div>
 
-                <p className="text-xs text-[#D1BEDE] font-medium leading-tight">
+                <p className="text-sm sm:text-base text-[#E2D4EE] font-semibold mt-1 tracking-wide">
                   Astro Vastu Expert
                 </p>
-
               </div>
 
             </div>

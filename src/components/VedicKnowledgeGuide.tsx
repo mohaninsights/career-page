@@ -75,7 +75,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
             
             <div className="space-y-3 text-xs sm:text-sm text-[#5C3F2E] leading-relaxed">
               <p>
-                Professional domain, the astrologer analyses the houses that are related to career, work, income, gains, initiative, business, education and fortune. Personalised career predictions, thus, call for more than merely reading the Sun sign.
+                Professional domain, the astrologer analyses the houses that are related to career, work, income, gains, initiative, business, education, fortune, as well as insights from <a href="https://acharyaganesh.com/health-astrology" target="_blank" rel="noopener noreferrer" className="text-[#8C3E14] font-semibold underline decoration-[#C97F18] hover:text-[#C97F18] transition-colors inline-flex items-center gap-0.5">health astrology</a> for sustained energy and focus. Personalised career predictions, thus, call for more than merely reading the Sun sign.
               </p>
               <p>
                 The scheduling aspect is also crucial. <strong className="text-[#3B190C] font-semibold">Vimshottari Dasha, Antardasha and the important planetary transits</strong> are studied to determine the time when certain career themes will get more active.
@@ -213,7 +213,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
                 The active planetary period creates the broader theme operating in your life.
               </p>
               <p className="text-xs text-[#6B4B36] leading-relaxed">
-                When planets connected with employment, profession, income or gains become active, career-related developments may receive greater emphasis.
+                When planets connected with employment, profession, income or gains become active in your career and <a href="https://acharyaganesh.com/wealth-astrology" target="_blank" rel="noopener noreferrer" className="text-[#8C3E14] font-semibold underline decoration-[#C97F18] hover:text-[#C97F18] transition-colors inline-flex items-center gap-0.5">wealth astrology</a> chart, career-related developments may receive greater emphasis.
               </p>
             </div>
 
@@ -428,32 +428,6 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
           <p className="text-xs text-[#5C3F2E] font-medium text-center">
             The goal is to complement your career astrology reading with practical steps that can be followed consistently.
           </p>
-        </div>
-
-        {/* 9. GET PERSONALIZED CAREER GUIDANCE (CTA BANNER) */}
-        <div className="rounded-3xl bg-gradient-to-r from-[#FAF0DE] via-[#FFFDF9] to-[#F5EAD9] border-2 border-[#D49B35] p-6 sm:p-9 text-center space-y-4 shadow-lg">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-[#D9C4A6] text-[#8C3E14] text-xs font-bold uppercase tracking-wider">
-            <Sparkles className="w-3.5 h-3.5 text-[#C97F18]" />
-            <span>Get Personalized Career Guidance</span>
-          </div>
-
-          <h3 className="text-2xl sm:text-3xl font-serif-vedic font-bold text-[#3B190C]">
-            Ready to Gain Unshakeable Clarity on Your Career Path?
-          </h3>
-
-          <p className="text-xs sm:text-sm text-[#5C3F2E] max-w-2xl mx-auto leading-relaxed">
-            If you are dealing with career confusion, delayed promotion, job instability, repeated rejection, workplace pressure or an important professional decision, a personalized consultation can help you examine the situation in greater depth.
-          </p>
-
-          <div className="pt-2 flex justify-center">
-            <button
-              onClick={onOpenBooking}
-              className="inline-flex items-center gap-2 bg-[#8C3E14] hover:bg-[#73310E] text-white px-7 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider transition shadow-md hover:scale-102 active:scale-98 cursor-pointer"
-            >
-              <span>Book a 1-on-1 Career Astrology Consultation with Acharya Ganesh</span>
-              <ArrowRight className="w-4 h-4" />
-            </button>
-          </div>
         </div>
 
       </div>

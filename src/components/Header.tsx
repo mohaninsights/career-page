@@ -45,11 +45,11 @@ export const Header: React.FC<HeaderProps> = ({ onOpenBooking }) => {
           >
             <div className="flex items-center gap-2.5 sm:gap-3">
               {/* Circular Emblem with Acharya Ganesh Round Logo */}
-              <div className="relative w-12 h-12 sm:w-14 sm:h-14 rounded-full overflow-hidden shadow-xs border border-[#D49B35]/50 group-hover:scale-105 transition-transform flex items-center justify-center bg-[#FAF7F2]">
+              <div className="relative w-13 h-13 sm:w-15 sm:h-15 rounded-full overflow-hidden shadow-[0_0_15px_rgba(217,119,6,0.35)] group-hover:scale-105 transition-transform flex items-center justify-center bg-[#FAF7F2] p-0.5 border border-[#D49B35]/40">
                 <img 
                   src={acharyaGaneshLogoImg} 
                   alt="Acharya Ganesh Logo" 
-                  className="w-full h-full object-cover rounded-full"
+                  className="w-full h-full object-contain"
                   referrerPolicy="no-referrer"
                 />
               </div>

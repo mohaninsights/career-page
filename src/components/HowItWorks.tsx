@@ -79,8 +79,8 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onOpenBooking }) => {
           </div>
 
           {/* Title */}
-          <h2 className="text-3xl sm:text-4xl lg:text-[44px] font-serif-vedic font-bold text-[#2A140B] tracking-tight leading-tight">
-            How Your Career Astrology Consultation<br className="hidden sm:inline" /> Works
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-[40px] font-serif-vedic font-bold text-[#2A140B] tracking-tight leading-snug max-w-2xl mx-auto text-balance">
+            How Your Career Astrology Consultation Works
           </h2>
 
           {/* Subtitle */}
