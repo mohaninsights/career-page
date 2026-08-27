@@ -8,15 +8,11 @@ import { Header } from './components/Header';
 import { HeroSection } from './components/HeroSection';
 import { ExpertBannerSection } from './components/ExpertBannerSection';
 import { UnderstandingSection } from './components/UnderstandingSection';
-import { WhyChooseUs } from './components/WhyChooseUs';
 import { YouTubeVideoSection } from './components/YouTubeVideoSection';
 import { CareerStages } from './components/CareerStages';
-import { HowItWorks } from './components/HowItWorks';
-import { SessionDeliverables } from './components/SessionDeliverables';
-import { KundliChartSection } from './components/KundliChartSection';
-import { VideoMasterclasses } from './components/VideoMasterclasses';
-import { VedicKnowledgeGuide } from './components/VedicKnowledgeGuide';
 import { TestimonialsSection } from './components/TestimonialsSection';
+import { SessionDeliverables } from './components/SessionDeliverables';
+import { VedicKnowledgeGuide } from './components/VedicKnowledgeGuide';
 import { FaqSection } from './components/FaqSection';
 import { FinalCtaSection } from './components/FinalCtaSection';
 import { Footer } from './components/Footer';
@@ -43,61 +39,49 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-[#FAF6EE] text-[#2C1810] flex flex-col selection:bg-[#9E431E]/20 selection:text-[#6E2E13]">
-      {/* 1. Header & Navigation */}
+      {/* Header & Navigation */}
       <Header onOpenBooking={handleOpenBooking} />
 
-      {/* Main Content Sections */}
+      {/* Main 12 Content Sections */}
       <main className="flex-grow">
-        {/* 2. Hero Section with Booking Form & Metrics */}
+        {/* Section 1: Hero Section (AUTHENTIC VEDIC CAREER GUIDANCE & Form) */}
         <HeroSection onFormSubmit={handleHeroFormSubmit} />
 
-        {/* 2.5. Expert Astrologer Highlights & Credentials Banner */}
+        {/* Section 2: Vedic Career Guidance with Acharya Hanish Bagga */}
         <ExpertBannerSection onOpenBooking={handleOpenBooking} />
 
-        {/* 3. Understanding Career Astrology by Date of Birth */}
+        {/* Section 3: Understanding Career Astrology by Date of Birth */}
         <UnderstandingSection onOpenBooking={handleOpenBooking} />
 
-        {/* 4. Why Choose Our Career Astrology Services */}
-        <WhyChooseUs />
-
-        {/* 4.5. Featured YouTube Video Masterclasses (Left-to-Right Showcase) */}
+        {/* Section 4: Watch: 10th House & Career Astrology Masterclass */}
         <YouTubeVideoSection onOpenBooking={handleOpenBooking} />
 
-        {/* 5. Career Stages Guidance (Early, Mid, Senior) */}
+        {/* Section 5: Stages of Career Guidance (Early, Mid, Executive + Stats Bar) */}
         <CareerStages onOpenBooking={handleOpenBooking} />
 
-        {/* 6. Verified Client Testimonials */}
+        {/* Section 6: Verified Client Success Stories */}
         <TestimonialsSection onOpenBooking={handleOpenBooking} />
 
-        {/* 7. How Your Consultation Works (3 Steps) */}
-        <HowItWorks onOpenBooking={handleOpenBooking} />
-
-        {/* 8. Session Deliverables & Written Kundli Dossier */}
+        {/* Section 7: Session Deliverables & In-Depth Insights (8 Deliverables + Kundli Wheel & Dossier) */}
         <SessionDeliverables 
           onOpenBooking={handleOpenBooking}
           onOpenSampleReport={() => setIsSampleReportOpen(true)}
         />
 
-        {/* 9. Sacred Kundli Wheel & 12 House Explorer (Dark Theme) */}
-        <KundliChartSection onOpenBooking={handleOpenBooking} />
-
-        {/* 10. Video Masterclasses & YouTube Insights */}
-        <VideoMasterclasses />
-
-        {/* 11. Vedic Knowledge Guide (Houses Table & Planets) */}
+        {/* Section 8: Vedic Career Astrology Guide & Knowledge Hub */}
         <VedicKnowledgeGuide onOpenBooking={handleOpenBooking} />
 
-        {/* 12. Frequently Asked Questions */}
+        {/* Section 9: Got Questions? (Frequently Asked Questions) */}
         <FaqSection />
 
-        {/* 13. Final CTA Banner (Page 2 Hero) */}
+        {/* Section 10: Get Personalized Career Guidance (Final CTA) */}
         <FinalCtaSection onOpenBooking={handleOpenBooking} />
       </main>
 
-      {/* 14. Footer with 4-Column Layout */}
+      {/* Footer */}
       <Footer onOpenBooking={handleOpenBooking} />
 
-      {/* 15. Modals & Quick Action Overlays */}
+      {/* Modals & Quick Action Overlays */}
       <ConsultationModal 
         isOpen={isBookingOpen} 
         onClose={handleCloseBooking} 
@@ -109,7 +93,7 @@ export default function App() {
         onOpenBooking={handleOpenBooking}
       />
 
-      {/* 16. Floating Action Buttons */}
+      {/* Floating Action Buttons */}
       <FloatingActionBar onOpenBooking={handleOpenBooking} />
     </div>
   );

@@ -26,16 +26,16 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ onOpen
     : TESTIMONIALS.filter(t => t.category.toLowerCase().includes(activeFilter.toLowerCase()) || activeFilter === 'All Reviews');
 
   return (
-    <section id="testimonials" className="relative py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-dot-grid-dark text-white overflow-hidden border-t-2 border-b-2 border-[#572B15]">
+    <section id="testimonials" className="relative py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-dot-grid-dark text-white overflow-hidden border-t-2 border-b-2 border-[#572B15]">
       
       {/* Background Ambient Glow Accents */}
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-[#D49B35]/12 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-10 -right-20 w-96 h-96 bg-[#8C3E14]/20 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="relative z-10 max-w-7xl mx-auto space-y-10">
+      <div className="relative z-10 max-w-7xl mx-auto space-y-8">
         
         {/* SECTION HEADER */}
-        <div className="text-center max-w-3xl mx-auto space-y-3.5">
+        <div className="text-center max-w-3xl mx-auto space-y-2.5">
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3D1D0E]/90 border border-[#7A3C1A] text-[#FDE08B] text-xs font-semibold tracking-wide shadow-sm">
             <Sparkles className="w-3.5 h-3.5 text-[#E5A93C] animate-pulse" />
@@ -60,7 +60,7 @@ export const TestimonialsSection: React.FC<TestimonialsSectionProps> = ({ onOpen
                   <Star key={i} className="w-3.5 h-3.5 fill-current text-[#FDE08B]" />
                 ))}
               </div>
-              <span className="font-bold text-[#FFF5EA]">4.9 / 5 Rating</span>
+              <span className="font-bold text-[#FFF5EA]">5.0 / 5 Rating</span>
               <span className="text-[#8C6B55]">•</span>
               <span className="text-[#E5CCA8] font-medium">5,000+ Verified Google Reviews</span>
             </div>

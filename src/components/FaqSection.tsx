@@ -16,20 +16,20 @@ export const FaqSection: React.FC = () => {
   );
 
   return (
-    <section id="faqs" className="py-16 px-4 sm:px-6 lg:px-8 bg-[#F5EDE0] border-b border-[#E3D4B6]">
-      <div className="max-w-4xl mx-auto space-y-8">
+    <section id="faqs" className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#F5EDE0] border-b border-[#E3D4B6]">
+      <div className="max-w-4xl mx-auto space-y-6">
         
         {/* Header */}
-        <div className="text-center space-y-3">
+        <div className="text-center space-y-2">
           <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full bg-[#EAD8BF] border border-[#D9C4A6] text-[#8C3E14] text-xs font-bold uppercase tracking-wider">
             <HelpCircle className="w-3.5 h-3.5 text-[#9E431E]" />
-            <span>Vedic Career Guidance Questions</span>
+            <span>Got Questions?</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif-vedic font-bold text-[#3B190C] tracking-tight">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-vedic font-bold text-[#3B190C] tracking-tight">
             Frequently Asked Questions About Career Astrology
           </h2>
-          <p className="text-base text-[#6B4B36] leading-relaxed">
-            Find answers to common questions regarding career astrology consultations, birth chart requirements, and remedies.
+          <p className="text-xs sm:text-sm text-[#6B4B36] leading-relaxed">
+            Find answers to common questions about our career guidance services.
           </p>
 
           {/* Quick Search */}

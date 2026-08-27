@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, MessageCircle, ArrowRight, Plus, Minus } from 'lucide-react';
+import { Sparkles, CheckCircle2, MessageCircle, ArrowRight, Plus, Minus, Lock, Star } from 'lucide-react';
 import { ConsultationFormState } from '../types';
 
 interface HeroSectionProps {
@@ -35,126 +35,189 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
   return (
     <section 
       id="hero" 
-      className="relative w-full bg-[#703013] text-[#FAF4EB] py-10 sm:py-14 px-4 sm:px-6 lg:px-10 overflow-hidden"
+      className="relative w-full bg-[#52210D] text-[#FAF4EB] py-8 sm:py-12 px-4 sm:px-6 lg:px-10 overflow-hidden border-b-2 border-[#8C3E14]"
     >
       {/* Background Sacred Geometric Kundli Diagram Lines (matching screenshot) */}
-      <div className="absolute inset-0 pointer-events-none opacity-20 overflow-hidden">
-        {/* Left North Indian diamond subtle background pattern */}
-        <svg className="absolute -left-20 -top-20 w-[600px] h-[600px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="1" fill="none">
-          <rect x="50" y="50" width="300" height="300" stroke="#FDE08B" strokeWidth="1.2" />
-          <line x1="50" y1="50" x2="350" y2="350" stroke="#FDE08B" strokeWidth="1" />
-          <line x1="350" y1="50" x2="50" y2="350" stroke="#FDE08B" strokeWidth="1" />
-          <polygon points="200,50 350,200 200,350 50,200" stroke="#FDE08B" strokeWidth="1" />
+      <div className="absolute inset-0 pointer-events-none opacity-25 overflow-hidden">
+        {/* Left Sacred Kundli Geometry Vector */}
+        <svg className="absolute -left-16 -top-16 w-[550px] h-[550px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="0.8" fill="none">
+          <circle cx="200" cy="200" r="190" stroke="#FDE08B" strokeWidth="0.8" strokeDasharray="4 4" />
+          <circle cx="200" cy="200" r="140" stroke="#FDE08B" strokeWidth="0.6" />
+          <rect x="60" y="60" width="280" height="280" stroke="#FDE08B" strokeWidth="1" />
+          <line x1="60" y1="60" x2="340" y2="340" stroke="#FDE08B" strokeWidth="0.8" />
+          <line x1="340" y1="60" x2="60" y2="340" stroke="#FDE08B" strokeWidth="0.8" />
+          <polygon points="200,60 340,200 200,340 60,200" stroke="#FDE08B" strokeWidth="0.8" />
         </svg>
 
         {/* Right subtle zodiac wheel arc */}
-        <svg className="absolute -right-24 -bottom-24 w-[650px] h-[650px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="1" fill="none">
-          <circle cx="350" cy="350" r="300" stroke="#FDE08B" strokeWidth="1" strokeDasharray="6 4" />
-          <circle cx="350" cy="350" r="240" stroke="#FDE08B" strokeWidth="0.8" />
-          <circle cx="350" cy="350" r="180" stroke="#FDE08B" strokeWidth="0.8" />
+        <svg className="absolute -right-20 -bottom-20 w-[600px] h-[600px]" viewBox="0 0 400 400" stroke="#FDE08B" strokeWidth="0.7" fill="none">
+          <circle cx="350" cy="350" r="300" stroke="#FDE08B" strokeWidth="0.8" strokeDasharray="6 4" />
+          <circle cx="350" cy="350" r="220" stroke="#FDE08B" strokeWidth="0.6" />
         </svg>
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           
-          {/* Left Column: Pill badges, Title, Detailed Description, Planet Pills & Value Grid */}
-          <div className="lg:col-span-7 space-y-6">
+          {/* Left Column: Breadcrumb, Badge, Headline, Planets & 4 Value Boxes */}
+          <div className="lg:col-span-7 space-y-5">
             
-            {/* Top Pill Badges matching screenshot */}
-            <div className="flex flex-wrap items-center gap-2.5">
-              <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-[#52210B]/80 border border-[#8C3E14] text-[#F3DFBD] text-xs font-semibold">
-                <span className="w-2 h-2 rounded-full bg-[#E5A93C]"></span>
-                <span>Astrology for Career Growth & Job Uncertainty</span>
-              </div>
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#52210B]/80 border border-[#8C3E14] text-[#F3DFBD] text-xs font-semibold">
-                <span>🧭</span>
-                <span className="uppercase text-[11px] tracking-wider">10th House Karma Bhava</span>
+            {/* Breadcrumb Navigation matching screenshot */}
+            <div className="text-xs text-[#E8CCA6] flex items-center gap-1.5 font-medium">
+              <span>Home</span>
+              <span className="text-[#B3876B]">›</span>
+              <span>Services</span>
+              <span className="text-[#B3876B]">›</span>
+              <span className="text-[#FDE08B] font-semibold">Career Growth & Job Uncertainty (Career Astrology)</span>
+            </div>
+
+            {/* Pill Badge matching screenshot */}
+            <div>
+              <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#341508]/90 border border-[#8C3E14] text-[#FDE08B] text-xs font-bold tracking-wide shadow-sm">
+                <span className="w-2 h-2 rounded-full bg-[#E5A93C] animate-pulse"></span>
+                <span>AUTHENTIC VEDIC CAREER GUIDANCE</span>
               </div>
             </div>
 
-            {/* Main Headline */}
-            <div className="space-y-2">
-              <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif-vedic font-bold text-white leading-tight tracking-tight">
-                Get Clear Career Direction & Overcome Job Uncertainty
-              </h1>
-              <p className="text-sm sm:text-base font-serif-vedic text-[#FDEBD0] italic font-medium">
-                Sick of your current position? Choosing between promotion, a job change, government work or business?
-              </p>
-            </div>
+            {/* Main Headline matching screenshot */}
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif-vedic font-bold text-white leading-[1.15] tracking-tight drop-shadow-sm">
+              Unlock Your Career Destiny Through Astrology
+            </h1>
 
-            {/* Requested Detailed Copy */}
-            <p className="text-[#F1DDD0] text-xs sm:text-sm leading-relaxed font-light text-justify sm:text-left">
-              Career astrology is the interpretation of your natal chart to know your strengths in your career, tough times, appropriate career paths and the best timing in your career life. A customized career forecast may offer another viewpoint into your current stage and future opportunities rather than an important decision just being made due to stress or uncertainty.
-            </p>
-
-            {/* Planet Role Badges (Sun, Jupiter, Saturn, Mercury, Rahu) matching screenshot */}
-            <div className="grid grid-cols-2 sm:grid-cols-5 gap-2 pt-1">
-              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
-                <div className="text-xs font-bold text-[#FDE08B]">Sun ☉</div>
-                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Authority & Govt.</div>
+            {/* Key Planetary Career Influences Title */}
+            <div className="pt-1">
+              <div className="text-xs font-extrabold uppercase tracking-widest text-[#FDE08B]">
+                KEY PLANETARY CAREER INFLUENCES:
               </div>
 
-              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
-                <div className="text-xs font-bold text-[#FDE08B]">Jupiter ♃</div>
-                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Growth & Wisdom</div>
-              </div>
+              {/* 5 Planetary Badges in Row matching screenshot */}
+              <div className="mt-2.5 grid grid-cols-2 sm:grid-cols-5 gap-2 sm:gap-2.5">
+                
+                {/* Sun */}
+                <div className="bg-[#341508]/90 border border-[#7A3614] rounded-xl p-2.5 text-center shadow-md hover:border-[#D49B35] transition-all">
+                  <div className="text-xs sm:text-sm font-bold text-[#FDE08B] flex items-center justify-center gap-1">
+                    <span>Sun</span>
+                    <span className="text-[#E5A93C] text-sm">☉</span>
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-[#F0D5C3] mt-1 font-medium leading-tight">
+                    Authority & Govt.
+                  </div>
+                </div>
 
-              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
-                <div className="text-xs font-bold text-[#FDE08B]">Saturn ♄</div>
-                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Karma & Tenure</div>
-              </div>
+                {/* Jupiter */}
+                <div className="bg-[#341508]/90 border border-[#7A3614] rounded-xl p-2.5 text-center shadow-md hover:border-[#D49B35] transition-all">
+                  <div className="text-xs sm:text-sm font-bold text-[#FDE08B] flex items-center justify-center gap-1">
+                    <span>Jupiter</span>
+                    <span className="text-[#E5A93C] text-sm">♃</span>
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-[#F0D5C3] mt-1 font-medium leading-tight">
+                    Growth & Wisdom
+                  </div>
+                </div>
 
-              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs">
-                <div className="text-xs font-bold text-[#FDE08B]">Mercury ☿</div>
-                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Business & Tech</div>
-              </div>
+                {/* Saturn */}
+                <div className="bg-[#341508]/90 border border-[#7A3614] rounded-xl p-2.5 text-center shadow-md hover:border-[#D49B35] transition-all">
+                  <div className="text-xs sm:text-sm font-bold text-[#FDE08B] flex items-center justify-center gap-1">
+                    <span>Saturn</span>
+                    <span className="text-[#E5A93C] text-sm">♄</span>
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-[#F0D5C3] mt-1 font-medium leading-tight">
+                    Karma & Tenure
+                  </div>
+                </div>
 
-              <div className="bg-[#481B09]/80 border border-[#853513] rounded-lg p-2 text-center backdrop-blur-xs col-span-2 sm:col-span-1">
-                <div className="text-xs font-bold text-[#FDE08B]">Rahu ☊</div>
-                <div className="text-[10px] text-[#D8BCAB] mt-0.5 leading-tight">Foreign Careers</div>
+                {/* Mercury */}
+                <div className="bg-[#341508]/90 border border-[#7A3614] rounded-xl p-2.5 text-center shadow-md hover:border-[#D49B35] transition-all">
+                  <div className="text-xs sm:text-sm font-bold text-[#FDE08B] flex items-center justify-center gap-1">
+                    <span>Mercury</span>
+                    <span className="text-[#E5A93C] text-sm">☿</span>
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-[#F0D5C3] mt-1 font-medium leading-tight">
+                    Business & Tech
+                  </div>
+                </div>
+
+                {/* Rahu */}
+                <div className="bg-[#341508]/90 border border-[#7A3614] rounded-xl p-2.5 text-center shadow-md hover:border-[#D49B35] transition-all col-span-2 sm:col-span-1">
+                  <div className="text-xs sm:text-sm font-bold text-[#FDE08B] flex items-center justify-center gap-1">
+                    <span>Rahu</span>
+                    <span className="text-[#E5A93C] text-sm">☊</span>
+                  </div>
+                  <div className="text-[10px] sm:text-[11px] text-[#F0D5C3] mt-1 font-medium leading-tight">
+                    Foreign Careers
+                  </div>
+                </div>
+
               </div>
             </div>
 
             {/* 4 Value proposition boxes matching screenshot */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs text-[#FAF0DE]">
-              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span className="leading-snug">Identify suitable career fields matching your planetary strengths</span>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1 text-xs sm:text-sm text-[#FAF0DE]">
+              
+              <div className="bg-[#341508]/85 border border-[#7A3614] rounded-2xl p-4 flex items-start gap-3 shadow-md hover:border-[#8C3E14] transition-all">
+                <span className="text-[#FDE08B] text-base leading-none shrink-0 mt-0.5">✦</span>
+                <span className="leading-snug font-medium text-[#FCECDA]">
+                  Identify suitable career fields matching your planetary strengths
+                </span>
               </div>
 
-              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span className="leading-snug">Understand auspicious timing for job change, promotion & growth</span>
+              <div className="bg-[#341508]/85 border border-[#7A3614] rounded-2xl p-4 flex items-start gap-3 shadow-md hover:border-[#8C3E14] transition-all">
+                <span className="text-[#FDE08B] text-base leading-none shrink-0 mt-0.5">✦</span>
+                <span className="leading-snug font-medium text-[#FCECDA]">
+                  Understand auspicious timing for job change, promotion & growth
+                </span>
               </div>
 
-              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span className="leading-snug">Resolve business vs job dilemmas through Dashamsha (D10) chart</span>
+              <div className="bg-[#341508]/85 border border-[#7A3614] rounded-2xl p-4 flex items-start gap-3 shadow-md hover:border-[#8C3E14] transition-all">
+                <span className="text-[#FDE08B] text-base leading-none shrink-0 mt-0.5">✦</span>
+                <span className="leading-snug font-medium text-[#FCECDA]">
+                  Resolve business vs job dilemmas through Dashamsha (D10) chart
+                </span>
               </div>
 
-              <div className="bg-[#481B09]/70 border border-[#853513] rounded-xl p-3.5 flex items-start gap-2.5">
-                <CheckCircle2 className="w-4 h-4 text-[#E5A93C] shrink-0 mt-0.5" />
-                <span className="leading-snug">Practical, time-tested Vedic remedies to overcome roadblocks</span>
+              <div className="bg-[#341508]/85 border border-[#7A3614] rounded-2xl p-4 flex items-start gap-3 shadow-md hover:border-[#8C3E14] transition-all">
+                <span className="text-[#FDE08B] text-base leading-none shrink-0 mt-0.5">✦</span>
+                <span className="leading-snug font-medium text-[#FCECDA]">
+                  Practical, time-tested Vedic remedies to overcome roadblocks
+                </span>
+              </div>
+
+            </div>
+
+            {/* Bottom Trust & Stats Bar matching screenshot */}
+            <div className="pt-3 flex flex-wrap items-center gap-6 sm:gap-8 border-t border-[#7A3614]/60 text-xs text-[#F0D5C3]">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#FDE08B] font-bold">★ 5.0/5</span>
+                <span className="text-[#E5CEBA]">Client Rating</span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#FDE08B] font-bold">50,000+</span>
+                <span className="text-[#E5CEBA]">Charts Analyzed</span>
+              </div>
+
+              <div className="flex items-center gap-1.5">
+                <span className="text-[#25D366] font-bold">100%</span>
+                <span className="text-[#E5CEBA]">Confidential</span>
               </div>
             </div>
 
           </div>
 
-          {/* Right Column: Clean & Minimized Contact Form Card matching screenshot */}
+          {/* Right Column: Clean Booking Form Card matching screenshot */}
           <div className="lg:col-span-5">
-            <div className="bg-[#FFFDF9] rounded-2xl p-6 sm:p-7 text-[#2C1810] shadow-2xl border-2 border-[#D49B35]/70 relative">
+            <div className="bg-[#FFFDF9] rounded-3xl p-6 sm:p-7 text-[#2C1810] shadow-2xl border-2 border-[#D49B35]/70 relative">
               
               {/* Header Badge & Title matching screenshot */}
               <div className="text-center pb-3">
-                <div className="inline-block bg-[#5C230B] text-[#FAF4EB] text-[10px] font-bold uppercase tracking-widest px-3 py-0.5 rounded-full mb-2">
+                <div className="inline-block bg-[#5C230B] text-[#FAF4EB] text-[10px] font-bold uppercase tracking-widest px-3.5 py-1 rounded-full mb-2">
                   1-ON-1 CONSULTATION
                 </div>
-                <h2 className="text-2xl font-serif-vedic font-bold text-[#2E1206]">
+                <h2 className="text-2xl sm:text-3xl font-serif-vedic font-bold text-[#2E1206]">
                   Book Career Consultation
                 </h2>
-                <p className="text-xs text-[#704E38] mt-0.5">
-                  Get personalized Vedic roadmap from Hanish Bagga (Acharya Ganesh)
+                <p className="text-xs text-[#704E38] mt-1 font-medium">
+                  Get personalized Vedic roadmap from Acharya Ganesh
                 </p>
               </div>
 
@@ -171,7 +234,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                     href={`https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20have%20submitted%20my%20career%20consultation%20request%20for%20${encodeURIComponent(formData.fullName)}%20(${encodeURIComponent(formData.careerConcern)}).`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-2.5 rounded-lg font-bold text-xs transition shadow-sm"
+                    className="inline-flex items-center justify-center gap-2 w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-3 rounded-xl font-bold text-xs transition shadow-md"
                   >
                     <MessageCircle className="w-4 h-4 fill-current" />
                     <span>Instant WhatsApp Booking (+91 73000-04325)</span>
@@ -236,12 +299,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                       className="w-full bg-[#FAF6EE] border border-[#D9C4A6] rounded-xl px-3 py-2.5 text-xs text-[#2C1810] focus:ring-2 focus:ring-[#8C3411] focus:outline-none font-medium cursor-pointer"
                     >
                       <option value="Career Path & Suitable Field Analysis">Career Path & Suitable Field Analysis</option>
-                      <option value="Job Change & Auspicious Timing">Job Change & Auspicious Timing</option>
-                      <option value="Promotion & Appraisal Timing">Promotion & Appraisal Timing</option>
-                      <option value="Government vs Private Job Dilemma">Government vs Private Job Dilemma</option>
-                      <option value="Job vs Business Decision">Job vs Business Decision</option>
-                      <option value="Foreign Work & Relocation Astrology">Foreign Work & Relocation Astrology</option>
-                      <option value="Workplace Politics & Office Stress">Workplace Politics & Office Stress</option>
+                      <option value="Job Switch & Salary Appraisal Timing">Job Switch & Salary Appraisal Timing</option>
+                      <option value="Promotion Delay & Corporate Politics">Promotion Delay & Corporate Politics</option>
+                      <option value="Business vs Job (D10 Dashamsha Analysis)">Business vs Job (D10 Dashamsha Analysis)</option>
+                      <option value="Foreign Relocation & Visa Timing">Foreign Relocation & Visa Timing</option>
+                      <option value="Government Exam / UPSC Astrological Window">Government Exam / UPSC Astrological Window</option>
                     </select>
                   </div>
 
@@ -257,7 +319,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                       ) : (
                         <Plus className="w-3.5 h-3.5 text-[#8C3411]" />
                       )}
-                      <span>Add Birth Details Now (Optional for Faster Reading)</span>
+                      <span>Add Birth Details (Optional for Faster Reading)</span>
                     </button>
 
                     {showBirthDetails && (
@@ -299,27 +361,27 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
                   {/* Brown Confirm Consultation Slot CTA matching screenshot */}
                   <button
                     type="submit"
-                    className="w-full bg-[#753413] hover:bg-[#5C260B] text-white py-3 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition shadow-md flex items-center justify-center gap-2 cursor-pointer group mt-1"
+                    className="w-full bg-[#63240A] hover:bg-[#4E1B07] text-white py-3.5 rounded-xl font-bold text-xs sm:text-sm tracking-wide transition shadow-md flex items-center justify-center gap-2 cursor-pointer group mt-1"
                   >
                     <span>Confirm Consultation Slot</span>
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </button>
 
-                  {/* Subtext divider & Instant WhatsApp Booking button matching screenshot */}
-                  <div className="space-y-2 pt-1 text-center">
-                    <p className="text-[11px] text-[#7A5B48]">
-                      or need instant assistance?
-                    </p>
+                  {/* Instant WhatsApp Booking button matching screenshot */}
+                  <a
+                    href="https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20want%20to%20book%20a%20Career%20Astrology%20Consultation."
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="w-full bg-[#0FA958] hover:bg-[#0D8F4A] text-white py-3 rounded-xl font-bold text-xs sm:text-sm transition shadow-md flex items-center justify-center gap-2"
+                  >
+                    <MessageCircle className="w-4 h-4 fill-current" />
+                    <span>Instant WhatsApp Booking (+91 73000-04325)</span>
+                  </a>
 
-                    <a
-                      href="https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20want%20to%20book%20a%20Career%20Astrology%20Consultation."
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-[#25D366] hover:bg-[#1EBE5D] text-white py-2.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-sm flex items-center justify-center gap-2"
-                    >
-                      <MessageCircle className="w-4 h-4 fill-current" />
-                      <span>Instant WhatsApp Booking (+91 73000-04325)</span>
-                    </a>
+                  {/* Footer confidentiality note matching screenshot */}
+                  <div className="pt-2 text-center text-[11px] text-[#7A5B48] flex items-center justify-center gap-1.5">
+                    <Lock className="w-3 h-3 text-[#7A5B48]" />
+                    <span>Strict Confidentiality • 100% Verified Vedic Astrologers</span>
                   </div>
 
                 </form>
@@ -333,3 +395,4 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onFormSubmit }) => {
     </section>
   );
 };
+

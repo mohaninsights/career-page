@@ -7,55 +7,55 @@ interface FinalCtaSectionProps {
 
 export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenBooking }) => {
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#642008] via-[#7B2C0F] to-[#481604] text-[#FAF4EB] text-center relative overflow-hidden bg-hero-texture border-t-4 border-[#D49B35]">
+    <section className="py-12 sm:py-14 px-4 sm:px-6 lg:px-8 bg-gradient-to-b from-[#52210D] via-[#63240A] to-[#3B1405] text-[#FAF4EB] text-center relative overflow-hidden border-t-4 border-[#D49B35]">
       
       {/* Background celestial blur circles */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#E5A93C]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-[#E5A93C]/20 rounded-full blur-3xl pointer-events-none"></div>
 
-      <div className="max-w-4xl mx-auto space-y-8 relative z-10">
+      <div className="max-w-4xl mx-auto space-y-6 relative z-10">
         
         {/* Top Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#3B1405]/80 border border-[#D49B35]/50 text-[#FDE08B] text-xs font-bold uppercase tracking-wider">
-          <Sparkles className="w-4 h-4 text-[#E5A93C]" />
-          <span>Transform Career Uncertainty Into Confident Growth</span>
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#341508] border border-[#8C3E14] text-[#FDE08B] text-xs font-bold uppercase tracking-wider shadow-md">
+          <Sparkles className="w-4 h-4 text-[#E5A93C] animate-pulse" />
+          <span>Get Personalized Career Guidance</span>
         </div>
 
         {/* Big Title */}
-        <h2 className="text-3xl sm:text-5xl font-serif-vedic font-bold text-white tracking-tight leading-tight">
-          Take the First Step Towards a Fulfilling Career
+        <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif-vedic font-bold text-[#FFFDF9] tracking-tight leading-tight drop-shadow-md">
+          Ready to examine your career situation in greater depth?
         </h2>
 
         {/* Subtitle / Description */}
-        <p className="text-[#F2DDD0] text-base sm:text-lg leading-relaxed max-w-3xl mx-auto font-light">
-          Whether you are anticipating a crucial job switch, navigating workplace politics, or debating entrepreneurship, Acharya Hanish Bagga’s 17+ years of Vedic expertise will give you absolute clarity and timing.
+        <p className="text-[#FCECDA] text-sm sm:text-base leading-relaxed max-w-3xl mx-auto font-medium">
+          If you are dealing with career confusion, delayed promotion, job instability, repeated rejection, workplace pressure or an important professional decision, a personalized consultation can give you complete clarity.
         </p>
 
-        {/* 3 Trust Badges Matching PDF */}
-        <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 pt-2 text-xs font-semibold text-[#FDEBD0]">
-          <div className="flex items-center gap-2 bg-[#421505]/70 border border-[#8C3814] px-3.5 py-1.5 rounded-full">
+        {/* 3 Trust Badges */}
+        <div className="flex flex-wrap items-center justify-center gap-3 sm:gap-5 pt-1 text-xs font-semibold text-[#FAF0DE]">
+          <div className="flex items-center gap-2 bg-[#341508]/90 border border-[#8C3E14] px-4 py-2 rounded-full shadow-xs">
             <Shield className="w-4 h-4 text-[#25D366]" />
             <span>100% Confidential Reading</span>
           </div>
 
-          <div className="flex items-center gap-2 bg-[#421505]/70 border border-[#8C3814] px-3.5 py-1.5 rounded-full">
+          <div className="flex items-center gap-2 bg-[#341508]/90 border border-[#8C3E14] px-4 py-2 rounded-full shadow-xs">
             <Clock className="w-4 h-4 text-[#E5A93C]" />
             <span>Instant Slot Confirmation</span>
           </div>
 
-          <div className="flex items-center gap-2 bg-[#421505]/70 border border-[#8C3814] px-3.5 py-1.5 rounded-full">
-            <Star className="w-4 h-4 text-[#D49B35] fill-current" />
-            <span>4.9/5 Rated by 50,000+ Clients</span>
+          <div className="flex items-center gap-2 bg-[#341508]/90 border border-[#8C3E14] px-4 py-2 rounded-full shadow-xs">
+            <Star className="w-4 h-4 text-[#FDE08B] fill-current" />
+            <span>5.0/5 Rated by 50,000+ Clients</span>
           </div>
         </div>
 
         {/* 2 Primary CTA Buttons */}
-        <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <div className="pt-3 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           
           <button
             onClick={onOpenBooking}
-            className="w-full sm:w-auto bg-[#FFFDF9] hover:bg-[#FAF0DE] text-[#6E2810] px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-wider transition shadow-2xl flex items-center justify-center gap-2.5 cursor-pointer group hover:scale-105"
+            className="w-full sm:w-auto bg-[#FFFDF9] hover:bg-[#FAF0DE] text-[#63240A] px-8 py-3.5 rounded-xl font-bold text-xs sm:text-sm uppercase tracking-wider transition shadow-2xl flex items-center justify-center gap-2 cursor-pointer group hover:scale-103"
           >
-            <span>Book Your Consultation Slot</span>
+            <span>Book 1-on-1 Consultation with Acharya Ganesh</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </button>
 
@@ -63,16 +63,16 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenBooking 
             href="https://wa.me/917300004325?text=Hello%20Acharya%20Ganesh,%20I%20would%20like%20to%20book%20a%20Career%20Astrology%20Consultation."
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full sm:w-auto bg-[#25D366] hover:bg-[#1EBE5D] text-white px-8 py-4 rounded-xl font-bold text-sm transition shadow-2xl flex items-center justify-center gap-2.5 hover:scale-105"
+            className="w-full sm:w-auto bg-[#0FA958] hover:bg-[#0D8F4A] text-white px-8 py-3.5 rounded-xl font-bold text-xs sm:text-sm transition shadow-2xl flex items-center justify-center gap-2 hover:scale-103"
           >
-            <MessageCircle className="w-5 h-5 fill-current" />
+            <MessageCircle className="w-4 h-4 fill-current" />
             <span>WhatsApp Consultation Now</span>
           </a>
 
         </div>
 
         {/* Small Footnote */}
-        <p className="text-[11px] text-[#D8B49E] pt-2">
+        <p className="text-xs text-[#E8CCA6] pt-1 font-light">
           * Consultations are conducted 1-on-1 via private video or phone call. Strict privacy assured. No computerized generic printouts.
         </p>
 
@@ -80,3 +80,4 @@ export const FinalCtaSection: React.FC<FinalCtaSectionProps> = ({ onOpenBooking 
     </section>
   );
 };
+

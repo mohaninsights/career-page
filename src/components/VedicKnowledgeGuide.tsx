@@ -50,11 +50,11 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
   ];
 
   return (
-    <section id="vedic-guide" className="py-16 sm:py-20 px-4 sm:px-6 lg:px-8 bg-[#FBF7F0] border-b border-[#E3D4B6]">
-      <div className="max-w-7xl mx-auto space-y-12">
+    <section id="vedic-guide" className="py-10 sm:py-12 px-4 sm:px-6 lg:px-8 bg-[#FBF7F0] border-b border-[#E3D4B6]">
+      <div className="max-w-7xl mx-auto space-y-8">
         
         {/* SECTION SUPER-HEADER */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
           <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full bg-[#FAF0DE] border border-[#E8D6B8] text-[#8C3E14] text-xs font-bold uppercase tracking-wider shadow-2xs">
             <BookOpen className="w-3.5 h-3.5 text-[#9E431E]" />
             <span>Vedic Career Astrology Guide & Knowledge Hub</span>
@@ -64,7 +64,7 @@ export const VedicKnowledgeGuide: React.FC<VedicKnowledgeGuideProps> = ({ onOpen
             How Vedic Astrology Studies Your Professional Life
           </h2>
           
-          <div className="space-y-2 text-xs sm:text-sm text-[#5C3F2E] max-w-3xl mx-auto leading-relaxed">
+          <div className="space-y-1.5 text-xs sm:text-sm text-[#5C3F2E] max-w-3xl mx-auto leading-relaxed">
             <p>
               Your career is influenced by education, skills, experience, choices, economic conditions, opportunities and personal effort. Vedic astrology provides an additional framework for understanding professional tendencies and timing through the birth chart.
             </p>

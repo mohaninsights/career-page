@@ -170,27 +170,6 @@ export const CAREER_STAGES = [
   }
 ];
 
-export const CONSULTATION_STEPS = [
-  {
-    step: '01',
-    title: 'Book Your Consultation',
-    description: 'Select your preferred time slot and consultation format (1-on-1 Video Call via Zoom/Meet, Audio Call, or Comprehensive Written PDF Report).',
-    actionText: 'Flexible slots available 7 days a week'
-  },
-  {
-    step: '02',
-    title: 'Share Your Career Birth Details',
-    description: 'Provide your accurate date, exact time, and city of birth. If birth time is slightly uncertain, our team applies Birth Time Rectification (BTR) principles.',
-    actionText: '100% confidential & encrypted data handling'
-  },
-  {
-    step: '03',
-    title: 'Receive Personalized Career Guidance',
-    description: 'Direct interactive session with Acharya Hanish Bagga. Receive deep Kundli diagnostics, exact timing predictions, tailored Vedic remedies, and ask all your questions.',
-    actionText: 'Includes remedy chart + post-session summary'
-  }
-];
-
 export const SESSION_DELIVERABLES: DeliverableItem[] = [
   {
     id: 'del-1',

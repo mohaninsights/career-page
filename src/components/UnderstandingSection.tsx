@@ -57,14 +57,11 @@ export const UnderstandingSection: React.FC<UnderstandingSectionProps> = ({ onOp
           <div className="lg:col-span-7 space-y-5">
             
             {/* Introductory Paragraphs */}
-            <div className="space-y-2 text-xs sm:text-sm text-[#4A3225] leading-relaxed">
+            <div className="text-xs sm:text-sm text-[#4A3225] leading-relaxed">
               <p>
                 Career astrology uses your exact date, time, and place of birth to evaluate your{' '}
                 <strong className="text-[#3B190C] font-bold">10th House (Karma Bhava)</strong>, governing planets, and current{' '}
                 <strong className="text-[#3B190C] font-bold">Mahadasha & Antardasha cycles</strong>.
-              </p>
-              <p className="text-[#5E4232]">
-                Rather than relying on vague sun-sign predictions, genuine Vedic astrology analyzes the micro-strengths of the Dashamsha (D10) divisional chart to uncover whether service, independent profession, government role, or entrepreneurship is best suited for your planetary combinations.
               </p>
             </div>
 
